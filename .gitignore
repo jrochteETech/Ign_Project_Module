@@ -1,0 +1,15 @@
+.gradle/
+**/build/
+dist/
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.pem
+*.key
+*.cer
+*.log
+.env
+.env.*
+signing/
+**/signing.properties

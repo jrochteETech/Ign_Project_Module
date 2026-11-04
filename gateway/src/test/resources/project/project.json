@@ -1,0 +1,6 @@
+{
+  "title": "Packaging Test Fixture",
+  "description": "SDK parsing fixture, not a production project",
+  "enabled": true,
+  "inheritable": false
+}
