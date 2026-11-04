@@ -1,6 +1,6 @@
 {
-  "title": "",
-  "description": "",
+  "title": "E Tech Admin",
+  "description": "E Tech Admin project for managing administrative tasks",
   "enabled": true,
   "inheritable": false,
   "parent": ""
