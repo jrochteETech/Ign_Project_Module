@@ -1,0 +1,764 @@
+{
+  "custom": {
+    "parentPath": "[default]",
+    "providers": [
+      {
+        "label": "[System]",
+        "value": "[System]"
+      },
+      {
+        "label": "[default]",
+        "value": "[default]"
+      },
+      {
+        "label": "[nvd_io01]",
+        "value": "[nvd_io01]"
+      }
+    ],
+    "resultsString": [
+      "Good"
+    ],
+    "selectionData": [],
+    "tagTree": [
+      {
+        "data": {
+          "hasChildren": false,
+          "path": "[test]New Tag"
+        },
+        "expanded": false,
+        "items": [],
+        "label": "New Tag"
+      }
+    ]
+  },
+  "params": {
+    "automaticSelection": false,
+    "expanded": false,
+    "filters": {},
+    "foldersOnly": false,
+    "mode": "value",
+    "useFiltersChildren": false
+  },
+  "propConfig": {
+    "custom.parentPath": {
+      "persistent": true
+    },
+    "custom.resultsString": {
+      "persistent": true
+    },
+    "custom.selectionData": {
+      "persistent": true
+    },
+    "params.automaticSelection": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.expanded": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.filters": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.foldersOnly": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.mode": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.useFiltersChildren": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 735,
+      "width": 1483
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Tag Configuration"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "head"
+        },
+        "position": {
+          "basis": "2em",
+          "display": false,
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "justify": "space-around"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Dropdown"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.options": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.providers"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.parentPath"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "marginLeft": 1,
+                    "marginRight": 1
+                  }
+                },
+                "type": "ia.input.dropdown"
+              },
+              {
+                "meta": {
+                  "name": "TagBrowseTree"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.root.path": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.parentPath"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.selection.values": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.selectionData"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "root": {},
+                  "selection": {}
+                },
+                "type": "ia.display.tag-browse-tree"
+              }
+            ],
+            "meta": {
+              "name": "Tree"
+            },
+            "position": {
+              "position": "left"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "padding": 5
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\ttagDataset \u003d self.parent.parent.getChild(\"Table\").props.data\n\tresultsString \u003d \"\"\n\tfor row in range(tagDataset.getRowCount()):\n\t\ttagPath \u003d tagDataset.getValueAt(row,3)\n\t\tresult \u003d system.tag.writeBlocking([tagPath+\u0027.Enabled\u0027], True)\n\t\tresultsString +\u003d result\n\tself.view.custom.resultsString \u003d resultsString"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "EnableAll"
+                    },
+                    "props": {
+                      "primary": false,
+                      "style": {
+                        "margin": "10px"
+                      },
+                      "text": "Enable All"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\ttagDataset \u003d self.parent.parent.getChild(\"Table\").props.data\n\tresultsString \u003d \"\"\n\tfor row in range(tagDataset.getRowCount()):\n\t\ttagPath \u003d tagDataset.getValueAt(row,3)\n\t\tresult \u003d system.tag.writeBlocking([tagPath+\u0027.Enabled\u0027], False)\n\t\tresultsString +\u003d result\n\tself.view.custom.resultsString \u003d resultsString"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "DisableAll"
+                    },
+                    "props": {
+                      "primary": false,
+                      "style": {
+                        "margin": "10px"
+                      },
+                      "text": "Disable All"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "basis": "200px",
+                      "grow": 1
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\ttagDataset \u003d self.parent.parent.getChild(\"Table\").props.data\n\tresultsString \u003d \"\"\n\tfor row in range(tagDataset.getRowCount()):\n\t\ttagPath \u003d tagDataset.getValueAt(row,3)\n\t\tresult \u003d system.tag.deleteTags([tagPath])\n\t\tresultsString +\u003d result\n\tself.view.custom.resultsString \u003d resultsString\n\tself.props.value \u003d 0"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Delete"
+                    },
+                    "props": {
+                      "confirm": {
+                        "enabled": true
+                      },
+                      "readyState": {
+                        "icon": {
+                          "style": {
+                            "height": "24px",
+                            "width": "2rem"
+                          }
+                        },
+                        "text": "Delete"
+                      },
+                      "style": {
+                        "margin": "10px"
+                      },
+                      "writingState": {
+                        "icon": {
+                          "path": "material/hourglass_empty",
+                          "style": {
+                            "height": "24px",
+                            "width": "2rem"
+                          }
+                        },
+                        "text": "Writing..."
+                      }
+                    },
+                    "type": "ia.input.oneshotbutton"
+                  }
+                ],
+                "meta": {
+                  "name": "Commands"
+                },
+                "position": {
+                  "basis": "50px"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "Table"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.data": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.selectionData"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tdata\u003d []\n\tpaths \u003d []\n\tif value !\u003d None:\n\t\tfor tagPath in value:\n\t\t\ttagType \u003d str(system.tag.getConfiguration(tagPath)[0][\u0027tagType\u0027])\n\t\t\tif tagType in [\u0027UdtInstance\u0027,\u0027AtomicTag\u0027]:\n\t\t\t\tenabled \u003d system.tag.read(str(tagPath+\".Enabled\")).value\n\t\t\tif tagType \u003d\u003d \u0027AtomicTag\u0027:\n\t\t\t\tvalue \u003d system.tag.read(tagPath).value\n\t\t\telse:\n\t\t\t\tvalue \u003d \"\"\n\t\t\tdata.append([enabled,tagType,value,tagPath])\n\telse:\n\t\tdata \u003d [[\"Select a\", \"Folder\",\"To See Data\"]]\n\theaders\u003d[\u0027Enabled\u0027,\u0027Type\u0027,\u0027Value\u0027,\u0027Tag Path\u0027]\n\tdataset \u003d system.dataset.toDataSet(headers,data)\n\treturn dataset",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": true,
+                      "field": "Enabled",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": true,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": 80
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "Type",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": true,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": 100
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": true,
+                      "field": "Value",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": 25
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "Tag Path",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": 75
+                    }
+                  ]
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "Table"
+            },
+            "position": {
+              "position": "right"
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "SplitContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "split": {
+            "position": "22%",
+            "size": 12
+          }
+        },
+        "type": "ia.container.split"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "refreshProviders",
+          "pageScope": true,
+          "script": "\ttry:\n\t\ttags\u003dsystem.tag.browse(filter\u003d{\"tagType\":\"Provider\"}).results\n\t\t\n\t\tproviderList \u003d []\n\t\tfor result in tags:\n\t\t\toList \u003d {}\n\t\t\t\n\t\t\tprovider \u003d str(result[\u0027fullPath\u0027])\n\t\t\toList[\"value\"] \u003d provider\n\t\t\toList[\"label\"] \u003d provider\n\t\t\t\n\t\t\tproviderList.append(oList)\n\t\t\n\t\tsortedProvider \u003d sorted(providerList,key\u003dlambda k: k.get(\u0027value\u0027))\n\t\tself.view.custom.providers \u003d sortedProvider\n\texcept:\n\t\tsystem.util.audit(\u0027Tags\u0027,\u0027Provider Refresh\u0027,\"Error: Cannot find any tag providers\")",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,955 @@
+{
+  "custom": {
+    "allPaths": [],
+    "emptyFolders": [],
+    "output": "\n\rProviders Refreshed!",
+    "provider": "",
+    "providerSelection": [
+      {
+        "label": "[Global_Repo]",
+        "value": "[Global_Repo]"
+      },
+      {
+        "label": "[MQTT Distributor]",
+        "value": "[MQTT Distributor]"
+      },
+      {
+        "label": "[MQTT Engine]",
+        "value": "[MQTT Engine]"
+      },
+      {
+        "label": "[MQTT Recorder]",
+        "value": "[MQTT Recorder]"
+      },
+      {
+        "label": "[MQTT Transmission]",
+        "value": "[MQTT Transmission]"
+      },
+      {
+        "label": "[System]",
+        "value": "[System]"
+      },
+      {
+        "label": "[Ticket_System]",
+        "value": "[Ticket_System]"
+      },
+      {
+        "label": "[default]",
+        "value": "[default]"
+      }
+    ],
+    "removeFolderToggle": false,
+    "unusedFolderName": "zz_unused_UDTs",
+    "unusedPaths": [],
+    "usedPaths": [],
+    "withoutConfig": []
+  },
+  "params": {},
+  "propConfig": {
+    "custom.emptyFolders": {
+      "persistent": true
+    },
+    "custom.output": {
+      "persistent": true
+    },
+    "custom.removeFolderToggle": {
+      "persistent": true
+    },
+    "custom.unusedFolderName": {
+      "binding": {
+        "config": {
+          "expression": "replace(if({/root/FlexContainer/TextField.props.text}\u003d\"\",\r\n{/root/FlexContainer/TextField.props.placeholder},\r\n{/root/FlexContainer/TextField.props.text}),\" \",\"_\")"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.withoutConfig": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 925,
+      "width": 1786
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Space Left"
+            },
+            "position": {
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027clearOutput\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Clear",
+              "tooltip": {
+                "enabled": true,
+                "text": "Clear Output"
+              }
+            },
+            "position": {
+              "basis": "4em",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/delete_sweep"
+                }
+              },
+              "primary": false,
+              "style": {
+                "margin": "5px",
+                "paddingTop": "2px"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "Dropdown"
+            },
+            "position": {
+              "basis": "15%",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.providerSelection"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.provider"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "placeholder": {
+                "text": "Select Provider to Audit"
+              },
+              "style": {
+                "margin": "5px"
+              },
+              "textAlign": "center"
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "#\tself.getSibling(\u0027RadioGroup\u0027).props.radios \u003d \"\"\n\tsystem.perspective.sendMessage(\u0027refreshProviders\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "refreshProviders",
+              "tooltip": {
+                "enabled": true,
+                "text": "Refresh Providers"
+              }
+            },
+            "position": {
+              "basis": "4em",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/refresh"
+                }
+              },
+              "primary": false,
+              "style": {
+                "margin": "5px",
+                "padding": "10px"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "Space Right"
+            },
+            "position": {
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Provider"
+        },
+        "position": {
+          "basis": "3em",
+          "shrink": 0
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027findUnused\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Search"
+            },
+            "props": {
+              "style": {
+                "marginLeft": 8,
+                "marginRight": 8
+              },
+              "text": "Search Selected Provider"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027exportList\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Export"
+            },
+            "props": {
+              "primary": false,
+              "style": {
+                "marginLeft": 8,
+                "marginRight": 8
+              },
+              "text": "Export Lists"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "TextField",
+              "tooltip": {
+                "enabled": true,
+                "text": "Enter custom folder to move unused UDTs into"
+              }
+            },
+            "position": {
+              "basis": "150px"
+            },
+            "props": {
+              "placeholder": "zz_unused_UDTs",
+              "style": {
+                "marginLeft": 8,
+                "marginRight": 8
+              }
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\"moveUnusedUDTs\")"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "MoveUnused"
+            },
+            "props": {
+              "style": {
+                "marginLeft": 8,
+                "marginRight": 8
+              },
+              "text": "Move Unused UDTs"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tself.view.custom.removeFolderToggle \u003d True"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "RemoveFolders"
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.removeFolderToggle"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": true,
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": true,
+                          "output": false
+                        },
+                        {
+                          "input": false,
+                          "output": true
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": 8,
+                "marginRight": 8
+              },
+              "text": "Remove Unused Folders"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tself.view.custom.removeFolderToggle \u003d False\n\tsystem.perspective.sendMessage(\"removeEmptyFolders\", {\u0027udt\u0027:False})"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "RemoveFolders_0"
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.removeFolderToggle"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "primary": false,
+              "style": {
+                "marginLeft": 8,
+                "marginRight": 8
+              },
+              "text": "Instance Folders"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tself.view.custom.removeFolderToggle \u003d False\n\tsystem.perspective.sendMessage(\"removeEmptyFolders\", {\u0027udt\u0027:True})"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "RemoveFolders_1"
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.removeFolderToggle"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "primary": false,
+              "style": {
+                "marginLeft": 8,
+                "marginRight": 8
+              },
+              "text": "UDT Folders"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "props": {
+                  "style": {
+                    "margin": "3px"
+                  },
+                  "text": "All UDTs"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Tree"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.items": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.allPaths"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "appearance": {
+                    "defaultNodeIcons": {
+                      "collapsed": {
+                        "path": "material/folder"
+                      },
+                      "empty": {
+                        "path": "material/stop"
+                      },
+                      "expanded": {
+                        "path": "material/folder_open"
+                      }
+                    },
+                    "expandIcons": {
+                      "collapsed": {
+                        "path": "material/arrow_right"
+                      },
+                      "expanded": {
+                        "path": "material/arrow_drop_down"
+                      }
+                    }
+                  },
+                  "selection": [
+                    "11"
+                  ],
+                  "selectionData": [
+                    {
+                      "itemPath": "11",
+                      "value": ""
+                    }
+                  ]
+                },
+                "type": "ia.display.tree"
+              }
+            ],
+            "meta": {
+              "name": "allUDT"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "props": {
+                  "style": {
+                    "margin": "3px"
+                  },
+                  "text": "Used UDTs"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Tree"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.items": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.usedPaths"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "appearance": {
+                    "defaultNodeIcons": {
+                      "collapsed": {
+                        "path": "material/folder"
+                      },
+                      "empty": {
+                        "path": "material/stop"
+                      },
+                      "expanded": {
+                        "path": "material/folder_open"
+                      }
+                    },
+                    "expandIcons": {
+                      "collapsed": {
+                        "path": "material/arrow_right"
+                      },
+                      "expanded": {
+                        "path": "material/arrow_drop_down"
+                      }
+                    }
+                  },
+                  "selection": [
+                    "12"
+                  ],
+                  "selectionData": [
+                    {
+                      "itemPath": "12",
+                      "value": ""
+                    }
+                  ]
+                },
+                "type": "ia.display.tree"
+              }
+            ],
+            "meta": {
+              "name": "used"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "32px"
+                    },
+                    "props": {
+                      "style": {
+                        "margin": "3px"
+                      },
+                      "text": "Unused UDTs"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Tree"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.items": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.unusedPaths"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "appearance": {
+                        "defaultNodeIcons": {
+                          "collapsed": {
+                            "path": "material/folder"
+                          },
+                          "empty": {
+                            "path": "material/stop"
+                          },
+                          "expanded": {
+                            "path": "material/folder_open"
+                          }
+                        },
+                        "expandIcons": {
+                          "collapsed": {
+                            "path": "material/arrow_right"
+                          },
+                          "expanded": {
+                            "path": "material/arrow_drop_down"
+                          }
+                        }
+                      },
+                      "selection": [
+                        "9"
+                      ],
+                      "selectionData": [
+                        {
+                          "itemPath": "9",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    "type": "ia.display.tree"
+                  }
+                ],
+                "meta": {
+                  "name": "unused"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "32px"
+                    },
+                    "props": {
+                      "style": {
+                        "margin": "3px"
+                      },
+                      "text": "UDT without Config Child"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Tree"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.items": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.withoutConfig"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "appearance": {
+                        "defaultNodeIcons": {
+                          "collapsed": {
+                            "path": "material/folder"
+                          },
+                          "empty": {
+                            "path": "material/stop"
+                          },
+                          "expanded": {
+                            "path": "material/folder_open"
+                          }
+                        },
+                        "expandIcons": {
+                          "collapsed": {
+                            "path": "material/arrow_right"
+                          },
+                          "expanded": {
+                            "path": "material/arrow_drop_down"
+                          }
+                        }
+                      },
+                      "selection": [
+                        "0"
+                      ],
+                      "selectionData": [
+                        {
+                          "itemPath": "0",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    "type": "ia.display.tree"
+                  }
+                ],
+                "meta": {
+                  "name": "unused_0"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "expression": "len({view.custom.withoutConfig})"
+                      },
+                      "transforms": [
+                        {
+                          "fallback": false,
+                          "inputType": "range",
+                          "mappings": [
+                            {
+                              "input": {
+                                "min": 0
+                              },
+                              "output": true
+                            }
+                          ],
+                          "outputType": "scalar",
+                          "type": "map"
+                        }
+                      ],
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "props": {
+                  "text": "Output Console"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Markdown"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.source": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.output"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "borderStyle": "inset",
+                    "margin": 10,
+                    "padding": 5
+                  }
+                },
+                "type": "ia.display.markdown"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_0"
+            },
+            "position": {
+              "basis": "15%",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_1"
+        },
+        "position": {
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "events": {
+      "system": {
+        "onStartup": {
+          "config": {
+            "script": "\tsystem.perspective.sendMessage(\u0027refreshProviders\u0027)"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "scripts": {
+      "customMethods": [
+        {
+          "name": "findUnusedUDTs",
+          "params": [],
+          "script": "\tsvc \u003d self.view.custom\n\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Refreshing All\"\n\tprovider \u003d self.view.custom.provider.strip(\u0027[]\u0027)\n\tquery1 \u003d {\n\t    \"options\": {\n\t        \"includeUdtMembers\": True,\n\t        \"includeUdtDefinitions\": False\n\t    },\n\t    \"condition\": {\n\t        \"tagType\": \"UdtInstance\",\n\t        \"attributes\": {\n\t            \"values\": [],\n\t            \"requireAll\": True\n\t        },\n\t        \"properties\": {\n\t            \"and\": [\n\t                [\n\t                    \"enabled\",\n\t                    \"Equal\",\n\t                    \"true\"\n\t                ]\n\t            ]\n\t        }\n\t    },\n\t    \"returnProperties\": [\n\t        \"typeId\",\n\t        \"tagType\",\n\t        \"enabled\"\n\t    ]\n\t}\n\tresults1 \u003d system.tag.query(provider, query1)\n\t\n\tquery2 \u003d {\n\t    \"options\": {\n\t        \"includeUdtMembers\": False,\n\t        \"includeUdtDefinitions\": True\n\t    },\n\t    \"condition\": {\n\t        \"tagType\": \"UdtType\",\n\t        \"attributes\": {\n\t            \"values\": [],\n\t            \"requireAll\": True\n\t        }\n\t    },\n\t    \"returnProperties\": [\n\t        \"tagType\",\n\t        \"path\"\n\t    ]\n\t}\n\tresults2 \u003d system.tag.query(provider, query2)\n\t\n\t\n\tparent_data_types \u003d list(set(str(result[\u0027typeId\u0027]).replace(\u0027[{}]\u0027.format(provider), \u0027\u0027).replace(\u0027_types_/\u0027, \u0027\u0027) for result in results1))\n\ttagList \u003d []\n\tfor result in parent_data_types:\n\t\toList \u003d {}\n\t\toList[\"label\"] \u003d str(result)\n\t\toList[\"expanded\"] \u003d False\n\t\toList[\"items\"] \u003d []\n\t\t\n\t\ttagList.append(oList)\n\tself.view.custom.usedPaths \u003d sorted(tagList)\n\t\n\t\n\t# Extracting path from results2 and removing provider suffix and \"_types_/\"\n\tpaths \u003d [str(result[\u0027fullPath\u0027]).replace(\u0027[{}]\u0027.format(provider), \u0027\u0027).replace(\u0027_types_/\u0027, \u0027\u0027) for result in results2]\n\ttagList \u003d []\n\tfor result in paths:\n\t\toList \u003d {}\n\t\toList[\"label\"] \u003d str(result)\n\t\toList[\"expanded\"] \u003d False\n\t\toList[\"items\"] \u003d []\n\t\t\n\t\ttagList.append(oList)\n\tself.view.custom.allPaths \u003d sorted(tagList)\n\t\n\t# Finding the difference in data (unused UDT paths)\n\tunused_udt_paths \u003d list(set(paths) - set(parent_data_types))\n\ttagList \u003d []\n\tfor result in unused_udt_paths:\n\t\toList \u003d {}\n\t\toList[\"label\"] \u003d str(result)\n\t\toList[\"expanded\"] \u003d False\n\t\toList[\"items\"] \u003d []\n\t\t\n\t\ttagList.append(oList)\n\tself.view.custom.unusedPaths \u003d sorted(tagList)\n\t\n\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Complete\"\n#\tself.view.custom.allPaths \u003d sorted(paths)\n#\tself.view.custom.usedPaths \u003d sorted(parent_data_types)\n#\tself.view.custom.unusedPaths \u003d sorted(unused_udt_paths)\n#\treturn sorted(parent_data_types), sorted(paths), sorted(unused_udt_paths)"
+        },
+        {
+          "name": "checkForConfigChild",
+          "params": [],
+          "script": "\tsvc \u003d self.view.custom\n\ttheList \u003d svc.allPaths\n\tprovider \u003d svc.provider\n\t\n\tfoundCount \u003d 0\n\twithoutConfig \u003d []\n\tfor i in range(len(theList)):\n\t    if \"_Base/\" not in theList[i][\u0027label\u0027]:\n\t        childTags \u003d []\n\t        data \u003d system.tag.browse(provider+\u0027_types_/\u0027 + theList[i][\u0027label\u0027])\n\t        for tag in data:\n\t            # print(tag[\u0027name\u0027])\n\t            childTags.append(tag[\u0027name\u0027])\n\t        \n\t        # print(childTags)\n\t        if \u0027Config\u0027 in childTags:\n\t            configPresent \u003d True\n\t        else:\n\t            configPresent \u003d False\n\t            foundCount +\u003d 1\n\t            withoutConfig.append(theList[i])\n\t            # print(theList[i])\n\t\n\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"UDT Without Config Child: \" + str(foundCount)\n\tsvc.withoutConfig \u003d withoutConfig"
+        }
+      ],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "refreshProviders",
+          "pageScope": true,
+          "script": "\tsvc \u003d self.view.custom\n\t\n\ttry:\n\t\ttags\u003dsystem.tag.browse(filter\u003d{\"tagType\":\"Provider\"}).results\n\t\t\n\t\tproviderList \u003d []\n\t\tfor result in tags:\n\t\t\toList \u003d {}\n\t\t\t\n\t\t\tprovider \u003d str(result[\u0027fullPath\u0027])\n\t\t\toList[\"value\"] \u003d provider\n\t\t\toList[\"label\"] \u003d provider\n\t\t\t\n\t\t\tproviderList.append(oList)\n\t\t\n\t\tsortedProvider \u003d sorted(providerList,key\u003dlambda k: k.get(\u0027value\u0027))\n\t\tsvc.providerSelection \u003d sortedProvider\n\t\tsvc.provider \u003d \"\"\n\n\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Providers Refreshed!\"\n\texcept:\n\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Error: Cannot find any tag providers\"\n\t\tsystem.util.audit(\u0027exportBackup\u0027,\u0027Provider Refrsh\u0027,\"Error: Cannot find any tag providers\")",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "findUnused",
+          "pageScope": true,
+          "script": "\tself.findUnusedUDTs()\n\tself.checkForConfigChild()",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "exportList",
+          "pageScope": true,
+          "script": "\timport datetime\n\tsvc \u003d self.view.custom\n\t\n\ttheLists \u003d [[\"allPaths\",svc.allPaths],[\"usedPaths\", svc.usedPaths],[\"unusedPaths\", svc.unusedPaths]]\n\t\n\tfor eachList in theLists:\n\t\tfilename \u003d eachList[0]+\u0027_\u0027+datetime.datetime.now().strftime(\u0027%Y%m%dT%H%M%S\u0027)+\u0027.csv\u0027\n\t\t\n\t\tmyHeaders \u003d [\n\t\t\t\"tagPath\" + \" - \" + eachList[0]\n\t\t\t]\n\t\tmyData \u003d []\n\t\t\n\t\tfor eachData in eachList[1]:\n\t\t\tmyData.append([\n\t\t\t\tstr(eachData[\u0027label\u0027])\n\t\t\t\t])\n\t\t\n\t\tmyDataset \u003d system.dataset.toDataSet(myHeaders, myData)\n\t\ttheExportData \u003d system.dataset.toCSV(myDataset)\n\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Output: \" + filename\n\t\tsystem.perspective.download(filename, theExportData, contentType \u003d \"text/csv; charset\u003dutf-8\")",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "clearOutput",
+          "pageScope": true,
+          "script": "\tself.view.custom.output \u003d \u0027\u0027\n\tself.view.custom.allPaths \u003d []\n\tself.view.custom.usedPaths \u003d []\n\tself.view.custom.unusedPaths \u003d []\n\tself.view.custom.withoutConfig \u003d []",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "moveUnusedUDTs",
+          "pageScope": true,
+          "script": "\tsvc \u003d self.view.custom\n\tunusedTBDfolder \u003d svc.unusedFolderName\n\tprovider \u003d svc.provider\n\t\n\tsystem.tag.configure(basePath\u003d\u0027_types_/\u0027,\n\t                     tags\u003d{\u0027tagType\u0027: \u0027Folder\u0027,\n\t                           \u0027name\u0027: unusedTBDfolder},\n\t                     collisionPolicy\u003d\"o\"\n\t                     )\n\t\n\tunusedList \u003d svc.unusedPaths\n\t\n\tmovedCount \u003d 0\n\tfor i in range(len(unusedList)):\n\t    path \u003d unusedList[i][\u0027label\u0027].rsplit(\u0027/\u0027, 1)\n\t    system.tag.move([provider+\u0027_types_/\u0027+unusedList[i][\u0027label\u0027]],\n\t                    provider+\u0027_types_/\u0027+unusedTBDfolder+\u0027/\u0027+path[0])\n\t    movedCount +\u003d 1\n\t\n\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"UDTs Moved: \" + str(movedCount)",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "removeEmptyFolders",
+          "pageScope": true,
+          "script": "\tsvc \u003d self.view.custom\n\tthisProvider \u003d svc.provider\n\tif payload[\u0027udt\u0027] \u003d\u003d True: thisProvider +\u003d \"_types_/\"\n\t\n\tfolderResults \u003d system.tag.browse(\n\t    thisProvider, {\"tagType\": \"Folder\", \"recursive\": True}).results\n\t\n\tdelTags \u003d [\u0027Start\u0027]\n\tbreakCount \u003d 0\n\tfolderCount \u003d 0\n\twhile len(delTags) !\u003d 0:\n\t    delTags \u003d []\n\t    folderResults \u003d system.tag.browse(\n\t        thisProvider, {\"tagType\": \"Folder\", \"recursive\": True}).results\n\t    for MTFolder in folderResults:\n\t        if MTFolder[\u0027hasChildren\u0027] \u003d\u003d False:\n\t            delTags.append(str(MTFolder[\u0027fullPath\u0027]))\n\t    folderCount +\u003d len(delTags)\n\t    system.tag.deleteTags(delTags)\n\t\n\t    breakCount +\u003d 1\n\t    if breakCount \u003d\u003d 10:\n\t        break\n\t\n\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Folders Removed: \" + str(folderCount)",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

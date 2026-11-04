@@ -1,0 +1,1854 @@
+{
+  "custom": {
+    "alarmSet": {
+      "selAlarm": "",
+      "selTag": "",
+      "values": []
+    },
+    "filters": {
+      "find": ""
+    },
+    "providers": {
+      "exclude": [
+        "default",
+        "MQTT",
+        "System"
+      ]
+    },
+    "stagedVal": [],
+    "tags": {},
+    "test": false,
+    "udts": {
+      "selection": {}
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.alarmSet": {
+      "persistent": true
+    },
+    "custom.alarmSet.selAlarm": {
+      "onChange": {
+        "enabled": null,
+        "script": "\tif currentValue.value:\n\t\tself.refreshBinding(\"custom.alarmSet.tags\")"
+      }
+    },
+    "custom.alarmSet.selTag": {
+      "onChange": {
+        "enabled": null,
+        "script": "\tif currentValue.value:\n\t\tself.refreshBinding(\"custom.alarmSet.tags\")"
+      }
+    },
+    "custom.alarmSet.tags": {
+      "binding": {
+        "config": {
+          "path": "/root/SplitContainer/col_1/row_2/selInstance.props.instances"
+        },
+        "transforms": [
+          {
+            "code": "\tnds \u003d []\n\talm \u003d self.custom.alarmSet.selAlarm\n\ttag \u003d self.custom.alarmSet.selTag\n\tif alm.lower().find(\"clear\") !\u003d -1:\n\t\tprop \u003d \"timeOffDelaySeconds\"\n\telif alm.lower().find(\"active\") !\u003d -1:\n\t\tprop \u003d \"timeOnDelaySeconds\"\n\telse:\n\t\tprop \u003d \"SetpointA\"\n\t\n\tif tag !\u003d \"\":\n\t\tfor path in value:\n\t\t\tif path[\u0027selected\u0027] \u003d\u003d True:\n\t\t\t\tif alm !\u003d \"\":\n\t\t\t\t\tnewPath \u003d \u0027{0}{1}/Alarms/{2}.{3}\u0027.format(path[\u0027label\u0027],tag,alm.split(\" \")[0],prop)\n\t\t\t\telse:\n\t\t\t\t\tnewPath \u003d \u0027{0}{1}\u0027.format(path[\u0027label\u0027],tag)\n\t\t\t\tnds.append(newPath)\n\telse:\n\t\tnds\n\treturn nds",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.filters": {
+      "persistent": true
+    },
+    "custom.filters.udtFilter": {
+      "binding": {
+        "config": {
+          "path": "view.custom.filters.find"
+        },
+        "transforms": [
+          {
+            "code": "\tfds \u003d []\n\tuids \u003d self.custom.udts.instances\n\ttry:\n\t\tfor row in uids:\n\t\t\tif value.upper() in str(row[\u0027label\u0027]).upper():\n\t\t\t\tfds.append(row)\n\texcept:\n\t\tfds\n\treturn fds",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.providers": {
+      "persistent": true
+    },
+    "custom.providers.list": {
+      "binding": {
+        "config": {
+          "expression": "{view.custom.providers.exclude}"
+        },
+        "transforms": [
+          {
+            "code": "\tprovider \u003d system.tag.browse(filter\u003d{\"tagType\":\"Provider\"}).results\n\texclude \u003d value\n\tds \u003d []\n\tfor p in provider:\n\t\tfp \u003d str(p[\"fullPath\"]).strip(\"[]\")\n\t\tif not any(part in fp for part in exclude):\n\t\t\tds.append(fp)\n\treturn sorted(ds)",
+            "type": "script"
+          }
+        ],
+        "type": "expr"
+      }
+    },
+    "custom.stagedVal": {
+      "binding": {
+        "config": {
+          "path": "view.custom.alarmSet.tags"
+        },
+        "transforms": [
+          {
+            "code": "\tds \u003d []\n\tval \u003d self.view.custom.alarmSet.values\n\t\n\tfor i in value:\n\t\tj \u003d {}\n\t\tj[\u0027tagname\u0027] \u003d str(i)\n\t\tj[\u0027curVal\u0027] \u003d system.tag.readBlocking([str(i)])[0].value\n\t\tif len(val) \u003e 0:\n\t\t\tj[\u0027newVal\u0027] \u003d val[0]\n\t\telse:\n\t\t\tj[\u0027newVal\u0027] \u003d \"\"\n\t\tds.append(j)\n\treturn ds",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.tags": {
+      "persistent": true
+    },
+    "custom.tags.alarmInstanceList": {
+      "binding": {
+        "config": {
+          "path": "view.custom.tags.alarmList"
+        },
+        "transforms": [
+          {
+            "code": "\troot \u003d self.getChild(\"root\")\n\tnds \u003d []\n\ttry:\n\t\tfor i in value:\n\t\t\tfor a in i[\u0027alarms\u0027]:\n\t\t\t\tj \u003d root.getAlarmList(i[\u0027tagpath\u0027],a[\u0027label\u0027])\n\t\t\t\tnds.append(j)\n\texcept: \n\t\tnds \u003d []\n\treturn nds",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.tags.alarmList": {
+      "binding": {
+        "config": {
+          "path": "view.custom.udts.selection.udtType"
+        },
+        "overlayOptOut": true,
+        "transforms": [
+          {
+            "code": "\timport re\n\troot \u003d self.getChild(\"root\")\n\tprov \u003d self.custom.providers.list\n\tfor p in prov:\n\t\tu \u003d value\n\t\tpath \u003d \"[{0}]_types_/{1}\".format(p,u)\n\t#\tquery \u003d root.getAlarmTags(u)\n\t#\tresults \u003d system.tag.query(p, query)\n\t\tresults \u003d system.tag.browse(path, {\"tagType\":\"AtomicTag\"} )\n\t\tds \u003d []\n\t\t# Regex explanation:\n\t\t# (/[^/]+/[^/_]+)  -\u003e Captures / followed by characters, another /, and then the ID (FBKR01)\n\t\t# (_SP|_VARSP|_VCMD|_CMD|_VSIG|_MODE|SEC_DP_MODE)$ -\u003e Matches only if it ends in your list\n\t\tpattern \u003d re.compile(r\u0027.*(FB|VFB)$\u0027)   # adjust suffix as needed\n\t\tfor r in results:\n\t\t\trp \u003d str(r[\"fullPath\"])\n\t\t\tj \u003d {}\n\t\t\tif re.search(pattern,rp) !\u003d None:\n\t\t\t\tif \"alarm\" in r[\u0027attributes\u0027]:\n\t\t\t\t\tconfig \u003d system.tag.getConfiguration(rp)\n\t\t\t\t\tfor c in config:\n\t\t\t\t\t\tids \u003d []\n\t\t\t\t\t\talarms \u003d c[\u0027alarms\u0027]\n\t\t\t\t\t\talms \u003d {}\n\t\t\t\t\t\talms[\u0027tagpath\u0027] \u003d rp\n\t\t\t\t\t\tfor a in alarms:\n\t\t\t\t\t\t\t# Setpoint A\n\t\t\t\t\t\t    ids.append({\n\t\t\t\t\t\t        \u0027label\u0027: \"{} SP\".format(a[\u0027name\u0027]),\n\t\t\t\t\t\t        \u0027value\u0027: a.get(\u0027setpointA\u0027, 0)\n\t\t\t\t\t\t    })\n\t\t\t\t\t\t    \n\t\t\t\t\t\t    # Active Delay\n\t\t\t\t\t\t    ids.append({\n\t\t\t\t\t\t        \u0027label\u0027: \"{} Active Delay\".format(a[\u0027name\u0027]),\n\t\t\t\t\t\t        \u0027value\u0027: a.get(\u0027timeOnDelaySeconds\u0027, 0)\n\t\t\t\t\t\t    })\n\t\t\t\t\t\t\n\t\t\t\t\t\t    # Clear Delay (Fixed the typo from timeOn to timeOff!)\n\t\t\t\t\t\t    ids.append({\n\t\t\t\t\t\t        \u0027label\u0027: \"{} Clear Delay\".format(a[\u0027name\u0027]),\n\t\t\t\t\t\t        \u0027value\u0027: a.get(\u0027timeOffDelaySeconds\u0027, 0)\n\t\t\t\t\t\t    })\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\talms[\u0027alarms\u0027] \u003d ids\n\t\t\t\t\t\tds.append(alms)\n\treturn ds",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.tags.list": {
+      "binding": {
+        "config": {
+          "path": "view.custom.udts.selection.udtType"
+        },
+        "transforms": [
+          {
+            "code": "\timport re\n\troot \u003d self.getChild(\"root\")\n\tprov \u003d self.custom.providers.list\n\tfor p in prov:\t\n\t\tu \u003d value\n\t\tpath \u003d \"[{0}]_types_/{1}\".format(p,u)\n\t\tresults \u003d system.tag.browse(path, {\"tagType\":\"AtomicTag\"} )\n\t\tds \u003d []\n\t\t#pattern \u003d r\"(/[^/]+/[^/_]+)(_SP|_VARSP|_VCMD|_CMD|_VSIG|_MODE|SEC_DP_MODE)$\"\n\t\tpattern \u003d re.compile(r\u0027.*(_SP|_VARSP|_VCMD|_CMD|_VSIG|_MODE|SEC_DP_MODE)$\u0027)\n\t\tfor r in results:\n\t\t\trp \u003d str(r[\"fullPath\"])\n\t\t\tmatch \u003d re.search(pattern,rp) !\u003d None\n\t\t\tif match:\n\t\t\t\tj \u003d {}\n\t\t\t\tj[\"tagpath\"] \u003d rp\n\t\t\t\tds.append(j)\n\treturn ds\n\t",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.tags.tagInstanceList": {
+      "binding": {
+        "config": {
+          "path": "view.custom.tags.list"
+        },
+        "transforms": [
+          {
+            "code": "\troot \u003d self.getChild(\"root\")\n\tnds \u003d []\n\ttry:\n\t\tfor i in value:\n\t\t\tj \u003d root.getAlarmList(i[\u0027tagpath\u0027],\"\")\n\t\t\tnds.append(j)\n\texcept: \n\t\tnds \u003d []\n\treturn nds",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.test": {
+      "persistent": true
+    },
+    "custom.udts": {
+      "persistent": true
+    },
+    "custom.udts.instances": {
+      "binding": {
+        "config": {
+          "path": "view.custom.udts.selection.udtType"
+        },
+        "transforms": [
+          {
+            "code": "\troot \u003d self.getChild(\"root\")\n\tdsi \u003d []\n#\tprovider \u003d self.custom.udts.selProvider.selProvider\n\tprov \u003d self.custom.providers.list\n\tfor provider in prov:\n\t\tquery \u003d root.getInstances(value)\n\t\tresults \u003d  system.tag.query(provider, query)\n\t\tfor result in results:\n\t\t\toList \u003d {}\n\t\t\t\t\n\t\t\toList[\"label\"] \u003d result[\u0027fullPath\u0027]\n\t\t\toList[\"selected\"] \u003d True\n\t\t\tdsi.append(oList)\n\t\t\t\n\treturn sorted(dsi)",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "onChange": {
+        "enabled": null,
+        "script": "\tself.refreshBinding(\"custom.filters.udtFilter\")"
+      }
+    },
+    "custom.udts.selection.type": {
+      "binding": {
+        "config": {
+          "path": "/root/Top/Type.props.value"
+        },
+        "type": "property"
+      },
+      "onChange": {
+        "enabled": null,
+        "script": "\tif currentValue.value \u003d\u003d None:\n\t\tself.custom.udts.selection.udtType \u003d None\n\t\tself.custom.alarmSet.selAlarm \u003d \"\"\n\t\tself.custom.alarmSet.selTag \u003d \"\"\n\t\t"
+      }
+    },
+    "custom.udts.selection.udtType": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "/root/Top/UDTType.props.value"
+        },
+        "type": "property"
+      }
+    },
+    "custom.udts.udtTypeList": {
+      "binding": {
+        "config": {
+          "path": "view.custom.udts.selection.type"
+        },
+        "transforms": [
+          {
+            "code": "\troot \u003d self.getChild(\"root\")\n\tprovider \u003d self.custom.providers.list\n\tfor prov in provider:\n\t\tquery \u003d root.getUdtTypeList(value)\n\t\tresults \u003d system.tag.query(prov, query)\n\t\tds \u003d []\n\t\tfor r in results:\n\t\t\ttid \u003d  str(r[\u0027typeId\u0027])\n\t\t\tif tid not in ds:\n\t\t\t\tq \u003d root.getInstances(tid)\n\t\t\t\tr \u003d  system.tag.query(prov, q)\n\t\t\t\tif len(r) !\u003d0:\n\t\t\t\t\tds.append(tid)\n\treturn ds",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1080,
+      "width": 1920
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Type"
+            },
+            "position": {
+              "basis": "15.5%"
+            },
+            "props": {
+              "options": [
+                {
+                  "label": "CDU",
+                  "value": "CDU"
+                },
+                {
+                  "label": "DP",
+                  "value": "DP"
+                },
+                {
+                  "label": "LEAK",
+                  "value": "LEAK"
+                },
+                {
+                  "label": "RELAY",
+                  "value": "RELAY"
+                },
+                {
+                  "label": "RPP",
+                  "value": "RPP"
+                },
+                {
+                  "label": "RH",
+                  "value": "RH"
+                },
+                {
+                  "label": "TEMP",
+                  "value": "TEMP"
+                }
+              ],
+              "placeholder": {
+                "text": "Select Equipment Type..."
+              },
+              "showClearIcon": true,
+              "value": "CDU"
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "meta": {
+              "name": "UDTType"
+            },
+            "position": {
+              "basis": "15.5%"
+            },
+            "propConfig": {
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.udts.udtTypeList"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tds \u003d []\n\tfor v in value:\n\t\tj \u003d {}\n\t\tj[\u0027label\u0027] \u003d v\n\t\tj[\u0027value\u0027] \u003d v\n\t\tds.append(j)\n\treturn sorted(ds)",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "placeholder": {
+                "text": "Select UDT Type"
+              },
+              "showClearIcon": true,
+              "value": "CDU"
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "custom": {
+              "view": "value"
+            },
+            "meta": {
+              "name": "Window_Title_Lbl"
+            },
+            "position": {
+              "basis": "62%",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "session.props.theme"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "General_style/Heading",
+                      "inputType": "expression",
+                      "mappings": [
+                        {
+                          "input": "\"light\"",
+                          "output": "General_style/Heading_Dark"
+                        },
+                        {
+                          "input": "\"light-cool\"",
+                          "output": "General_style/Heading_Dark"
+                        },
+                        {
+                          "input": "\"light-warm\"",
+                          "output": "General_style/Heading_Dark"
+                        }
+                      ],
+                      "outputType": "style-list",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "fontSize": 20
+              },
+              "text": "Tools - Bulk Setpoint Changer"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Top"
+        },
+        "position": {
+          "basis": "35px"
+        },
+        "props": {
+          "justify": "space-evenly"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "events": {
+                      "component": {
+                        "onItemClicked": {
+                          "config": {
+                            "script": "\tself.view.custom.alarmSet.selAlarm \u003d \"\"\n\tself.view.custom.alarmSet.selTag \u003d \"\""
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Tree"
+                    },
+                    "position": {
+                      "basis": "100%"
+                    },
+                    "propConfig": {
+                      "props.items": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.udts.list"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "appearance": {
+                        "defaultNodeIcons": {
+                          "collapsed": {
+                            "path": "material/folder",
+                            "style": {
+                              "classes": "",
+                              "fontFamily": "Helvetica",
+                              "fontSize": 15,
+                              "fontWeight": "bold"
+                            }
+                          },
+                          "empty": {
+                            "path": "material/arrow_forward_ios",
+                            "style": {
+                              "classes": "",
+                              "fontFamily": "Helvetica",
+                              "fontSize": 15,
+                              "fontWeight": "bold"
+                            }
+                          },
+                          "expanded": {
+                            "path": "material/folder_open",
+                            "style": {
+                              "classes": "",
+                              "fontFamily": "Helvetica",
+                              "fontSize": 15,
+                              "fontWeight": "bold"
+                            }
+                          }
+                        },
+                        "expandIcons": {
+                          "collapsed": {
+                            "path": "material/arrow_right"
+                          },
+                          "expanded": {
+                            "path": "material/arrow_drop_down"
+                          }
+                        },
+                        "rowHeight": 25,
+                        "selectedStyle": {
+                          "backgroundColor": "#a3ca5b",
+                          "color": "#000000",
+                          "fontFamily": "Helvetica",
+                          "fontSize": 15,
+                          "fontWeight": "bolder"
+                        },
+                        "unselectedStyle": {
+                          "fontFamily": "Helvetica",
+                          "fontSize": 15,
+                          "fontWeight": "bold"
+                        }
+                      },
+                      "style": {
+                        "fontFamily": "Helvetica",
+                        "fontSize": 15,
+                        "fontWeight": "bold"
+                      }
+                    },
+                    "type": "ia.display.tree"
+                  }
+                ],
+                "meta": {
+                  "name": "row_1"
+                },
+                "position": {
+                  "basis": "49.50%",
+                  "display": false
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "borderBottomLeftRadius": 5,
+                    "borderBottomRightRadius": 5,
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 5,
+                    "borderTopRightRadius": 5,
+                    "borderWidth": 1
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Filter Label"
+                        },
+                        "position": {
+                          "basis": "15%"
+                        },
+                        "props": {
+                          "text": "Filter:",
+                          "textStyle": {
+                            "fontFamily": "Helvetica",
+                            "fontWeight": "bold",
+                            "textAlign": "right"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Filter Input"
+                        },
+                        "position": {
+                          "basis": "75%"
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "bidirectional": true,
+                                "path": "view.custom.filters.find"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": false
+                        },
+                        "type": "ia.input.text-field"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tself.getSibling(\"Filter Input\").props.text\u003d \"\""
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "Button"
+                        },
+                        "position": {
+                          "basis": "5%"
+                        },
+                        "props": {
+                          "image": {
+                            "height": 20,
+                            "icon": {
+                              "path": "material/cleaning_services"
+                            },
+                            "width": 20
+                          },
+                          "style": {
+                            "backgroundColor": "#afcb7d"
+                          },
+                          "text": ""
+                        },
+                        "type": "ia.input.button"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Filter"
+                    },
+                    "position": {
+                      "basis": "5%"
+                    },
+                    "props": {
+                      "justify": "space-around",
+                      "style": {
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "borderLeftStyle": "hidden",
+                        "borderRightStyle": "hidden",
+                        "borderTopStyle": "hidden",
+                        "padding": 5
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "meta": {
+                      "name": "selInstance"
+                    },
+                    "position": {
+                      "basis": "90%"
+                    },
+                    "propConfig": {
+                      "props.instances": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.filters.udtFilter"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "direction": "column",
+                      "elementPosition": {
+                        "basis": "20%",
+                        "grow": 0
+                      },
+                      "elementStyle": {
+                        "fontSize": 14,
+                        "fontWeight": "bolder"
+                      },
+                      "path": "E Tech Admin/Setpoint_Bulk_Change/Parts/InstanceRow",
+                      "useDefaultViewWidth": false
+                    },
+                    "type": "ia.display.flex-repeater"
+                  },
+                  {
+                    "children": [
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tds \u003d self.view.custom.udts.instances\n\tfor i in range(len(ds)):\n\t\tds[i][\u0027selected\u0027] \u003d True\n\tself.parent.parent.getChild(\"selInstance\").props.instances \u003d ds"
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "SelAll"
+                        },
+                        "position": {
+                          "basis": "48%"
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#afcb7d",
+                            "color": "#000000",
+                            "fontFamily": "Helvetica",
+                            "fontWeight": "bolder"
+                          },
+                          "text": "Select All Instances"
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tds \u003d self.view.custom.udts.instances\n\tfor i in range(len(ds)):\n\t\tds[i][\u0027selected\u0027] \u003d False\n\tself.parent.parent.getChild(\"selInstance\").props.instances \u003d ds"
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "deselAll"
+                        },
+                        "position": {
+                          "basis": "48%"
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#afcb7d",
+                            "color": "#000000",
+                            "fontFamily": "Helvetica",
+                            "fontWeight": "bolder"
+                          },
+                          "text": "Deselect All Instances"
+                        },
+                        "type": "ia.input.button"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Selections"
+                    },
+                    "position": {
+                      "basis": "5%"
+                    },
+                    "props": {
+                      "justify": "space-evenly",
+                      "style": {
+                        "padding": 5
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "row_2"
+                },
+                "position": {
+                  "basis": "100%"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "borderBottomLeftRadius": 5,
+                    "borderBottomRightRadius": 5,
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 5,
+                    "borderTopRightRadius": 5,
+                    "borderWidth": 1
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Filter Label"
+                        },
+                        "position": {
+                          "basis": "15%"
+                        },
+                        "props": {
+                          "text": "Filter:",
+                          "textStyle": {
+                            "fontFamily": "Helvetica",
+                            "fontWeight": "bold",
+                            "textAlign": "right"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Filter Input"
+                        },
+                        "position": {
+                          "basis": "75%"
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "bidirectional": true,
+                                "path": "view.custom.filters.find"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": false
+                        },
+                        "type": "ia.input.text-field"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tself.getSibling(\"Filter Input\").props.text\u003d \"\""
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "Button"
+                        },
+                        "position": {
+                          "basis": "5%"
+                        },
+                        "props": {
+                          "image": {
+                            "height": 20,
+                            "icon": {
+                              "path": "material/cleaning_services"
+                            },
+                            "width": 20
+                          },
+                          "style": {
+                            "backgroundColor": "#afcb7d"
+                          },
+                          "text": ""
+                        },
+                        "type": "ia.input.button"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Filter"
+                    },
+                    "position": {
+                      "basis": "5%"
+                    },
+                    "props": {
+                      "justify": "space-around",
+                      "style": {
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "borderLeftStyle": "hidden",
+                        "borderRightStyle": "hidden",
+                        "borderTopStyle": "hidden",
+                        "padding": 5
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "meta": {
+                      "name": "selInstance"
+                    },
+                    "position": {
+                      "basis": "80%"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "elementPosition": {
+                        "basis": "20%",
+                        "grow": 0
+                      },
+                      "elementStyle": {
+                        "fontSize": 14,
+                        "fontWeight": "bolder"
+                      },
+                      "path": "E Tech Admin/Setpoint_Bulk_Change/Parts/InstanceRow",
+                      "useDefaultViewWidth": false
+                    },
+                    "type": "ia.display.flex-repeater"
+                  },
+                  {
+                    "children": [
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tds \u003d self.view.custom.udts.instances\n\tfor i in range(len(ds)):\n\t\tds[i][\u0027selected\u0027] \u003d True\n\tself.parent.parent.getChild(\"selInstance\").props.instances \u003d ds"
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "SelAll"
+                        },
+                        "position": {
+                          "basis": "48%"
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#afcb7d",
+                            "color": "#000000",
+                            "fontFamily": "Helvetica",
+                            "fontWeight": "bolder"
+                          },
+                          "text": "Select All Instances"
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tds \u003d self.view.custom.udts.instances\n\tfor i in range(len(ds)):\n\t\tds[i][\u0027selected\u0027] \u003d False\n\tself.parent.parent.getChild(\"selInstance\").props.instances \u003d ds"
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "deselAll"
+                        },
+                        "position": {
+                          "basis": "48%"
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#afcb7d",
+                            "color": "#000000",
+                            "fontFamily": "Helvetica",
+                            "fontWeight": "bolder"
+                          },
+                          "text": "Deselect All Instances"
+                        },
+                        "type": "ia.input.button"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Selections"
+                    },
+                    "position": {
+                      "basis": "9%"
+                    },
+                    "props": {
+                      "justify": "space-evenly",
+                      "style": {
+                        "padding": 5
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "row_3"
+                },
+                "position": {
+                  "basis": "100%",
+                  "display": false
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "borderBottomLeftRadius": 5,
+                    "borderBottomRightRadius": 5,
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 5,
+                    "borderTopRightRadius": 5,
+                    "borderWidth": 1
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "col_1"
+            },
+            "position": {
+              "position": "left"
+            },
+            "props": {
+              "direction": "column",
+              "justify": "space-between",
+              "style": {
+                "padding": 10
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "100%"
+                    },
+                    "props": {
+                      "text": "Bulk Alarm Tag Setpoint Changer",
+                      "textStyle": {
+                        "fontFamily": "Helvetica",
+                        "fontSize": 24,
+                        "fontWeight": "bolder",
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "basis": "4%"
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#a3ca5b",
+                    "borderBottomLeftRadius": 5,
+                    "borderBottomRightRadius": 5,
+                    "borderTopLeftRadius": 5,
+                    "borderTopRightRadius": 5,
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "tagList"
+                    },
+                    "propConfig": {
+                      "props.instances": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.tags.tagInstanceList"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "direction": "column",
+                      "elementPosition": {
+                        "basis": "15%",
+                        "grow": 0
+                      },
+                      "elementStyle": {
+                        "borderBottomLeftRadius": 5,
+                        "borderBottomRightRadius": 5,
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 5,
+                        "borderTopRightRadius": 5,
+                        "borderWidth": 1,
+                        "margin": 2
+                      },
+                      "path": "E Tech Admin/Setpoint_Bulk_Change/Parts/Row",
+                      "style": {
+                        "borderStyle": "none",
+                        "padding": 5
+                      },
+                      "useDefaultViewWidth": false
+                    },
+                    "type": "ia.display.flex-repeater"
+                  },
+                  {
+                    "meta": {
+                      "name": "alarmTagList"
+                    },
+                    "position": {
+                      "tabIndex": 1
+                    },
+                    "propConfig": {
+                      "props.instances": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.tags.alarmInstanceList"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "direction": "column",
+                      "elementPosition": {
+                        "basis": "15%",
+                        "grow": 0
+                      },
+                      "elementStyle": {
+                        "borderBottomLeftRadius": 5,
+                        "borderBottomRightRadius": 5,
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 5,
+                        "borderTopRightRadius": 5,
+                        "borderWidth": 1,
+                        "margin": 2
+                      },
+                      "path": "E Tech Admin/Setpoint_Bulk_Change/Parts/Row",
+                      "style": {
+                        "borderStyle": "none",
+                        "padding": 5
+                      },
+                      "useDefaultViewWidth": false
+                    },
+                    "type": "ia.display.flex-repeater"
+                  }
+                ],
+                "meta": {
+                  "name": "Sets"
+                },
+                "position": {
+                  "basis": "45.5%",
+                  "display": false
+                },
+                "props": {
+                  "contentStyle": {
+                    "borderStyle": "none"
+                  },
+                  "currentTabIndex": 1,
+                  "menuStyle": {
+                    "borderStyle": "none"
+                  },
+                  "menuType": "modern",
+                  "style": {
+                    "borderBottomLeftRadius": 10,
+                    "borderBottomRightRadius": 10,
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 10,
+                    "borderTopRightRadius": 10,
+                    "borderWidth": 1,
+                    "overflow": "auto",
+                    "padding": 5
+                  },
+                  "tabSize": {
+                    "width": 1000
+                  },
+                  "tabStyle": {
+                    "active": {
+                      "borderStyle": "none"
+                    },
+                    "disabled": {
+                      "borderStyle": "none",
+                      "classes": ""
+                    },
+                    "inactive": {
+                      "borderStyle": "none"
+                    }
+                  },
+                  "tabs": [
+                    "Tag Setpoints",
+                    "Alarm Setpoints"
+                  ]
+                },
+                "type": "ia.container.tab"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "basis": "40px"
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#808080",
+                            "borderBottomLeftRadius": 5,
+                            "borderBottomRightRadius": 5,
+                            "borderStyle": "none",
+                            "borderTopLeftRadius": 5,
+                            "borderTopRightRadius": 5
+                          },
+                          "text": "Tag Setpoints",
+                          "textStyle": {
+                            "color": "#FFFFFF",
+                            "fontFamily": "Helvetica",
+                            "fontWeight": "bold",
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "tagList"
+                        },
+                        "position": {
+                          "basis": "80%"
+                        },
+                        "propConfig": {
+                          "props.instances": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.tags.tagInstanceList"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "direction": "column",
+                          "elementPosition": {
+                            "basis": "15%",
+                            "grow": 0
+                          },
+                          "elementStyle": {
+                            "borderBottomLeftRadius": 5,
+                            "borderBottomRightRadius": 5,
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 5,
+                            "borderTopRightRadius": 5,
+                            "borderWidth": 1,
+                            "margin": 2
+                          },
+                          "path": "E Tech Admin/Setpoint_Bulk_Change/Parts/Row",
+                          "style": {
+                            "borderStyle": "none",
+                            "padding": 5
+                          },
+                          "useDefaultViewWidth": false
+                        },
+                        "type": "ia.display.flex-repeater"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Tags"
+                    },
+                    "position": {
+                      "position": "top"
+                    },
+                    "props": {
+                      "direction": "column"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "basis": "40px"
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#808080",
+                            "borderBottomLeftRadius": 5,
+                            "borderBottomRightRadius": 5,
+                            "borderStyle": "none",
+                            "borderTopLeftRadius": 5,
+                            "borderTopRightRadius": 5
+                          },
+                          "text": "Alarms Setpoints",
+                          "textStyle": {
+                            "color": "#FFFFFF",
+                            "fontFamily": "Helvetica",
+                            "fontWeight": "bold",
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "alarmTagList"
+                        },
+                        "position": {
+                          "basis": "80%"
+                        },
+                        "propConfig": {
+                          "props.instances": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.tags.alarmInstanceList"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "direction": "column",
+                          "elementPosition": {
+                            "basis": "15%",
+                            "grow": 0
+                          },
+                          "elementStyle": {
+                            "borderBottomLeftRadius": 5,
+                            "borderBottomRightRadius": 5,
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 5,
+                            "borderTopRightRadius": 5,
+                            "borderWidth": 1,
+                            "margin": 2
+                          },
+                          "path": "E Tech Admin/Setpoint_Bulk_Change/Parts/Row",
+                          "style": {
+                            "borderStyle": "none",
+                            "padding": 5
+                          },
+                          "useDefaultViewWidth": false
+                        },
+                        "type": "ia.display.flex-repeater"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Alarms"
+                    },
+                    "position": {
+                      "position": "bottom"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "padding": 5
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "SplitContainer"
+                },
+                "position": {
+                  "basis": "55.5%"
+                },
+                "props": {
+                  "orientation": "vertical",
+                  "split": {
+                    "position": "36%",
+                    "size": 5
+                  }
+                },
+                "type": "ia.container.split"
+              },
+              {
+                "children": [
+                  {
+                    "custom": {
+                      "header": [
+                        "tagname",
+                        "curVal"
+                      ]
+                    },
+                    "meta": {
+                      "name": "Table"
+                    },
+                    "position": {
+                      "basis": "90%"
+                    },
+                    "propConfig": {
+                      "custom.export": {
+                        "binding": {
+                          "config": {
+                            "path": "this.props.data"
+                          },
+                          "transforms": [
+                            {
+                              "code": "\teds \u003d []\n\tif len(value) \u003e 0:\n\t\t\t\n\t    # 1. Extract headers from the keys of the first dictionary\n\t    headers \u003d self.custom.header\n\t\t    \n\t    # 2. Extract the values for each row in the same order as headers\n\t    rows \u003d []\n\t    for item in value:\n\t        rows.append([item[header] for header in headers])\n\t    \n\t\t\t# 3. Create the Ignition Dataset\n    \tdataset \u003d system.dataset.toDataSet(headers, rows)\n\treturn dataset",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      },
+                      "props.data": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.stagedVal"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "tagname",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "Staged tags to change"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "string",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": false,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": ""
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "curVal",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "Current Value"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "auto",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": false,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 25
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "newVal",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "New Value"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "auto",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": false,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 25
+                        }
+                      ],
+                      "dragOrderable": false,
+                      "pager": {
+                        "bottom": false
+                      },
+                      "rows": {
+                        "striped": {
+                          "color": {
+                            "even": "#AAAAAA",
+                            "odd": "#FAFAFB"
+                          }
+                        }
+                      }
+                    },
+                    "type": "ia.display.table"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "basis": "84%"
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.alarmSet.tags"
+                              },
+                              "transforms": [
+                                {
+                                  "code": "\treturn \"{} tags selected for update\".format(len(value))",
+                                  "type": "script"
+                                }
+                              ],
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#FFFFFF00"
+                          },
+                          "textStyle": {
+                            "color": "#D90000",
+                            "fontFamily": "Helvetica",
+                            "fontWeight": "bolder",
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tdate \u003d system.date.now()\n\tnow \u003d system.date.format(date, \u0027YYYYMMDDHHmmss\u0027)\n\tlabel \u003d self.view.custom.alarmSet.selAlarm\n\tfilename \u003d \u0027UDT_Tag_Instances_{0}_{1}.xlsx\u0027.format(label,now) \n\t\n\t## Get the dataset (from a table property or a query)\n\tdataset \u003d self.parent.parent.getChild(\"Table\").custom.export\n\theader \u003d self.parent.parent.getChild(\"Table\").custom.header\n\t\n\t## Convert the dataset to an Excel-compatible byte array\n\t# toExcel(showHeaders, [datasetList]) returns bytes for an .xlsx file\n\texcelBytes \u003d system.dataset.toExcel(True, [dataset],True)\n\t\n\t## Trigger the browser download\n\tsystem.perspective.download(filename, excelBytes)\t"
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "Button"
+                        },
+                        "position": {
+                          "basis": "15%"
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#afcb7d"
+                          },
+                          "text": "export",
+                          "textStyle": {
+                            "color": "#000000",
+                            "fontFamily": "Helvetica",
+                            "fontSize": 20,
+                            "fontWeight": "bolder"
+                          }
+                        },
+                        "type": "ia.input.button"
+                      }
+                    ],
+                    "meta": {
+                      "name": "col_1"
+                    },
+                    "position": {
+                      "basis": "10%"
+                    },
+                    "props": {
+                      "justify": "space-between",
+                      "style": {
+                        "padding": 5
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Staging"
+                },
+                "position": {
+                  "basis": "39.5%"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "borderBottomLeftRadius": 10,
+                    "borderBottomRightRadius": 10,
+                    "borderStyle": "solid",
+                    "borderTopLeftRadius": 10,
+                    "borderTopRightRadius": 10,
+                    "borderWidth": 1
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "col_2"
+            },
+            "position": {
+              "position": "right"
+            },
+            "props": {
+              "direction": "column",
+              "justify": "space-between",
+              "style": {
+                "padding": 10
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "SplitContainer"
+        },
+        "position": {
+          "basis": "100%"
+        },
+        "props": {
+          "split": {
+            "position": "22%",
+            "size": 15
+          }
+        },
+        "type": "ia.container.split"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "space-evenly",
+      "style": {
+        "padding": 5
+      }
+    },
+    "scripts": {
+      "customMethods": [
+        {
+          "name": "getUDTList",
+          "params": [],
+          "script": "\tquery \u003d {\n\t  \"options\": {\n\t    \"includeUdtMembers\": False,\n\t    \"includeUdtDefinitions\": True\n\t  },\n\t  \"condition\": {\n\t    \"tagType\": \"UdtType\",\n\t    \"attributes\": {\n\t      \"values\": [],\n\t      \"requireAll\": True\n\t    }\n\t  },\n\t  \"returnProperties\": [\n\t    \"tagType\",\n\t    \"quality\"\n\t  ]\n\t}\n\treturn query"
+        },
+        {
+          "name": "getAlarmTags",
+          "params": [
+            "udt"
+          ],
+          "script": "\tquery \u003d {\n\t  \"options\": {\n\t    \"includeUdtMembers\": True,\n\t    \"includeUdtDefinitions\": True\n\t  },\n\t  \"condition\": {\n\t    \"path\": \"_types_/{}*\".format(udt),\n\t    \"tagType\": \"AtomicTag\",\n\t    \"attributes\": {\n\t      \"values\": [\n\t        \"alarm\"\n\t      ],\n\t      \"requireAll\": True\n\t    },\n\t    \"valueSource\": [\n\t      \"reference\",\n\t      \"memory\",\n\t      \"opc\",\n\t      \"expr\",\n\t      \"derived\",\n\t      \"db\"\n\t    ]\n\t  },\n\t  \"returnProperties\": [\n\t    \"tagType\",\n\t    \"quality\"\n\t  ]\n\t}\n\treturn query"
+        },
+        {
+          "name": "getInstances",
+          "params": [
+            "selected"
+          ],
+          "script": "\tquery \u003d {\n\t  \"options\": {\n\t    \"includeUdtMembers\": True,\n\t    \"includeUdtDefinitions\": False\n\t  },\n\t  \"condition\": {\n\t    \"hierarchy\": {\n\t      \"typeId\": selected,\n\t      \"relationship\": \"SubType\"\n\t    },\n\t    \"tagType\": \"UdtInstance\",\n\t    \"attributes\": {\n\t      \"values\": [],\n\t      \"requireAll\": True\n\t    }\n\t  },\n\t  \"returnProperties\": [\n\t\t\"tagType\",\n\t    \"quality\"\n\t  ]\n\t}\n\treturn query"
+        },
+        {
+          "name": "getAlarmList",
+          "params": [
+            "tagpath",
+            "label"
+          ],
+          "script": "\tinstance \u003d {\n\t\t  \"instanceStyle\": {\n\t\t    \"classes\": \"\"\n\t\t  },\n\t\t  \"instancePosition\": {},\n\t\t  \"newValue\": \"\",\n\t\t  \"tagpath\": tagpath,\n\t\t  \"label\": label\n\t\t}\n\treturn instance"
+        },
+        {
+          "name": "getUdtTypeList",
+          "params": [
+            "temp"
+          ],
+          "script": "\tval \u003d \"*{}*\".format(temp)\n\tquery \u003d {\n\t  \"options\": {\n\t    \"includeUdtMembers\": True,\n\t    \"includeUdtDefinitions\": True\n\t  },\n\t  \"condition\": {\n\t    \"path\": val,\n\t    \"tagType\": \"UdtInstance\",\n\t    \"attributes\": {\n\t      \"values\": [],\n\t      \"requireAll\": True\n\t    }\n\t  },\n\t  \"returnProperties\": [\n\t    \"typeId\",\n\t    \"tagType\",\n\t    \"quality\"\n\t  ]\n\t}\n\treturn query"
+        }
+      ],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "setAlarmSP",
+          "pageScope": true,
+          "script": "\tval \u003d payload[\u0027val\u0027]\n\tvalues \u003d []\n\ttags \u003d self.view.custom.alarmSet.tags\n\tfor t in range(len(tags)):\n\t\tvalues.append(val)\n\t\t\n\tself.view.custom.alarmSet.values \u003d values\n\tself.view.refreshBinding(\"custom.stagedVal\")\n\t\n\t\t",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "setAlarm",
+          "pageScope": true,
+          "script": "\tlabel \u003d payload[\u0027name\u0027]\n\ttag \u003d payload[\u0027tag\u0027]\n\tself.view.custom.alarmSet.selAlarm \u003d label\n\tself.view.custom.alarmSet.selTag \u003d tag",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "writeToTags",
+          "pageScope": true,
+          "script": "\ttags \u003d self.view.custom.alarmSet.tags\n\tvals \u003d self.view.custom.alarmSet.values\n\ttest \u003d self.view.custom.test\n\tif test \u003d\u003d False:\n\t\tsystem.tag.writeBlocking(tags, vals)\n\t\tself.getChild(\"SplitContainer\").getChild(\"col_2\").getChild(\"Staging\").getChild(\"Table\").refreshBinding(\"props.data\")\n\t\tpass\n\tsystem.perspective.openPopup(\"W1\",\"E Tech Admin/Setpoint_Bulk_Change/Parts/Success Message\")",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "clear",
+          "pageScope": true,
+          "script": "\tself.view.custom.alarmSet.values \u003d []\n\tself.view.custom.alarmSet.selTag \u003d \"\"\n\tself.view.custom.alarmSet.selAlarm \u003d \"\"\n\tself.view.refreshBinding(\"custom.alarmSet.tags\")\n\t",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

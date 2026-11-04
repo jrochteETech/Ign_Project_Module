@@ -1,0 +1,432 @@
+{
+  "custom": {
+    "tag": "/"
+  },
+  "params": {
+    "label": "",
+    "newValue": "",
+    "tagpath": ""
+  },
+  "propConfig": {
+    "custom.tag": {
+      "binding": {
+        "config": {
+          "path": "view.params.tagpath"
+        },
+        "transforms": [
+          {
+            "code": "\treturn \"/{}\".format(value.split(\u0027/\u0027)[-1])",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.newValue": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tagpath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 40,
+      "width": 913
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "100%"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.tagpath"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn \"{{...}}/{}\".format(\"/\".join(value.rsplit(\u0027/\u0027, 2)[-2:]))",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "fontFamily": "Helvetica",
+                "fontSize": 14,
+                "fontWeight": "bolder",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "col_0"
+        },
+        "position": {
+          "basis": "28.5%"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "100%"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.label"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tif value!\u003d \"\":\n\t\treturn \"{}:\".format(value)\n\telse:\n\t\treturn \"\"\n\t\t",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "fontFamily": "Helvetica",
+                "fontSize": 14,
+                "fontWeight": "bolder",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "col_1"
+        },
+        "position": {
+          "basis": "14.5%"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "50%"
+            },
+            "props": {
+              "text": "New Value:",
+              "textStyle": {
+                "fontFamily": "Helvetica",
+                "fontWeight": "bolder",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "NumericEntryField"
+            },
+            "position": {
+              "basis": "45%"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "coalesce": true,
+                    "path": "view.params.newValue"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "inputBounds": {
+                "invalidStyle": {
+                  "color": "#EB1414"
+                }
+              },
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "fontFamily": "Helvetica",
+                "fontSize": 20,
+                "fontWeight": "bolder",
+                "paddingRight": 10
+              }
+            },
+            "type": "ia.input.numeric-entry-field"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tself.getSibling(\"NumericEntryField\").props.value \u003d \"\"\n\tsystem.perspective.sendMessage(\"clear\")"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button"
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "image": {
+                "height": 15,
+                "icon": {
+                  "color": "#000000",
+                  "path": "material/cleaning_services"
+                },
+                "position": "center",
+                "style": {
+                  "color": "#000000"
+                },
+                "width": 15
+              },
+              "style": {
+                "backgroundColor": "#a3ca5b"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "col_2"
+        },
+        "position": {
+          "basis": "28.5%"
+        },
+        "props": {
+          "justify": "space-evenly"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tlabel \u003d self.view.params.label\n\tsystem.perspective.sendMessage(\u0027setAlarm\u0027, payload\u003d {\"name\":label,\"tag\":self.view.custom.tag})\n\tsystem.perspective.sendMessage(\u0027setAlarmSP\u0027, payload \u003d {\"val\": self.view.params.newValue,\"name\":self.view.params.label})\n\t"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button"
+            },
+            "position": {
+              "basis": "35%"
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#a3ca5b",
+                "color": "#000000"
+              },
+              "text": "View Current Tags",
+              "textStyle": {
+                "color": "#000000",
+                "fontFamily": "Helvetica",
+                "fontWeight": "bold"
+              }
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "draggable": true,
+                    "id": "n68CoTjM",
+                    "modal": false,
+                    "overlayDismiss": false,
+                    "resizable": true,
+                    "showCloseIcon": true,
+                    "type": "open",
+                    "viewPath": "E Tech Admin/Setpoint_Bulk_Change/Parts/Popup Warning",
+                    "viewportBound": false
+                  },
+                  "scope": "C",
+                  "type": "popup"
+                }
+              },
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tlabel \u003d self.view.params.label\n\tsystem.perspective.sendMessage(\u0027setAlarm\u0027, payload\u003d {\"name\":label,\"tag\":self.view.custom.tag})\n\tsystem.perspective.sendMessage(\u0027setAlarmSP\u0027, payload \u003d {\"val\": self.view.params.newValue,\"name\":self.view.params.label})\n\t"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "OneShotButton"
+            },
+            "position": {
+              "basis": "50%"
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.newValue"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "if({value}\u003d\"\",False,True)",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.setValue": {
+                "binding": {
+                  "config": {
+                    "path": "this.props.value"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "toInt(!{value})",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "path": "this.props.enabled"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "#AAAAAA",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": true,
+                          "output": "#A3CA5B"
+                        },
+                        {
+                          "input": false,
+                          "output": "#AAAAAA"
+                        }
+                      ],
+                      "outputType": "color",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "confirm": {
+                "enabled": true
+              },
+              "readyState": {
+                "icon": {
+                  "style": {
+                    "height": "24px",
+                    "width": "2rem"
+                  }
+                },
+                "style": {
+                  "fontFamily": "Helvetica",
+                  "fontSize": 14,
+                  "fontWeight": "bolder"
+                },
+                "text": "Write to Instances"
+              },
+              "style": {
+                "color": "#000000",
+                "fontFamily": "Helvetica",
+                "fontWeight": "bold"
+              },
+              "writingState": {
+                "icon": {
+                  "path": "material/hourglass_empty",
+                  "style": {
+                    "height": "24px",
+                    "width": "2rem"
+                  }
+                },
+                "text": "Writing..."
+              }
+            },
+            "type": "ia.input.oneshotbutton"
+          }
+        ],
+        "meta": {
+          "name": "col_3"
+        },
+        "position": {
+          "basis": "35.5%"
+        },
+        "props": {
+          "justify": "space-evenly",
+          "style": {
+            "fontWeight": "bolder"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "justify": "space-between",
+      "style": {
+        "borderBottomColor": "#B0B0B0",
+        "borderBottomStyle": "dashed",
+        "borderBottomWidth": "1px",
+        "padding": 5
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

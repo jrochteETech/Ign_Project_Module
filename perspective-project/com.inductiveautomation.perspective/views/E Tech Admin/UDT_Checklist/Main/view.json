@@ -1,0 +1,3009 @@
+{
+  "custom": {
+    "UDTs": {
+      "emptySet": {
+        "$": [
+          "ds",
+          192,
+          1776987871734
+        ],
+        "$columns": [
+          {
+            "data": [],
+            "name": "tagPath",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "ALM_ActivePipe",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "ALM_Label",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "ALM_Mode",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "ALM_Priority",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "ALM_Setpoint",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "HIALM_ActivePipe",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "HIALM_Label",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "HIALM_Mode",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "HIALM_Priority",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "HIALM_Setpoint",
+            "type": "Integer"
+          },
+          {
+            "data": [],
+            "name": "HIHIALM_ActivePipe",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "HIHIALM_Label",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "HIHIALM_Mode",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "HIHIALM_Priority",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "HIHIALM_Setpoint",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "LOALM_ActivePipe",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "LOALM_Label",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "LOALM_Mode",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "LOALM_Priority",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "LOALM_Setpoint",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "LOLOALM_ActivePipe",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "LOLOALM_Label",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "LOLOALM_Mode",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "LOLOALM_Priority",
+            "type": "String"
+          },
+          {
+            "data": [],
+            "name": "LOLOALM_Setpoint",
+            "type": "Integer"
+          }
+        ]
+      },
+      "selected": 0
+    },
+    "fullExport": {
+      "colHeader": [
+        "ATS",
+        "BREAK",
+        "BREAK_MAIN",
+        "BREAK_NOCONFIG",
+        "BREAK_REF",
+        "BYPASS",
+        "CDU",
+        "CDU_CTRL",
+        "CEHS",
+        "CETS",
+        "CRAH",
+        "DB_DIAG",
+        "DLR_CONNECTION",
+        "EHS",
+        "EPS",
+        "ES",
+        "HEHS",
+        "HETS",
+        "IV",
+        "LEAK_HEADER",
+        "LEAK_RACK",
+        "MQTT_Tags",
+        "PLC_AB_DIAG",
+        "POP_HS",
+        "POP_TS",
+        "PS_FAULT",
+        "RACK_POWER",
+        "RCOOL",
+        "RIO_DIAG",
+        "RPP",
+        "RPP_MOD_DIAG",
+        "SYS_DIAG",
+        "TAPCAN",
+        "TC_REF",
+        "zz_DLR_CONNECTION",
+        "zz_DLR_RING",
+        "zz_RIO_DIAG"
+      ]
+    },
+    "providers": {
+      "selected": "Ignition-aur-ignitionio-01v"
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.UDTs": {
+      "persistent": true
+    },
+    "custom.UDTs.list": {
+      "binding": {
+        "config": {
+          "path": "view.custom.providers.selected"
+        },
+        "transforms": [
+          {
+            "code": "\troot \u003d self.getChild(\"root\")\n\tprovider \u003d value\n\tquery \u003d {\n\t\t  \"options\": {\n\t\t    \"includeUdtMembers\": False,\n\t\t    \"includeUdtDefinitions\": True\n\t\t  },\n\t\t  \"condition\": {\n\t\t    \"path\": \"*_types_/*\",\n\t\t    \"tagType\": \"UdtType\",\n\t\t    \"attributes\": {\n\t\t      \"values\": [],\n\t\t      \"requireAll\": True\n\t\t    }\n\t\t  },\n\t\t  \"returnProperties\": [\n\t\t    \"tagType\",\n\t\t    \"quality\"\n\t\t  ]\n\t\t}\n\n\tresults \u003d system.tag.query(provider, query)\n\tif provider !\u003d \"\" and provider !\u003d None:\n\t\tpath \u003d \u0027[{}]_types_\u0027.format(provider)\n\t\tudti \u003d  system.tag.query(provider, query)\n\t\t#system.tag.browse(path,{\"tagType\":\"UdtType\", \"\"})\t\t\n\t\tl \u003d []\n\t\ti \u003d 0\n\t\tfor u in sorted(udti):\n\t\t\tj \u003d {}\n\t\t\tj[\u0027label\u0027] \u003d str(u[\u0027fullPath\u0027]).split(\u0027_/\u0027)[-1]\n\t\t\tj[\u0027value\u0027] \u003d i\n\t\t\ti+\u003d1\n\t\t\tl.append(j)\n\t\tds \u003d sorted(l)\n\telse:\n\t\tds \u003d []\n\treturn ds",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.UDTs.selectedSet": {
+      "binding": {
+        "config": {
+          "path": "view.custom.UDTs.selected"
+        },
+        "transforms": [
+          {
+            "code": "\ttry:\n\t\tset \u003d self.custom.fullExport.dataset[value]\n\texcept:\n\t\tset \u003d self.custom.UDTs.emptySet\n\treturn set",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.fullExport": {
+      "persistent": true
+    },
+    "custom.fullExport.dataset": {
+      "binding": {
+        "config": {
+          "path": "view.custom.providers.selected"
+        },
+        "transforms": [
+          {
+            "code": "\troot \u003d self.getChild(\"root\")\n\tcol \u003d [\n\t\t\t\"tagPath\",\n\t\t\t\"ALM_ActivePipe\",\n\t\t\t\"ALM_Label\",\n\t\t\t\"ALM_Mode\",\n\t\t\t\"ALM_Priority\",\n\t\t\t\"ALM_Setpoint\",\n\t\t\t\"HIHIALM_ActivePipe\",\n\t\t\t\"HIHIALM_Label\",\n\t\t\t\"HIHIALM_Mode\",\n\t\t\t\"HIHIALM_Priority\",\n\t\t\t\"HIHIALM_Setpoint\",\n\t\t\t\"HIALM_ActivePipe\",\n\t\t\t\"HIALM_Label\",\n\t\t\t\"HIALM_Mode\",\n\t\t\t\"HIALM_Priority\",\n\t\t\t\"HIALM_Setpoint\",\n\t\t\t\"LOALM_ActivePipe\",\n\t\t\t\"LOALM_Label\",\n\t\t\t\"LOALM_Mode\",\n\t\t\t\"LOALM_Priority\",\n\t\t\t\"LOALM_Setpoint\",\n\t\t\t\"LOLOALM_ActivePipe\",\n\t\t\t\"LOLOALM_Label\",\n\t\t\t\"LOLOALM_Mode\",\n\t\t\t\"LOLOALM_Priority\",\n\t\t\t\"LOLOALM_Setpoint\"\n\t\t]\n\tprovider \u003d str(value)\n\tpath \u003d \t\u0027[{}]_types_\u0027.format(provider)\n\t\n\tif provider !\u003d None and provider !\u003d\"\":\n\t#\t\tudts \u003d system.tag.query(provider, query)\n\t\tudts \u003d system.tag.browse(path,{\"tagType\":\"UdtType\",\"recursive\":True}).results\n\t\tfull \u003d []\n\t\tcolH \u003d []\n\t\tfor u in udts:\n\t\t\tp \u003d str(u[\u0027fullPath\u0027])\n\t\t\tif p.find(\u0027archive\u0027) \u003d\u003d -1:\n\t\t\t\t#print p\n\t\t\t\ttags \u003d system.tag.browse(p,{\"tagType\":\"AtomicTag\",\"recursive\":True}).results\n\t\t\t\ttagAttr \u003d []\n\t\t\t\tfor t in tags:\n\t\t\t\t\tfp  \u003d str(t[\u0027fullPath\u0027])\n\t\t\t\t\tconfig \u003d system.tag.getConfiguration(fp)[0]\n\t\t\t\t\tds \u003d root.getTagDS(fp)\n\t\t\t\t\tif \u0027alarms\u0027 in config:\n\t\t\t\t\t\talarms \u003d config[\u0027alarms\u0027][0]\n\t\t\t\t\t\tname \u003d str(alarms[\u0027name\u0027])\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\tif \u0027priority\u0027 not in alarms:\n\t\t\t\t\t\t\tds[\"{0}_Priority\".format(name)] \u003d \"Low\"\t\t\n\t\t\t\t\t\tif \u0027setpointA\u0027 not in alarms:\n\t\t\t\t\t\t\tds[\"{0}_Setpoint\".format(name)] \u003d \"0\"\n\t\t\t\t\t\tif \u0027mode\u0027 not in alarms:\n\t\t\t\t\t\t\tds[\"{0}_Mode\".format(name)] \u003d \"Equal\"\n\t\t\t\t\t\tfor key, val in alarms.iteritems():\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tif key \u003d\u003d \u0027activePipeline\u0027:\n\t\t\t\t\t\t\t\tds[\"{0}_ActivePipe\".format(name)] \u003d str(val)\t\t\t\n\t\t\t\t\t\t\tif key \u003d\u003d \u0027priority\u0027:\n\t\t\t\t\t\t\t\tds[\"{0}_Priority\".format(name)] \u003d str(val) or \"Low\"\t\t\n\t\t\t\t\t\t\tif key \u003d\u003d \u0027label\u0027:\n\t\t\t\t\t\t\t\tds[\"{0}_Label\".format(name)] \u003d str(val[\u0027value\u0027])\n\t\t\t\t\t\t\tif key \u003d\u003d \u0027setpointA\u0027:\n\t\t\t\t\t\t\t\tds[\"{0}_Setpoint\".format(name)] \u003d str(val)\n\t\t\t\t\t\t\tif key \u003d\u003d \u0027mode\u0027:\n\t\t\t\t\t\t\t\tds[\"{0}_Mode\".format(name)] \u003d str(val)\n\t\t\t\t\ttagAttr.append(ds)\n\t\t\t\tcolH.append(p.split(\"/\")[-1])\n\t\t\t\tprint \"here\"\n\t\t\t\tif len(tagAttr) \u003e 0:\n\t\t\t\n\t\t\t\t    # 1. Extract headers from the keys of the first dictionary\n\t\t\t\t    headers \u003d col\n\t\t\t\t    \n\t\t\t\t    # 2. Extract the values for each row in the same order as headers\n\t\t\t\t    rows \u003d []\n\t\t\t\t    for item in tagAttr:\n\t\t\t\t        rows.append([item[header] for header in headers])\n\t\t\t\t    \n\t\t   \t\t\t# 3. Create the Ignition Dataset\n\t\t\t    \tdataset \u003d system.dataset.toDataSet(headers, rows)\n\t\t\t\tfull.append(dataset)\n\t\tself.custom.fullExport.colHeader \u003d colH\n\t\teds \u003d full\n\telse:\n\t\teds \u003d []\n\t\n\treturn eds\n\t\n",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.providers": {
+      "persistent": true
+    },
+    "custom.providers.list": {
+      "binding": {
+        "config": {
+          "expression": "now(0)"
+        },
+        "transforms": [
+          {
+            "code": "\tprovider \u003d system.tag.browse(filter\u003d{\"tagType\":\"Provider\"}).results\n\texclude \u003d (\u0027default\u0027,\u0027System\u0027,\u0027MQTT\u0027)\n\tds \u003d []\n\tfor p in provider:\n\t\tfp \u003d str(p[\"fullPath\"]).strip(\"[]\")\n\t\tif not any(part in fp for part in exclude):\n\t\t\tds.append(fp)\n\treturn ds\t\t",
+            "type": "script"
+          }
+        ],
+        "type": "expr"
+      }
+    },
+    "custom.providers.selected": {
+      "onChange": {
+        "enabled": null,
+        "script": "\tif currentValue.value \u003d\u003d None:\n\t\tself.custom.UDTs.selected \u003d \"\"\t"
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1080,
+      "width": 3000
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "custom": {
+          "view": "value"
+        },
+        "meta": {
+          "name": "Window_Title_Lbl"
+        },
+        "position": {
+          "basis": "30px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "session.props.theme"
+              },
+              "transforms": [
+                {
+                  "fallback": "General_style/Heading",
+                  "inputType": "expression",
+                  "mappings": [
+                    {
+                      "input": "\"light\"",
+                      "output": "General_style/Heading_Dark"
+                    },
+                    {
+                      "input": "\"light-cool\"",
+                      "output": "General_style/Heading_Dark"
+                    },
+                    {
+                      "input": "\"light-warm\"",
+                      "output": "General_style/Heading_Dark"
+                    }
+                  ],
+                  "outputType": "style-list",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontSize": 20
+          },
+          "text": "Tools - UDT Checklist"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "15%"
+            },
+            "props": {
+              "text": "Search UDT Sets Lookup",
+              "textStyle": {
+                "fontFamily": "Helvetica",
+                "fontWeight": "bolder",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Provider"
+            },
+            "position": {
+              "basis": "14.5%"
+            },
+            "propConfig": {
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.providers.list"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tl \u003d []\n\tfor i in value:\n\t\tj \u003d {}\n\t\tj[\u0027value\u0027] \u003d i\n\t\tj[\u0027label\u0027] \u003d i\n\t\tl.append(j)\n\treturn l",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "coalesce": true,
+                    "path": "view.custom.providers.selected"
+                  },
+                  "type": "property"
+                },
+                "onChange": {
+                  "enabled": null,
+                  "script": "\tif currentValue.value \u003d\u003d None:\n\t\tself.getSibling(\"UDT\").props.value \u003d \"\""
+                }
+              }
+            },
+            "props": {
+              "dropdownOptionStyle": {
+                "fontFamily": "Helvetica",
+                "textAlign": "center"
+              },
+              "placeholder": {
+                "text": "Select Provider..."
+              },
+              "showClearIcon": true,
+              "style": {
+                "fontFamily": "Helvetica",
+                "fontWeight": "bolder"
+              },
+              "textAlign": "center"
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "meta": {
+              "name": "UDT"
+            },
+            "position": {
+              "basis": "14.5%"
+            },
+            "propConfig": {
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.UDTs.list"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "coalesce": true,
+                    "path": "view.custom.UDTs.selected"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "dropdownOptionStyle": {
+                "fontFamily": "Helvetica",
+                "textAlign": "center"
+              },
+              "placeholder": {
+                "text": "Select UDT Set..."
+              },
+              "showClearIcon": true,
+              "style": {
+                "fontFamily": "Helvetica",
+                "fontWeight": "bolder"
+              },
+              "textAlign": "center"
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\tdate \u003d system.date.now()\n\tnow \u003d system.date.format(date, \u0027YYYYMMDDHHmmss\u0027)\n\tprovider \u003d self.view.custom.providers.selected\n\tfilename \u003d \u0027{0}_UDTList_{1}.xlsx\u0027.format(provider,now) \n\t\n\t## Get the dataset (from a table property or a query)\n\tdataset \u003d self.view.custom.fullExport.dataset \n\theader \u003d self.view.custom.fullExport.colHeader\n\t\n\t## Convert the dataset to an Excel-compatible byte array\n\t# toExcel(showHeaders, [datasetList]) returns bytes for an .xlsx file\n\texcelBytes \u003d system.dataset.toExcel(True, dataset,True,header)\n\t\n\t## Trigger the browser download\n\tsystem.perspective.download(filename, excelBytes)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Export"
+                },
+                "position": {
+                  "basis": "35%"
+                },
+                "propConfig": {
+                  "props.enabled": {
+                    "binding": {
+                      "config": {
+                        "expression": "{view.custom.providers.selected} !\u003d None"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "text": "Export All UDTs Sets"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "Action"
+            },
+            "position": {
+              "basis": "49.5%"
+            },
+            "props": {
+              "justify": "flex-end"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Top"
+        },
+        "position": {
+          "basis": "7.75%"
+        },
+        "props": {
+          "justify": "space-between",
+          "style": {
+            "padding": 5
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Table"
+            },
+            "position": {
+              "basis": "100%"
+            },
+            "propConfig": {
+              "props.data": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.UDTs.selectedSet"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "columns": [
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "tagPath",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "Tagpath"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "view",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {
+                    "isLabel": false,
+                    "label": "",
+                    "value": "value"
+                  },
+                  "viewPath": "E Tech Admin/UDT_Checklist/parts/Display",
+                  "visible": true,
+                  "width": 200
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "ALM_ActivePipe",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "ALM Active Pipline"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "ALM_Label",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "ALM Label"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "view",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {
+                    "isLabel": true,
+                    "label": "Expression",
+                    "value": "value"
+                  },
+                  "viewPath": "E Tech Admin/UDT_Checklist/parts/Display",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "ALM_Mode",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "ALM Mode"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "ALM_Priority",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "ALM Priority"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "ALM_Setpoint",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "ALM Setpoints"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "HIHIALM_ActivePipe",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "HIHI ALM Active Pipeline"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "HIHIALM_Label",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "HIHI ALM Label"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": true,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "view",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {
+                    "isLabel": true,
+                    "label": "Expression",
+                    "value": "value"
+                  },
+                  "viewPath": "E Tech Admin/UDT_Checklist/parts/Display",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "HIHIALM_Mode",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "HIHI ALM Mode"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "HIHIALM_Priority",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "HIHI ALM Priority"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "HIHIALM_Setpoint",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "HIHI ALM Setpoint"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "HIALM_ActivePipe",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "HI ALM Active Pipeline"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "HIALM_Label",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "HI ALM Label"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "view",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {
+                    "isLabel": true,
+                    "label": "Expression",
+                    "value": "value"
+                  },
+                  "viewPath": "E Tech Admin/UDT_Checklist/parts/Display",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "HIALM_Mode",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "HI ALM Mode"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "HIALM_Priority",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "HI ALM Priority"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "HIALM_Setpoint",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": " HI ALM Setpoint"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "LOALM_ActivePipe",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "LO ALM Active Pipeline"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "LOALM_Label",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "LO ALM Label"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "view",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {
+                    "value": "value"
+                  },
+                  "viewPath": "E Tech Admin/UDT_Checklist/parts/viewButton",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "LOALM_Mode",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "LO ALM Mode"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "LOALM_Priority",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "LO ALM Priority"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "LOALM_Setpoint",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "LO ALM Setpoint"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "LOLOALM_ActivePipe",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "LOLO ALM Active Pipeline"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "LOLOALM_Label",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "LOLO ALM Label"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {
+                    "value": "value"
+                  },
+                  "viewPath": "E Tech Admin/UDT_Checklist/parts/viewButton",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "LOLOALM_Mode",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "LOLO ALM Mode"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "LOLOALM_Priority",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "LOLO ALM Priority"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "LOLOALM_Setpoint",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "LOLO ALM Setpoint"
+                  },
+                  "justify": "center",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "N/A",
+                    "strict": true
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": false,
+                  "sort": "none",
+                  "sortable": false,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                }
+              ],
+              "nullFormat": {
+                "nullFormatValue": "N/A"
+              },
+              "pager": {
+                "activeOption": 100,
+                "bottom": false
+              },
+              "rows": {
+                "height": "50%",
+                "striped": {
+                  "color": {
+                    "even": "#63B179",
+                    "odd": "#D5D5D5"
+                  }
+                }
+              },
+              "style": {
+                "fontFamily": "Helvetica",
+                "fontWeight": "bolder"
+              }
+            },
+            "type": "ia.display.table"
+          }
+        ],
+        "meta": {
+          "name": "Bottom"
+        },
+        "position": {
+          "basis": "91.75%"
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "space-between"
+    },
+    "scripts": {
+      "customMethods": [
+        {
+          "name": "getTagDS",
+          "params": [
+            "path"
+          ],
+          "script": "\tds \u003d {\n\t\t\t\"tagPath\": path,\n\t\t\t\"ALM_ActivePipe\": None,\n\t\t\t\"ALM_Setpoint\": None,\n\t\t\t\"ALM_Priority\": None,\n\t\t\t\"ALM_Label\": None,\n\t\t\t\"ALM_Mode\" : None,\n\t\t\t\"HIHIALM_ActivePipe\": None,\n\t\t\t\"HIHIALM_Setpoint\": None,\n\t\t\t\"HIHIALM_Priority\": None,\n\t\t\t\"HIHIALM_Label\": None,\n\t\t\t\"HIHIALM_Mode\" : None,\n\t\t\t\"HIALM_ActivePipe\": None,\n\t\t\t\"HIALM_Setpoint\": None,\n\t\t\t\"HIALM_Priority\": None,\n\t\t\t\"HIALM_Label\": None,\n\t\t\t\"HIALM_Mode\" : None,\n\t\t\t\"LOALM_ActivePipe\": None,\n\t\t\t\"LOALM_Setpoint\": None,\n\t\t\t\"LOALM_Priority\": None,\n\t\t\t\"LOALM_Label\": None,\n\t\t\t\"LOALM_Mode\" : None,\n\t\t\t\"LOLOALM_ActivePipe\": None,\n\t\t\t\"LOLOALM_Setpoint\": None,\n\t\t\t\"LOLOALM_Priority\": None,\n\t\t\t\"LOLOALM_Label\": None,\n\t\t\t\"LOLOALM_Mode\" : None\n\t\t}\n\treturn ds"
+        }
+      ],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "refresh",
+          "pageScope": true,
+          "script": "\tself.view.refreshBinding(\u0027custom.UDTs.selectedSet\u0027)",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "getExportData",
+          "pageScope": true,
+          "script": "\tprov \u003d payload[\u0027provider\u0027]\n\tsystem.perspective.print(prov)\n\tcol \u003d [\n\t\t\t\"tagPath\",\n\t\t\t\"ALM_ActivePipe\",\n\t\t\t\"ALM_Label\",\n\t\t\t\"ALM_Mode\",\n\t\t\t\"ALM_Priority\",\n\t\t\t\"ALM_Setpoint\",\n\t\t\t\"HIHIALM_ActivePipe\",\n\t\t\t\"HIHIALM_Label\",\n\t\t\t\"HIHIALM_Mode\",\n\t\t\t\"HIHIALM_Priority\",\n\t\t\t\"HIHIALM_Setpoint\",\n\t\t\t\"HIALM_ActivePipe\",\n\t\t\t\"HIALM_Label\",\n\t\t\t\"HIALM_Mode\",\n\t\t\t\"HIALM_Priority\",\n\t\t\t\"HIALM_Setpoint\",\n\t\t\t\"LOALM_ActivePipe\",\n\t\t\t\"LOALM_Label\",\n\t\t\t\"LOALM_Mode\",\n\t\t\t\"LOALM_Priority\",\n\t\t\t\"LOALM_Setpoint\",\n\t\t\t\"LOLOALM_ActivePipe\",\n\t\t\t\"LOLOALM_Label\",\n\t\t\t\"LOLOALM_Mode\",\n\t\t\t\"LOLOALM_Priority\",\n\t\t\t\"LOLOALM_Setpoint\"\n\t\t]\n\tpath \u003d \t\u0027[{}]_types_\u0027.format(prov)\n\tudts \u003d system.tag.browse(path,{\"tagType\":\"UdtType\"})\n\tfull \u003d []\n\tcolH \u003d []\n\tfor u in udts:\n\t\tp \u003d str(u[\u0027fullPath\u0027])\n\t\ttags \u003d system.tag.browse(p)\n\t\ttagAttr \u003d []\n\t\tfor t in tags:\n\t\t\tfp  \u003d str(t[\u0027fullPath\u0027])\n\t\t\tconfig \u003d system.tag.getConfiguration(fp)[0]\n\t\t\tds \u003d self.getTagDS(fp)\n\t\t\tsystem.perspective.print(ds)\n\t\t\tif \u0027alarms\u0027 in config:\n\t\t\t\talarms \u003d config[\u0027alarms\u0027][0]\n\t\t\t\tname \u003d str(alarms[\u0027name\u0027])\n\t\t\t\t\t\t\t\n\t\t\t\tif \u0027priority\u0027 not in alarms:\n\t\t\t\t\tds[\"{0}_Priority\".format(name)] \u003d \"Low\"\t\t\n\t\t\t\tif \u0027setpointA\u0027 not in alarms:\n\t\t\t\t\tds[\"{0}_Setpoint\".format(name)] \u003d \"0\"\n\t\t\t\tif \u0027mode\u0027 not in alarms:\n\t\t\t\t\tds[\"{0}_Mode\".format(name)] \u003d \"Equal\"\n\t\t\t\tfor key, val in alarms.iteritems():\n\t\t\t\t\t\n\t\t\t\t\tif key \u003d\u003d \u0027activePipeline\u0027:\n\t\t\t\t\t\tds[\"{0}_ActivePipe\".format(name)] \u003d str(val)\t\t\t\n\t\t\t\t\tif key \u003d\u003d \u0027priority\u0027:\n\t\t\t\t\t\tds[\"{0}_Priority\".format(name)] \u003d str(val) or \"Low\"\t\t\n\t\t\t\t\tif key \u003d\u003d \u0027label\u0027:\n\t\t\t\t\t\tds[\"{0}_Label\".format(name)] \u003d str(val[\u0027value\u0027])\n\t\t\t\t\tif key \u003d\u003d \u0027setpointA\u0027:\n\t\t\t\t\t\tds[\"{0}_Setpoint\".format(name)] \u003d str(val)\n\t\t\t\t\tif key \u003d\u003d \u0027mode\u0027:\n\t\t\t\t\t\tds[\"{0}_Mode\".format(name)] \u003d str(val)\n\t\t\ttagAttr.append(ds)\n\t\t\n\t\tcolH.append(p.split(\"/\")[-1])\n\t\t\n\t\tif len(tagAttr) \u003e 0:\n\t\n\t\t    # 1. Extract headers from the keys of the first dictionary\n\t\t    headers \u003d col\n\t\t    \n\t\t    # 2. Extract the values for each row in the same order as headers\n\t\t    rows \u003d []\n\t\t    for item in tagAttr:\n\t\t        rows.append([item[header] for header in headers])\n\t\t    \n\t\t    # 3. Create the Ignition Dataset\n\t\t    dataset \u003d system.dataset.toDataSet(headers, rows)\n\t\tfull.append(dataset)\n\tself.view.custom.fullExport.colHeader \u003d colH\n\tself.view.custom.fullExport.dataset \u003d full",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

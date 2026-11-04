@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "# Jacob D. Rochte | jrochte@etechgroup.com | rochteja@gmail.com\n\nv0.1\nInitial creation, view from console script. \nExports instances and udts.\n\nv0.2\nAddition of project export and gateway export for linux servers.\n\nv1.0\nInitial release with updated graphics based on feedback.\nCreation of Parts folder and embedded views.\nChanged from dropdown box to radio buttons.\n\nv1.1\nAdds support for windows server project and gateway exports.\n\nv1.2\nUpdated look and feel.\nAdded a popup for an about page with information about what it exports.\nAdded Export All button.\n\nv1.3\nAdded Clear button to output.\nExport All button now zips all four files into one zip archive and downloads.\n\nv1.4\nConformed to the Inductive Automation Exchange standards.\n\nv1.5\nAdded support for ignition gateways installed on Mac OS\n\nv1.6\nCreated a zip archive of the individual tag exports (Instances and UDTs). This has a compression ration of \u003e95%\n\nv1.7\nDynamically find the install location of Ignition to account for different folder structures.\nIncluding: Linux, Windows, Mac, Docker\n\nv1.8\nEdited based on IA feedback to be better aligned with the Exchange Resource Style Guide\n\nv2.0\nAdded export for wrapper logs, exports up to wrapper.log.9",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModificationSignature": "446c271d74fd4d60ff7145b8e0fa49f1b887db3c258a8bd3ddeec0d65d694022",
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2026-08-14T22:19:54Z"
+    }
+  }
+}

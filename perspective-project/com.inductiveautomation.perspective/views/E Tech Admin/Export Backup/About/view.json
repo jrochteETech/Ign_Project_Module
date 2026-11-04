@@ -1,0 +1,36 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 500,
+      "width": 595
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "About"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "source": "This utility was build for a dev environment to more easily export daily backups. Each export will downloaded to the default download location of your browser. It can be used with gateways installed on Linux, Microsoft, and Mac OS, including Docker. Each export has a ISO-8601 standardized timestamp of the local ignition gateway time. \n\nThe Export All created a zip file of all four exports.\n\nAn audit profile needs to be configured on the project. An audit log is entered for each export taken. \n\nThis works well as a popup or standalone page.\n\nExports include:\n- **All tag instances with accompanying UDTs**\n  - \u003cprovider\u003e\\_\\_Instances\\_\u003cyyyymmddThhnnss\u003e.json.zip\n- **All UDTs, without instances**\n  - \u003cprovider\u003e\\_\\_UDTs\\_\u003cyyyymmddThhnnss\u003e.json.zip\n- **Current open project**\n  - \u003cproject\u003e\\_\\_export\\_\u003cyyyymmddThhnnss\u003e.zip\n- **Gateway backup**\n  - \u003cproject\u003e\\_\\_GW_backup\\_\u003cyyyymmddThhnnss\u003e.gwbk\n- **Wrapper Logs**\n  - \u003cproject\u003e\\_\\_Logs\\_\u003cyyyymmddThhnnss\u003e.zip"
+        },
+        "type": "ia.display.markdown"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "padding": "1em"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

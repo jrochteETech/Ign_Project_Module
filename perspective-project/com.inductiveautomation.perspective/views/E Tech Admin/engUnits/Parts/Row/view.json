@@ -1,0 +1,285 @@
+{
+  "custom": {},
+  "params": {
+    "engUnit": "engUnit",
+    "formatString": "formatString",
+    "label": "tagPath",
+    "newEngUnit": "",
+    "newFormatString": "",
+    "newValue": "",
+    "oldValue": "",
+    "valueSource": "valueSource"
+  },
+  "propConfig": {
+    "params.engUnit": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.formatString": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.newEngUnit": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.newFormatString": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.newValue": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.oldValue": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.valueSource": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 32,
+      "width": 913
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.label"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField"
+        },
+        "position": {
+          "basis": "25%",
+          "display": false
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "old"
+        },
+        "position": {
+          "basis": "12em",
+          "display": false,
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.valueSource"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "enabled": false
+        },
+        "type": "ia.input.text-field"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.valueSource"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "paddingLeft": "1em",
+            "paddingRight": "1em"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "basis": "6em"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.engUnit"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "color": "#A8A8A8",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "dom": {
+            "onBlur": {
+              "config": {
+                "script": "\tself.parent.props.style.backgroundColor \u003d \u0027#FFFFFF\u0027"
+              },
+              "scope": "G",
+              "type": "script"
+            },
+            "onFocus": {
+              "config": {
+                "script": "\tself.parent.props.style.backgroundColor \u003d \u0027#F3F3F3\u0027"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "new"
+        },
+        "position": {
+          "basis": "6em",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.newEngUnit"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.input.text-field"
+      },
+      {
+        "meta": {
+          "name": "Label_2"
+        },
+        "position": {
+          "basis": "8em"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.formatString"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "color": "#A8A8A8",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "dom": {
+            "onBlur": {
+              "config": {
+                "script": "\tself.parent.props.style.backgroundColor \u003d \u0027#FFFFFF\u0027"
+              },
+              "scope": "G",
+              "type": "script"
+            },
+            "onFocus": {
+              "config": {
+                "script": "\tself.parent.props.style.backgroundColor \u003d \u0027#F3F3F3\u0027"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "new_0"
+        },
+        "position": {
+          "basis": "8em",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.newFormatString"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.input.text-field"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "justify": "space-between",
+      "style": {
+        "backgroundColor": "#FFFFFF",
+        "borderBottomColor": "#B0B0B0",
+        "borderBottomStyle": "dashed",
+        "borderBottomWidth": "1px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

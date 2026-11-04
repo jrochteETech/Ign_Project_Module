@@ -1,0 +1,3700 @@
+{
+  "custom": {
+    "UDTInstance": null,
+    "UDTTags": [],
+    "allUDTInstances": [],
+    "allUDTTypes": [
+      {
+        "data": "Test/Energy_Valve_All",
+        "expanded": false,
+        "items": [],
+        "label": "Test/Energy_Valve_All"
+      },
+      {
+        "data": "Test/Energy_Valve_Delete",
+        "expanded": false,
+        "items": [],
+        "label": "Test/Energy_Valve_Delete"
+      },
+      {
+        "data": "Test/Energy_Valve_SP",
+        "expanded": false,
+        "items": [],
+        "label": "Test/Energy_Valve_SP"
+      },
+      {
+        "data": "Test/Energy_Valve_PK",
+        "expanded": false,
+        "items": [],
+        "label": "Test/Energy_Valve_PK"
+      },
+      {
+        "data": "Test/Aisle_Temp_Hum_Test",
+        "expanded": false,
+        "items": [],
+        "label": "Test/Aisle_Temp_Hum_Test"
+      },
+      {
+        "data": "Nvidia_UDTs/ESS",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/ESS"
+      },
+      {
+        "data": "Nvidia_UDTs/RPP",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/RPP"
+      },
+      {
+        "data": "Nvidia_UDTs/TAPCAN",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/TAPCAN"
+      },
+      {
+        "data": "Nvidia_UDTs/BREAK",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/BREAK"
+      },
+      {
+        "data": "Nvidia_UDTs/EHS",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/EHS"
+      },
+      {
+        "data": "Nvidia_UDTs/LEAK",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/LEAK"
+      },
+      {
+        "data": "Nvidia_UDTs/ES",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/ES"
+      },
+      {
+        "data": "Nvidia_UDTs/BUS",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/BUS"
+      },
+      {
+        "data": "Nvidia_UDTs/IV",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/IV"
+      },
+      {
+        "data": "Nvidia_UDTs/EPS",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/EPS"
+      },
+      {
+        "data": "Nvidia_UDTs/ETS",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/ETS"
+      },
+      {
+        "data": "Nvidia_UDTs/CDU_CTRL",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/CDU_CTRL"
+      },
+      {
+        "data": "Nvidia_UDTs/EV",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/EV"
+      },
+      {
+        "data": "Nvidia_UDTs/CDU",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/CDU"
+      },
+      {
+        "data": "Nvidia_UDTs/POWER",
+        "expanded": false,
+        "items": [],
+        "label": "Nvidia_UDTs/POWER"
+      },
+      {
+        "data": "Archive_UDT_v2/CDU_CONTROLLER/CDU_Controller",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v2/CDU_CONTROLLER/CDU_Controller"
+      },
+      {
+        "data": "Archive_UDT_v2/POWER_MONITOR/Tapcan_Power_Monitor",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v2/POWER_MONITOR/Tapcan_Power_Monitor"
+      },
+      {
+        "data": "Archive_UDT_v2/POWER_MONITOR/BUS_Power_Monitor",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v2/POWER_MONITOR/BUS_Power_Monitor"
+      },
+      {
+        "data": "Archive_UDT_v2/SHUNT_TRIP/Shunt_Trip",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v2/SHUNT_TRIP/Shunt_Trip"
+      },
+      {
+        "data": "Archive_UDT_v2/TEMP_HUM/Aisle_Temp_Hum",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v2/TEMP_HUM/Aisle_Temp_Hum"
+      },
+      {
+        "data": "Archive_UDT_v2/ENERGY_VALVE/Energy_Valve",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v2/ENERGY_VALVE/Energy_Valve"
+      },
+      {
+        "data": "Archive_UDT_v2/CDU/CDU",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v2/CDU/CDU"
+      },
+      {
+        "data": "Archive_UDT_v2/LEAK_DETECTION/Leak_Status",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v2/LEAK_DETECTION/Leak_Status"
+      },
+      {
+        "data": "Archive_UDT_v2/LEAK_DETECTION/Leak",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v2/LEAK_DETECTION/Leak"
+      },
+      {
+        "data": "Archive_UDT_v2/SOUND_SENSOR/Sound_Sensor_Gateway_Cold_Hot",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v2/SOUND_SENSOR/Sound_Sensor_Gateway_Cold_Hot"
+      },
+      {
+        "data": "Archive_UDT_v2/ISOLATION_VALVE/Isolation_Valve",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v2/ISOLATION_VALVE/Isolation_Valve"
+      },
+      {
+        "data": "Archive_UDT_v2/ISOLATION_VALVE/Isolation_Valve_S",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v2/ISOLATION_VALVE/Isolation_Valve_S"
+      },
+      {
+        "data": "Archive_UDT_v1/TEMP_HUM/Aisle_Temp_Hum",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v1/TEMP_HUM/Aisle_Temp_Hum"
+      },
+      {
+        "data": "Archive_UDT_v1/SOUND_SENSOR/Sound_Sensor",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v1/SOUND_SENSOR/Sound_Sensor"
+      },
+      {
+        "data": "Archive_UDT_v1/CDU/CDU",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v1/CDU/CDU"
+      },
+      {
+        "data": "Archive_UDT_v1/SHUNT_TRIP/Shunt_Trip",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v1/SHUNT_TRIP/Shunt_Trip"
+      },
+      {
+        "data": "Archive_UDT_v1/CDU_CONTROLLER/CDU_Controller",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v1/CDU_CONTROLLER/CDU_Controller"
+      },
+      {
+        "data": "Archive_UDT_v1/ISOLATION_VALVE/Isolation_Valve",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v1/ISOLATION_VALVE/Isolation_Valve"
+      },
+      {
+        "data": "Archive_UDT_v1/LEAK_DETECTION/Leak_Status",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v1/LEAK_DETECTION/Leak_Status"
+      },
+      {
+        "data": "Archive_UDT_v1/LEAK_DETECTION/Leak_Detection",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v1/LEAK_DETECTION/Leak_Detection"
+      },
+      {
+        "data": "Archive_UDT_v1/ENERGY_VALVE/Energy_Valve",
+        "expanded": false,
+        "items": [],
+        "label": "Archive_UDT_v1/ENERGY_VALVE/Energy_Valve"
+      }
+    ],
+    "changesDataset": "value",
+    "changesMade": [
+      {
+        "engUnit": "kW",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/TOTAL/TOTAL_PUE_2v4/System/Mech_Ld",
+        "newEngUnit": "kW",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Alarms/Freq_Range_Good",
+        "newEngUnit": "Hz",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Power/kVA_Raw",
+        "newEngUnit": "kVA",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Power/kW",
+        "newEngUnit": "kW",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Power/kVA",
+        "newEngUnit": "kVA",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Power/Freq",
+        "newEngUnit": "Hz",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Power/kVAR",
+        "newEngUnit": "kVAR",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Power/kW_Range_Good",
+        "newEngUnit": "kW",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Power/kVAR_Raw",
+        "newEngUnit": "kVAR",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Power/kW_Raw",
+        "newEngUnit": "kW",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Energy/kWh",
+        "newEngUnit": "kWh",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Energy/kWh_Data_Good",
+        "newEngUnit": "kWh",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.###",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Energy/kVARh",
+        "newEngUnit": "kVARh",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Energy/kVAh",
+        "newEngUnit": "kVAh",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Energy/kWh_Historic_24Hrs",
+        "newEngUnit": "kWh",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Setpoints/Freq_SP",
+        "newEngUnit": "Hz",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_B_Raw",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD5_B",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_A_Raw",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_N",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD4_N",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_C_Raw",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD3_C",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD2_A",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD_C",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD5_A",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_Avg",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD5_C",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_N_Raw",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD2_N",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD4_A",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_B",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD2_B",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_GND",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD5_N",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD3_A",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD_N",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD4_C",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD2_C",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD3_B",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_C",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD_A",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_Ttl",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD_B",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD4_B",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Current/Cur_THD3_N",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_AN_Raw",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD2_B",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_BN_Raw",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD2_C",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD_C",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_LN_Avg",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD4_B",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD5_A",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD_A",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD4_A",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_CN",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD3_A",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD3_B",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_CN_Raw",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD3_C",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_AN",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD_B",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD2_A",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD4_C",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD5_B",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_THD5_C",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/PQM/SEL/PQM_SEL_734_1v0/Voltage/Volts_BN",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/GEN/MTU/EasyGen/Gen_MTU_EasyGen_PSG_noKPW_1v0/Voltage/Volts_LL_Avg",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/GEN/MTU/EasyGen/Gen_MTU_EasyGen_PSG_noKPW_1v0/Voltage/Volts_AB",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/GEN/MTU/EasyGen/Gen_MTU_EasyGen_PSG_noKPW_1v0/Voltage/Volts_BC",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/GEN/MTU/EasyGen/Gen_MTU_EasyGen_PSG_noKPW_1v0/Voltage/Volts_CA",
+        "newEngUnit": "V",
+        "newFormatString": "#,##0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/GEN/MTU/EasyGen/Gen_MTU_EasyGen_PSG_noKPW_1v0/Power/kW",
+        "newEngUnit": "kW",
+        "newFormatString": "#,##0.00",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/GEN/MTU/EasyGen/Gen_MTU_EasyGen_PSG_noKPW_1v0/Current/Cur_B",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/GEN/MTU/EasyGen/Gen_MTU_EasyGen_PSG_noKPW_1v0/Current/Cur_A",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/GEN/MTU/EasyGen/Gen_MTU_EasyGen_PSG_noKPW_1v0/Current/Cur_C",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[default]_types_/Make_Model_UDT_Templates/GEN/MTU/EasyGen/Gen_MTU_EasyGen_PSG_noKPW_1v0/Current/Cur_Avg",
+        "newEngUnit": "A",
+        "newFormatString": "#,##0.0",
+        "resultFormatString": "Good",
+        "resultUnit": "Good"
+      },
+      {
+        "engUnit": "",
+        "formatString": "#,##0.##",
+        "label": "[nvd_io01]_types_/Nvidia_UDTs/EHS/FB",
+        "newEngUnit": "C",
+        "resultFormatString": "",
+        "resultUnit": "Good"
+      }
+    ],
+    "changesStaged": [],
+    "filteredTagList": [],
+    "filteredUDTInstances": [],
+    "filteredUDTTypes": [],
+    "firstInstance": "",
+    "instanceFilter": "",
+    "notificationLabel": "",
+    "provider": "",
+    "providerList": [
+      {
+        "label": "[default]",
+        "value": "[default]"
+      },
+      {
+        "label": "[System]",
+        "value": "[System]"
+      },
+      {
+        "label": "[MOD09]",
+        "value": "[MOD09]"
+      }
+    ],
+    "selectedUDTType": "",
+    "tagFilter": "",
+    "tagList": [],
+    "test": "[nvd_io01]DSX_BLDG01_FLR01_CMPT01_DU01_DH01/POD01/ROWA/CA_RH",
+    "theFilter": "",
+    "writeReset": 0,
+    "writeTags": []
+  },
+  "params": {},
+  "propConfig": {
+    "custom.UDTInstance": {
+      "persistent": true
+    },
+    "custom.UDTTags": {
+      "persistent": true
+    },
+    "custom.allUDTInstances": {
+      "persistent": true
+    },
+    "custom.allUDTTypes": {
+      "persistent": true
+    },
+    "custom.changesDataset": {
+      "persistent": true
+    },
+    "custom.changesMade": {
+      "persistent": true
+    },
+    "custom.changesStaged": {
+      "persistent": true
+    },
+    "custom.filteredUDTInstances": {
+      "persistent": true
+    },
+    "custom.filteredUDTTypes": {
+      "persistent": true
+    },
+    "custom.firstInstance": {
+      "persistent": true
+    },
+    "custom.instanceFilter": {
+      "persistent": true
+    },
+    "custom.notificationLabel": {
+      "persistent": true
+    },
+    "custom.provider": {
+      "persistent": true
+    },
+    "custom.providerList": {
+      "persistent": true
+    },
+    "custom.selectedUDTType": {
+      "persistent": true
+    },
+    "custom.tagFilter": {
+      "persistent": true
+    },
+    "custom.tagList": {
+      "persistent": true
+    },
+    "custom.test": {
+      "persistent": true
+    },
+    "custom.theFilter": {
+      "persistent": true
+    },
+    "custom.writeReset": {
+      "persistent": true
+    },
+    "custom.writeTags": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1110,
+      "width": 1991
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "basis": "32px",
+          "display": false
+        },
+        "props": {
+          "style": {
+            "fontWeight": "bold",
+            "textAlign": "center"
+          },
+          "text": "la Herramienta de NPS"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027list-provider\u0027)\n\tsystem.perspective.sendMessage(\u0027clearAll\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Refresh Provider",
+              "tooltip": {
+                "enabled": true,
+                "text": "Refresh Providers List"
+              }
+            },
+            "position": {
+              "basis": "45px"
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/autorenew"
+                }
+              },
+              "style": {
+                "margin": 5
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "custom": {
+              "emptyData": {
+                "$": [
+                  "ds",
+                  192,
+                  1712698626002
+                ],
+                "$columns": [
+                  {
+                    "data": [],
+                    "name": "New UDT Path",
+                    "type": "String"
+                  }
+                ]
+              }
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027getUDTTypes\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              },
+              "system": {
+                "onStartup": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027list-provider\u0027)"
+                  },
+                  "enabled": false,
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Gateway Provider Selection"
+            },
+            "position": {
+              "basis": "30%",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.providerList"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.provider"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "placeholder": {
+                "text": "Select Tags Provider..."
+              },
+              "showClearIcon": true,
+              "style": {
+                "backgroundColor": "#CCFFFF",
+                "classes": "Text/data",
+                "marginBottom": 5,
+                "marginTop": 5
+              },
+              "textAlign": "center"
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "meta": {
+              "name": "Notification Label",
+              "tooltip": {
+                "enabled": true
+              }
+            },
+            "position": {
+              "basis": "60%",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.notificationLabel"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "color": "#de425b",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Provider Selection"
+        },
+        "position": {
+          "basis": "3em",
+          "shrink": 0
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "32px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "bidirectional": true,
+                                "path": "view.custom.theFilter"
+                              },
+                              "type": "property"
+                            },
+                            "onChange": {
+                              "enabled": null,
+                              "script": "\tsystem.perspective.sendMessage(\u0027updateUDTFilter\u0027)"
+                            }
+                          }
+                        },
+                        "props": {
+                          "placeholder": "filter",
+                          "style": {
+                            "margin": "3px"
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      },
+                      {
+                        "meta": {
+                          "name": "Tree"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.items": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.filteredUDTTypes"
+                              },
+                              "type": "property"
+                            }
+                          },
+                          "props.selectionData[0].value": {
+                            "binding": {
+                              "config": {
+                                "bidirectional": true,
+                                "path": "view.custom.selectedUDTType"
+                              },
+                              "type": "property"
+                            },
+                            "onChange": {
+                              "enabled": null,
+                              "script": "\tsystem.perspective.sendMessage(\u0027getInstances\u0027)\n#\tsystem.perspective.sendMessage(\u0027getUDTTags\u0027)"
+                            }
+                          }
+                        },
+                        "props": {
+                          "appearance": {
+                            "defaultNodeIcons": {
+                              "collapsed": {
+                                "path": "material/folder"
+                              },
+                              "expanded": {
+                                "path": "material/folder_open"
+                              }
+                            },
+                            "expandIcons": {
+                              "collapsed": {
+                                "path": "material/arrow_right"
+                              },
+                              "expanded": {
+                                "path": "material/arrow_drop_down"
+                              }
+                            }
+                          },
+                          "selection": [
+                            "9"
+                          ],
+                          "selectionData": [
+                            {
+                              "itemPath": "9"
+                            }
+                          ]
+                        },
+                        "type": "ia.display.tree"
+                      }
+                    ],
+                    "meta": {
+                      "name": "UDTSelection"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Tag_Browser"
+                },
+                "position": {
+                  "position": "left"
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "meta": {
+                              "name": "UDTName"
+                            },
+                            "position": {
+                              "basis": "32px",
+                              "shrink": 0
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "config": {
+                                    "path": "view.custom.selectedUDTType"
+                                  },
+                                  "type": "property"
+                                }
+                              }
+                            },
+                            "props": {
+                              "style": {
+                                "textAlign": "center"
+                              }
+                            },
+                            "type": "ia.display.label"
+                          },
+                          {
+                            "meta": {
+                              "name": "TextField"
+                            },
+                            "position": {
+                              "basis": "32px",
+                              "shrink": 0
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "config": {
+                                    "bidirectional": true,
+                                    "path": "view.custom.tagFilter"
+                                  },
+                                  "type": "property"
+                                },
+                                "onChange": {
+                                  "enabled": null,
+                                  "script": "\tsystem.perspective.sendMessage(\u0027updateTagFilter\u0027)"
+                                }
+                              }
+                            },
+                            "props": {
+                              "placeholder": "filter",
+                              "style": {
+                                "margin": "3px"
+                              }
+                            },
+                            "type": "ia.input.text-field"
+                          },
+                          {
+                            "meta": {
+                              "name": "EmbeddedView"
+                            },
+                            "position": {
+                              "shrink": 0
+                            },
+                            "props": {
+                              "instances": [
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/System/Sts_04_Nt_17",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/System/Sts_03_Nt_16",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/System/Sts_08_Nt_21",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/System/Sts_11_Nt_24",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/System/Sts_09_Nt_22",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/System/Sts_06_Nt_19",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/System/Sts_07_Nt_20",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/System/Sts_05_Nt_18",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/System/Sts_01_Nt_14",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/System/Rly_Temp",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/System/Sts_10_Nt_23",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_52a_Sts",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Auto_Man",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Sync_from_SEL547",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Auto_En",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Gen_Avail",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/51_Pickup_01",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Close",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Sync_from_SEL547",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Ph_Def_Time_El_Asserted",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_52a",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Close_Non_Pref",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_52b",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Open_Non_Pref",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Open",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/51_Pickup_03",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Close",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_CB_Sts",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Open_Cmd_En",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Perm_Close",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Racked_In",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_86_GxxA",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/51_Time_Dial_02",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Res_Dir_Torq_Cont_El",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Auto_Close",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Bus_A_Pref",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_52b",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Avail",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Bus_B_86",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/51_Time_Dial_01",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Open_Non_Pref",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/ACTGRP",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Auto_Man",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Interlock_PSG_A",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_86_GxxA",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Perm",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Bus_A_86",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Open",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Local_Remote",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Close_Non_Pref",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_CB_Sts",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Rack_Out",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_52a",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Rly_En_Sts",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Rack_Out",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_52a_Sts",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/51_Pickup_02",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Racked_In",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Close_Cmd_En",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Bus_B_Pref",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Avail",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Auto_Close",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Interlock_PSG_B",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_A_Rack_In",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Rest_Dif_El_Operated",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Rack_In",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/Unrest_Dif_El_Operated",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/PSG_B_Local_Remote",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Status/51_Time_Dial_03",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Current/Cur_THD_5_B",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Current/Ph_C_Op_Cur",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Current/Ph_A_Rest_Cur",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Current/Cur_THD_4_A",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Current/Ph_B_Rest_Cur",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Current/Cur_THD_5_A",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Current/Ph_B_Op_Cur",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Current/Ph_A_Op_Cur",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Current/Cur_THD_5_C",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Current/Ph_C_Rest_Cur",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Current/Cur_THD_4_B",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Current/Cur_THD_4_C",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/PSG_A_Fail_to_Close",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/PSG_B_Auto_Trip",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/Alm_Clr_TD",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "memory"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/PSG_A_Auto_Trip",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/Alm_Actv_TD",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "memory"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/Wind_S_Ph_OC_Trip",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/PSG_A_Fail_to_Open",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/PSG_A_Trip_86",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/Inv_Time_OC_Trip_1",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/PSG_B_Fail_to_Open",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/PSG_B_Trip_86",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/Rly_Alm",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/OV_Trip",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/GCB_Trip_86",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/Inv_Time_OC_Trip_2",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Alarms/PSG_B_Fail_to_Close",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "derived"
+                                },
+                                {
+                                  "engUnit": "V",
+                                  "formatString": "#,##0",
+                                  "label": "{...}/Voltage_V/Volts_C",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "V",
+                                  "formatString": "#,##0",
+                                  "label": "{...}/Voltage_V/Volts_Avg",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "expr"
+                                },
+                                {
+                                  "engUnit": "V",
+                                  "formatString": "#,##0",
+                                  "label": "{...}/Voltage_V/Volts_A",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "V",
+                                  "formatString": "#,##0",
+                                  "label": "{...}/Voltage_V/Volts_B",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "Hz",
+                                  "formatString": "#,##0",
+                                  "label": "{...}/Power/Prot_Freq",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "Hz",
+                                  "formatString": "#,##0",
+                                  "label": "{...}/Power/Freq",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "V",
+                                  "formatString": "#,##0",
+                                  "label": "{...}/Voltage_Z/Volts_C",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "V",
+                                  "formatString": "#,##0",
+                                  "label": "{...}/Voltage_Z/Volts_Avg",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "expr"
+                                },
+                                {
+                                  "engUnit": "V",
+                                  "formatString": "#,##0",
+                                  "label": "{...}/Voltage_Z/Volts_A",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "V",
+                                  "formatString": "#,##0",
+                                  "label": "{...}/Voltage_Z/Volts_B",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_S/Power/PH_C_MW",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_S/Power/PH_A_MW",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_S/Power/PH_B_PF",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_S/Power/PH_B_MVAR",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_S/Power/MVAR",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_S/Power/PF",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_S/Power/PH_A_MVAR",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_S/Power/PH_B_MW",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_S/Power/MW",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_S/Power/PH_C_PF",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_S/Power/PH_C_MVAR",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_S/Power/PH_A_PF",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Term_S/Current/Cur_Avg",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "expr"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Term_S/Current/Cur_A",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Term_S/Current/Cur_B",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Term_S/Current/Cur_C",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_T/Power/MVAR",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_T/Power/PF",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_T/Power/PH_A_MW",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_T/Power/PH_B_PF",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_T/Power/PH_C_MW",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_T/Power/PH_C_PF",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_T/Power/PH_B_MW",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_T/Power/MW",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_T/Power/PH_C_MVAR",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_T/Power/PH_B_MVAR",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_T/Power/PH_A_PF",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_T/Power/PH_A_MVAR",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Term_T/Current/Cur_Avg",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "expr"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Term_T/Current/Cur_A",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Term_T/Current/Cur_B",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Term_T/Current/Cur_C",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_U/Power/PH_A_PF",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_U/Power/PH_B_MVAR",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_U/Power/PH_C_PF",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_U/Power/MVAR",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_U/Power/PH_B_MW",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_U/Power/PH_B_PF",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_U/Power/PH_C_MVAR",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_U/Power/PH_A_MVAR",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_U/Power/PF",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_U/Power/PH_A_MW",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_U/Power/PH_C_MW",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "",
+                                  "formatString": "#,##0.##",
+                                  "label": "{...}/Term_U/Power/MW",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Term_U/Current/Cur_C",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Term_U/Current/Cur_A",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Term_U/Current/Cur_Avg",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "expr"
+                                },
+                                {
+                                  "engUnit": "A",
+                                  "formatString": "#,##0.0",
+                                  "label": "{...}/Term_U/Current/Cur_B",
+                                  "newEngUnit": "",
+                                  "newFormatString": "",
+                                  "newValue": "",
+                                  "tagType": "AtomicTag",
+                                  "valueSource": "opc"
+                                }
+                              ],
+                              "path": "E Tech Admin/engUnits/Parts/Row",
+                              "style": {
+                                "borderBottomStyle": "solid",
+                                "borderBottomWidth": 1
+                              }
+                            },
+                            "type": "ia.display.view"
+                          },
+                          {
+                            "meta": {
+                              "name": "All_Tags"
+                            },
+                            "position": {
+                              "basis": "50%",
+                              "grow": 1
+                            },
+                            "propConfig": {
+                              "props.instances": {
+                                "binding": {
+                                  "config": {
+                                    "bidirectional": true,
+                                    "path": "view.custom.filteredTagList"
+                                  },
+                                  "type": "property"
+                                }
+                              }
+                            },
+                            "props": {
+                              "alignContent": "flex-start",
+                              "direction": "column",
+                              "elementPosition": {
+                                "basis": "auto"
+                              },
+                              "path": "E Tech Admin/engUnits/Parts/Row",
+                              "useDefaultViewWidth": false
+                            },
+                            "type": "ia.display.flex-repeater"
+                          }
+                        ],
+                        "meta": {
+                          "name": "All"
+                        },
+                        "position": {
+                          "position": "top"
+                        },
+                        "props": {
+                          "direction": "column"
+                        },
+                        "type": "ia.container.flex"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "meta": {
+                                  "name": "Write Tags"
+                                },
+                                "position": {
+                                  "basis": "20px"
+                                },
+                                "props": {
+                                  "style": {
+                                    "backgroundColor": "#B8B8B8",
+                                    "textAlign": "center"
+                                  },
+                                  "text": "Tags to Write"
+                                },
+                                "type": "ia.display.label"
+                              },
+                              {
+                                "meta": {
+                                  "name": "Staging_Tags"
+                                },
+                                "position": {
+                                  "grow": 1
+                                },
+                                "propConfig": {
+                                  "props.instances": {
+                                    "binding": {
+                                      "config": {
+                                        "bidirectional": true,
+                                        "path": "view.custom.writeTags"
+                                      },
+                                      "type": "property"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "alignContent": "flex-start",
+                                  "direction": "column",
+                                  "elementPosition": {
+                                    "basis": "auto"
+                                  },
+                                  "path": "E Tech Admin/engUnits/Parts/Row",
+                                  "useDefaultViewWidth": false
+                                },
+                                "type": "ia.display.flex-repeater"
+                              }
+                            ],
+                            "meta": {
+                              "name": "TagstoWrite"
+                            },
+                            "position": {
+                              "grow": 1
+                            },
+                            "props": {
+                              "direction": "column"
+                            },
+                            "type": "ia.container.flex"
+                          }
+                        ],
+                        "meta": {
+                          "name": "Write Tags"
+                        },
+                        "position": {
+                          "position": "bottom"
+                        },
+                        "props": {
+                          "direction": "column"
+                        },
+                        "type": "ia.container.flex"
+                      }
+                    ],
+                    "meta": {
+                      "name": "SplitContainer"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "orientation": "vertical",
+                      "split": {
+                        "position": "58%",
+                        "size": 8
+                      }
+                    },
+                    "type": "ia.container.split"
+                  }
+                ],
+                "meta": {
+                  "name": "Tags"
+                },
+                "position": {
+                  "position": "right"
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "flex-end"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "SplitContainer"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "split": {
+                "position": "33%",
+                "size": 8
+              }
+            },
+            "type": "ia.container.split"
+          }
+        ],
+        "meta": {
+          "name": "Middle"
+        },
+        "position": {
+          "basis": "80%",
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "draggable": true,
+                    "id": "5BtP4jKW",
+                    "modal": false,
+                    "overlayDismiss": false,
+                    "resizable": true,
+                    "showCloseIcon": true,
+                    "type": "open",
+                    "viewPath": "E Tech Admin/engUnits/Parts/About",
+                    "viewportBound": false
+                  },
+                  "scope": "C",
+                  "type": "popup"
+                }
+              }
+            },
+            "meta": {
+              "name": "about"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/info"
+                }
+              },
+              "primary": false,
+              "style": {
+                "margin": "5px"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027clearAll\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ClearAll"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/refresh"
+                }
+              },
+              "primary": false,
+              "style": {
+                "backgroundColor": "#FFC3C3",
+                "margin": "5px"
+              },
+              "text": "Clear All"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027stageTags\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "AddTags"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/add"
+                }
+              },
+              "style": {
+                "margin": "5px"
+              },
+              "text": "Add Tag"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027clearwriteTags\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ClearTags"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "if(len({view.custom.writeTags})\u003e0,True,False)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel_presentation"
+                }
+              },
+              "primary": false,
+              "style": {
+                "margin": "5px"
+              },
+              "text": "Clear Tags"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027stageAllChanges\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "StageWrites"
+            },
+            "position": {
+              "display": false,
+              "grow": 1
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "if(len({view.custom.writeTags})\u003e0,True,False)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/star_rate"
+                }
+              },
+              "style": {
+                "margin": "5px"
+              },
+              "text": "Stage Tag Writes"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027clearStageTags\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ClearStage"
+            },
+            "position": {
+              "display": false,
+              "grow": 1
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "if(len({view.custom.changesStaged})\u003e0,True,False)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel_presentation"
+                }
+              },
+              "primary": false,
+              "style": {
+                "margin": "5px"
+              },
+              "text": "Clear Stage"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027exportStagedChanges\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Export Stage Report"
+            },
+            "position": {
+              "display": false,
+              "grow": 1
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "if(len({view.custom.changesStaged})\u003e0,True,False)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/leaderboard"
+                }
+              },
+              "primary": false,
+              "style": {
+                "margin": "5px"
+              },
+              "text": "Export Staged Report"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tself.custom.writeReset \u003d 1\n\tsystem.perspective.sendMessage(\u0027writeChanges\u0027)\n#\tself.view.custom.changesStaged \u003d []"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Write"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "custom.writeReset": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.writeReset"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "if(len({view.custom.writeTags})\u003e0,True,False)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "this.custom.writeReset"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "confirm": {
+                "enabled": true
+              },
+              "readyState": {
+                "icon": {
+                  "path": "material/arrow_forward",
+                  "style": {
+                    "height": "24px",
+                    "width": "2rem"
+                  }
+                },
+                "text": "Write Changes"
+              },
+              "style": {
+                "backgroundColor": "#7D977E",
+                "margin": "5px"
+              },
+              "writingState": {
+                "icon": {
+                  "path": "material/hourglass_empty",
+                  "style": {
+                    "height": "24px",
+                    "width": "2rem"
+                  }
+                },
+                "text": "Writing..."
+              }
+            },
+            "type": "ia.input.oneshotbutton"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "draggable": true,
+                    "id": "changesPopup",
+                    "modal": false,
+                    "overlayDismiss": false,
+                    "resizable": true,
+                    "showCloseIcon": true,
+                    "type": "open",
+                    "viewParams": {
+                      "theChanges": "{view.custom.changesMade}"
+                    },
+                    "viewPath": "E Tech Admin/la_Herramienta_de_NPS/Parts/ChangesTable",
+                    "viewportBound": false
+                  },
+                  "scope": "C",
+                  "type": "popup"
+                }
+              }
+            },
+            "meta": {
+              "name": "Export"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "if(len({view.custom.changesMade})\u003e0,True,False)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/open_in_new"
+                }
+              },
+              "primary": false,
+              "style": {
+                "margin": "5px"
+              },
+              "text": "Export Changes"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Buttons"
+        },
+        "position": {
+          "basis": "3em"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "list-provider",
+          "pageScope": true,
+          "script": "\tself.view.custom.notificationLabel \u003d \"\"\n\tself.view.custom.provider \u003d \"\"\n\ttry:\n\t\t#Find list of providers\n\t\ttags\u003dsystem.tag.browse(filter\u003d{\"tagType\":\"Provider\"}).results\n\t\t\n\t\tproviderList \u003d []\n\t\t\n\t\t#Loop Through each of the providors \n\t\tfor result in tags:\n\t\t\n\t\t\tdList \u003d {}\n\t\t\tprovider \u003d str(result[\u0027fullPath\u0027])\n\t\t\t\n\t\t\tdList[\"value\"] \u003d provider\n\t\t\tdList[\"label\"] \u003d provider\n\t\t\t\n\t\t\t#Add to the providor list\n\t\t\tproviderList.append(dList)\n\t\t\n#\t\tself.getChild(\u0027Provider Selection\u0027).getChild(\u0027Gateway Provider Selection\u0027).props.options \u003d providerList\n\t\tself.view.custom.providerList \u003d providerList\n\texcept:\n\t\tself.view.custom.notificationLabel \u003d \"Error: Cannot find any tag providers\"",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "getUDTTags",
+          "pageScope": true,
+          "script": "\ttry:\n\t\tprovider \u003d self.view.custom.provider.strip(\u0027[]\u0027)\n\texcept:\n\t\treturn\n\tUDTPath \u003d self.view.custom.selectedUDTType\n\tfirstInstance \u003d self.view.custom.firstInstance\n\twriteTags \u003d self.view.custom.writeTags\n\ttry:\n\t\tsplitPath \u003d UDTPath.split(\"]\",1)[1]\n\texcept:\n\t\tsplitPath \u003d UDTPath\n\tif splitPath \u003d\u003d None:\n\t\treturn\n#\tself.view.custom.test \u003d splitPath\n\t#self.getChild(\u0027FlexContainer\u0027).getChild(\u0027FlexContainer_0\u0027).getChild(\u0027Label\u0027).props.text \u003d splitPath\n#\tself.getChild(\u0027debug\u0027).props.params.text \u003d splitPath\n\t\n\tBACnetExclude \u003d [\n\t\"/System/Write_Trigger\",\n\t\"/System/Object_Name\",\n\t\"/System/Relinquish_Default\",\n\t\"/System/OR_Val\",\n\t\"/System/Op_OR\",\n\t\"/System/Release_OR\",\n\t\"/System/OOS_Val\",\n\t\"/System/DenyTrigger\",\n\t\"/System/Priority_Array\",\n\t\"/System/Read_Trigger\",\n\t\"/System/OOS_Cmd\",\n\t\"/System/Object_Id\",\n\t\"/Status/OR_Sts\",\n\t\"/Status/Flt\",\n\t\"/Status/OOS\",\n\t\"/Alarms/In_Alm\"\n\t]\n\t\n\tquery \u003d {\n\t  \"options\": {\n\t    \"includeUdtMembers\": True,\n\t    \"includeUdtDefinitions\": False\n\t  },\n\t  \"condition\": {\n\t    \"hierarchy\": {\n\t      \"typeId\": UDTPath,\n\t      \"relationship\": \"SubType\"\n\t    },\n\t    \"attributes\": {\n\t      \"values\": [],\n\t      \"requireAll\": True\n\t    },\n\t    \"properties\": {\n\t      \"op\": \"Or\",\n\t      \"conditions\": [\n\t        {\n\t          \"op\": \"And\",\n\t          \"conditions\": [\n\t            {\n\t              \"prop\": \"tagType\",\n\t              \"comp\": \"Like\",\n\t              \"value\": \"AtomicTag\"\n\t            }\n\t          ]\n\t        }\n\t      ]\n\t    }\n\t  },\n\t  \"returnProperties\": [\n\t    \"formatString\",\n\t    \"tagType\",\n\t    \"engUnit\",\n\t    \"dataType\"\n\t  ]\n\t}\n\t\n\tresults \u003d system.tag.query(provider, query)\n\tself.view.custom.test \u003d firstInstance\n\t\n\treplaceDict \u003d {\n\t    \"Volts_\": [\"V\",\"#,##0\"],\n\t    \"Cur_\": [\"A\",\"#,##0.0\"],\n\t    \"Freq\": [\"Hz\",\"#,##0\"],\n\t    \"kVA\": [\"kVA\",\"#,##0.00\"],\n\t    \"kW\": [\"kW\",\"#,##0.00\"],\n#\t    \"Ttl_Load\": [\"kW\",\"#,##0.00\"],\n\t    \"Temp_F\": [\"\\xb0F\",\"#,##0.0\"],\n\t    \"Temp_C\": [\"\\xb0C\",\"#,##0.0\"]\n    }\n\t\n\ttagList \u003d []\n\tfor result in results:\n\t\tif str(firstInstance) not in str(result[\u0027fullPath\u0027]):\n\t\t\tcontinue\n\t\toList \u003d {}\n\t\tvalueUnit \u003d \"\"\n\t\tvalueFormat \u003d \"\"\n\t\t\n\t\ttagPart \u003d \u0027{...}\u0027+str(result[\u0027fullPath\u0027]).replace(firstInstance,\"\")\n\t\tif \u0027/Config\u0027 in tagPart:\n\t\t\tcontinue\n#\t\tBACnetTest \u003d tagPart.rsplit(\"/\",2)\n#\t\tBACnetPart \u003d \"/\"+BACnetTest[1]+\"/\"+BACnetTest[2]\n#\t\tif BACnetPart in BACnetExclude:\n#\t\t\tcontinue\n#\t\telif tagPart \u003d\u003d \u0027{...}\u0027:\n#\t\t\tcontinue\n\t\toList[\"newEngUnit\"] \u003d \"\"\n\t\toList[\"newFormatString\"] \u003d \"\"\n\t\t\n\t\tfor key, value in replaceDict.items():\n\t\t\tvalueUnit \u003d value[0]\n\t\t\tvalueFormat \u003d value[1]\n\t\t\tif str(key).lower() in tagPart.lower():\n\t\t\t\ttry:\n\t\t\t\t\tBACnetSplit \u003d str(eachTag).split(str(key))[-1]\n\t\t\t\texcept:\n\t\t\t\t    BACnetSplit \u003d \"\"\n\t\t\t\tif \"System\" in BACnetSplit and \"Present_Val\" not in BACnetSplit:\n\t\t\t\t\tcontinue\n\t\t\t\telse:\n\t\t\t\t\tif str(key).lower()+\"r\" in tagPart.lower():\n\t\t\t\t\t    valueUnit \u003d valueUnit+\"R\"\n\t\t\t\t\t    key \u003d key+\"R\"\n\t\t\t\t\tif str(key).lower()+\"h\" in tagPart.lower():\n\t\t\t\t\t    valueUnit \u003d valueUnit+\"h\"\n\t\t\t\t\t\n\t\t\t\t\tif valueUnit \u003c\u003e result[\u0027engUnit\u0027]:\n\t\t\t\t\t\toList[\"newEngUnit\"] \u003d valueUnit\n\t\t\t\t\tif valueFormat \u003c\u003e result[\u0027formatString\u0027]:\n\t\t\t\t\t\toList[\"newFormatString\"] \u003d valueFormat\n\t\t\t\t\t\n\t\t\t\t\tcontinue\n\t\t\n\t\toList[\"label\"] \u003d tagPart\n\t\toList[\"newValue\"] \u003d \u0027\u0027\n\t\toList[\"tagType\"] \u003d result[\u0027tagType\u0027]\n\t\toList[\"engUnit\"] \u003d result[\u0027engUnit\u0027]\n\t\toList[\"formatString\"] \u003d result[\u0027formatString\u0027]\n\t\t\n\t\ttry:\n\t\t\toList[\"valueSource\"] \u003d result[\u0027valueSource\u0027]\n\t\texcept:\n\t\t\toList[\"valueSource\"] \u003d \u0027\u0027\n#\t\ttry:\n#\t\t\toList[\"oldValue\"] \u003d result[\u0027value\u0027]\n#\t\texcept:\n#\t\t\toList[\"oldValue\"] \u003d 0\n\t\t\n\t\ttagList.append(oList)\n\t\t\n\t\tnewStageTags \u003d []\n\t\tfor eachStage in writeTags:\n\t\t\tnewList \u003d {}\n\t\t\t\t\n\t\t\tnewList[\"label\"] \u003d eachStage[\u0027label\u0027]\n\t\t\tnewList[\"tagType\"] \u003d eachStage[\u0027tagType\u0027]\n\t\t\tnewList[\"valueSource\"] \u003d eachStage[\u0027valueSource\u0027]\n\t\t\t\n\t\t\tnewStageTags.append(newList)\n\t\twriteTags \u003d newStageTags\n\t\t\n\tsortedTags \u003d sorted(tagList,key\u003dlambda k: k.get(\u0027value\u0027))\n\tself.view.custom.tagList \u003d sortedTags\n\tself.view.custom.writeTags \u003d writeTags\n\t\n\tself.view.custom.UDTTags \u003d results\n\tsystem.perspective.sendMessage(\u0027updateTagFilter\u0027)",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "stageTags",
+          "pageScope": true,
+          "script": "\ttagList \u003d self.view.custom.filteredTagList\n\twriteTags \u003d self.view.custom.writeTags\n\tfor eachTag in tagList:\n\t\toList \u003d {}\n\t\t\n\t\tif eachTag[\"newEngUnit\"] !\u003d \u0027\u0027 or eachTag[\"newFormatString\"] !\u003d \u0027\u0027:\n\t\t\ttheIndex \u003d 0\n\t\t\tfor eachStage in writeTags:\n\t\t\t\tif eachStage[\u0027label\u0027] \u003d\u003d eachTag[\u0027label\u0027]:\n\t\t\t\t\twriteTags.pop(theIndex)\n\t\t\t\t\ttheIndex +\u003d 1\n\t\t\t\t\t\n\t\t\t\n\t\t\toList[\"label\"] \u003d eachTag[\u0027label\u0027]\n\t\t\toList[\"tagType\"] \u003d eachTag[\u0027tagType\u0027]\n\t\t\toList[\"engUnit\"] \u003d eachTag[\u0027engUnit\u0027]\n\t\t\toList[\"formatString\"] \u003d eachTag[\u0027formatString\u0027]\n\t\t\toList[\"newEngUnit\"] \u003d eachTag[\u0027newEngUnit\u0027]\n\t\t\toList[\"newFormatString\"] \u003d eachTag[\u0027newFormatString\u0027]\n\t\t\t\n\t\t\ttry:\n\t\t\t\toList[\"valueSource\"] \u003d eachTag[\u0027valueSource\u0027]\n\t\t\texcept:\n\t\t\t\toList[\"valueSource\"] \u003d \u0027\u0027\n\t\t\t\n\t\t\twriteTags.append(oList)\n\t\t\t\n\t\t\n\tsortedTags \u003d sorted(writeTags,key\u003dlambda k: k.get(\u0027value\u0027))\n\tself.view.custom.writeTags \u003d sortedTags",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "writeChanges",
+          "pageScope": true,
+          "script": "\tchangesStaged \u003d self.view.custom.writeTags\n\tnewStageTags \u003d []\n\tchangesMade \u003d self.view.custom.changesMade\n\tprovider \u003d self.view.custom.provider\n\tudtPath \u003d self.view.custom.selectedUDTType\n\t\n\tfor eachChange in changesStaged:\n\t\toList \u003d {}\n\t\ttagPath \u003d provider+\"_types_/\"+udtPath+eachChange[\"label\"].replace(\"{...}\",\"\")\n\t\tsplitName \u003d tagPath.rsplit(\"/\",1)\n\t\t\n\t\t#first do engUnit\n\t\tif eachChange[\"newEngUnit\"] !\u003d \"\":\n\t\t\tnewEngUnit \u003d {\"name\":splitName[1],\"engUnit\":eachChange[\"newEngUnit\"]}\n\t\t\tresultUnit \u003d system.tag.configure(splitName[0], newEngUnit,\"m\")\n\t\t\toList[\u0027newEngUnit\u0027] \u003d eachChange[\u0027newEngUnit\u0027]\n\t\telse:\n\t\t\tresultUnit \u003d [\"\"]\n\t\t\n\t\t#second do formatString\n\t\tif eachChange[\"newFormatString\"] !\u003d \"\":\n\t\t\tnewformatString \u003d {\"name\":splitName[1],\"formatString\":eachChange[\"newFormatString\"]}\n\t\t\tresultFormatString \u003d system.tag.configure(splitName[0], newformatString,\"m\")\n\t\t\toList[\u0027newFormatString\u0027] \u003d eachChange[\u0027newFormatString\u0027]\n\t\telse:\n\t\t\tresultFormatString \u003d [\"\"]\n\t\t\t\n\t\toList[\u0027label\u0027] \u003d tagPath\n\t\toList[\u0027engUnit\u0027] \u003d eachChange[\u0027engUnit\u0027]\n\t\toList[\u0027formatString\u0027] \u003d eachChange[\u0027formatString\u0027]\n\n\t\toList[\u0027resultUnit\u0027] \u003d resultUnit[0]\n\t\toList[\u0027resultFormatString\u0027] \u003d resultFormatString[0]\n\t\t\n\t\tchangesMade.append(oList)\n\t\t\n\tself.view.custom.writeReset \u003d 0\n\tsystem.perspective.sendMessage(\u0027getUDTTags\u0027)\n\tself.view.custom.writeTags \u003d []",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "clearAll",
+          "pageScope": true,
+          "script": "\tself.view.custom.UDTTags \u003d []\n\tself.view.custom.writeTags \u003d []\n\tself.view.custom.tagList \u003d []\n\tself.view.custom.filteredTagList \u003d []\n\tself.view.custom.UDTInstance \u003d None\n\tself.view.custom.theFilter \u003d \"\"\n\tself.view.custom.instanceFilter \u003d \"\"\n\tself.view.custom.tagFilter \u003d \"\"\n\tself.view.custom.filteredUDTTypes \u003d []\n\tself.view.custom.writeReset \u003d 0\n\tself.view.custom.filteredUDTInstances \u003d []\n\tself.view.custom.changesStaged \u003d []\n\tself.view.custom.provider \u003d \"\"\n\tself.view.custom.selectedUDTType \u003d \"\"\n\tself.view.custom.firstInstance \u003d \"\"\n#\tself.view.custom.changesMade \u003d []",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "exportChanges",
+          "pageScope": true,
+          "script": "\timport datetime\n\t\n\tfileName \u003d \u0027ChangesMade_\u0027+datetime.datetime.now().strftime(\u0027%Y%m%dT%H%M%S\u0027) + \u0027.csv\u0027\n\tallChanges \u003d self.view.custom.changesMade\n\t\n\tchangeHeaders \u003d [\n\t\t\u0027tagPath\u0027,\n\t\t\u0027historyValues\u0027,\n\t\t\u0027oldValue\u0027,\n\t\t\u0027newValue\u0027,\n\t\t\u0027result\u0027]\n\tchangeData \u003d []\n\t\n\tfor eachChange in allChanges:\n\t\tchangeData.append([\n\t\t\tstr(eachChange[\u0027label\u0027]),\n\t\t\tstr(eachChange[\u0027historyValueString\u0027]),\n\t\t\tstr(eachChange[\u0027oldValue\u0027]),\n\t\t\tstr(eachChange[\u0027newValue\u0027]),\n\t\t\tstr(eachChange[\u0027result\u0027])\n\t\t\t])\n\t\n\tchangeDataset \u003d system.dataset.toDataSet(changeHeaders, changeData)\n#\ttheExportData \u003d system.dataset.toCSV(changeDataset, forExport \u003d True)\n\ttheExportData \u003d system.dataset.toCSV(changeDataset)\n\tsystem.perspective.download(fileName, theExportData, contentType \u003d \"text/csv; charset\u003dutf-8\")\n\tself.view.custom.changesMade \u003d []",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "clearwriteTags",
+          "pageScope": true,
+          "script": "\tself.view.custom.writeTags \u003d []",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "getUDTTypes",
+          "pageScope": true,
+          "script": "\ttry:\n\t\tprovider \u003d self.view.custom.provider.strip(\u0027[]\u0027)\n\texcept:\n\t\treturn\n\tquery \u003d {\n\t  \"options\": {\n\t    \"includeUdtMembers\": False,\n\t    \"includeUdtDefinitions\": True\n\t  },\n\t  \"condition\": {\n\t    \"tagType\": \"UdtType\",\n\t    \"attributes\": {\n\t      \"values\": [],\n\t      \"requireAll\": True\n\t    }\n\t  },\n\t  \"returnProperties\": [\n\t    \"tagType\",\n\t    \"quality\"\n\t  ]\n\t}\n\tresults \u003d system.tag.query(provider, query)\n\t\n\tUDTList \u003d []\n\tfor result in results:\n\t\n\t\tdList \u003d {}\n\t\tfullPath \u003d str(result[\u0027fullPath\u0027]).replace(\"[\"+provider+\"]_types_/\",\"\")\n\t\t\n\t\tdList[\"label\"] \u003d fullPath\n\t\tdList[\"data\"] \u003d fullPath\n\t\tdList[\"expanded\"] \u003d False\n\t\tdList[\"items\"] \u003d []\n\t\t\n\t\tUDTList.append(dList)\n\t\n\tself.view.custom.allUDTTypes \u003d UDTList\n\tsystem.perspective.sendMessage(\u0027updateUDTFilter\u0027)",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "getInstances",
+          "pageScope": true,
+          "script": "\ttry:\n\t\tprovider \u003d self.view.custom.provider.strip(\u0027[]\u0027)\n\t\tselectedUDTType \u003d self.view.custom.selectedUDTType\n\texcept:\n\t\treturn\n\t\n#\tlimit \u003d 100\n\t\n\tquery \u003d {\n\t  \"options\": {\n\t    \"includeUdtMembers\": False,\n\t    \"includeUdtDefinitions\": False\n\t  },\n\t  \"condition\": {\n\t    \"hierarchy\": {\n\t      \"typeId\": selectedUDTType,\n\t      \"relationship\": \"SubType\"\n\t    },\n\t    \"tagType\": \"UdtInstance\",\n\t    \"attributes\": {\n\t      \"values\": [],\n\t      \"requireAll\": True\n\t    }\n\t  },\n\t  \"returnProperties\": [\n\t\t\"tagType\",\n\t    \"quality\"\n\t  ]\n\t}\n\t\n\t# Limited to 100 rows. Use continuationPoint functionality to continue from last result, \n\t# or remove limit for full results.\n\tresults \u003d system.tag.query(provider, query)\n\t\n\tinstanceList \u003d []\n\tfor result in results:\n\t\toList \u003d {}\n\t\t\n\t\toList[\"label\"] \u003d result[\u0027fullPath\u0027]\n\t\toList[\"selected\"] \u003d True\n\t\t\n\t\tinstanceList.append(oList)\n\t\t\n\tsortedTags \u003d sorted(instanceList,key\u003dlambda k: k.get(\u0027label\u0027))\n\tself.view.custom.allUDTInstances \u003d sortedTags\n\ttry:\n\t\tself.view.custom.firstInstance \u003d sortedTags[0][\u0027label\u0027]\n\t\tsystem.perspective.sendMessage(\u0027updateInstanceFilter\u0027)\n\t\tsystem.perspective.sendMessage(\u0027getUDTTags\u0027)\n\texcept:\n\t\treturn\n",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "updateUDTFilter",
+          "pageScope": true,
+          "script": "\tallUDTList \u003d self.view.custom.allUDTTypes\n\ttheFilter \u003d self.view.custom.theFilter\n#\tself.view.custom.notificationLabel \u003d theFilter\n\t\n\tfilteredUDTList \u003d []\n\tfor result in allUDTList:\n\t\tif theFilter.lower() in str(result[\u0027label\u0027]).lower():\n\t\t\tfilteredUDTList.append(result)\n#\t\telse:\n#\t\t\tfilteredUDTList.append(result[\u0027label\u0027])\n\t\n\tself.view.custom.filteredUDTTypes \u003d filteredUDTList\n#\tself.view.custom.firstInstance \u003d filteredUDTList[0][\u0027label\u0027]",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "selectInstances",
+          "pageScope": true,
+          "script": "\tselectAll \u003d payload[\u0027selection\u0027]\n\tinstances \u003d self.view.custom.filteredUDTInstances\n\t\n\tnewInstances \u003d []\n\tfor each in instances:\n\t\toList \u003d {}\n\t\t\n\t\toList[\"label\"] \u003d each[\u0027label\u0027]\n\t\toList[\"selected\"] \u003d selectAll\n\t\t\n\t\tnewInstances.append(oList)\n\t\n\tself.view.custom.filteredUDTInstances \u003d newInstances",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "updateInstanceFilter",
+          "pageScope": true,
+          "script": "\tallInstances \u003d self.view.custom.allUDTInstances\n\ttheFilter \u003d self.view.custom.instanceFilter\n#\tself.view.custom.notificationLabel \u003d theFilter\n\t\n\tfilteredUDTInstances \u003d []\n\tfor result in allInstances:\n\t\tif theFilter.lower() in str(result[\u0027label\u0027]).lower():\n\t\t\tfilteredUDTInstances.append(result)\n#\t\telse:\n#\t\t\tfilteredUDTList.append(result[\u0027label\u0027])\n\t\n\tself.view.custom.filteredUDTInstances \u003d filteredUDTInstances\n#\tself.view.custom.firstInstance \u003d filteredUDTList[0][\u0027label\u0027]",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "stageAllChanges",
+          "pageScope": true,
+          "script": "\tprovider \u003d self.view.custom.provider\n\tallUDTInstances \u003d self.view.custom.filteredUDTInstances\n\twriteTags \u003d self.view.custom.writeTags\n\tnewStageTags \u003d []\n\tchangesStaged \u003d self.view.custom.changesStaged\n\t\n\tfor eachInstance in allUDTInstances:\n\t\tif eachInstance[\u0027selected\u0027]:\n\t\t\tfor eachTag in writeTags:\n\t\t\t\toList \u003d {}\n\t\t\t\tnewList \u003d {}\n\t\t\t\ttry:\n\t\t\t\t\tsplitPath \u003d eachInstance[\u0027label\u0027].split(\"]\",1)[1]\n\t\t\t\texcept:\n\t\t\t\t\tsplitPath \u003d eachInstance[\u0027label\u0027]\n\t\t\t\t\n\t\t\t\ttagPath \u003d provider + str(splitPath) + eachTag[\u0027label\u0027].replace(\u0027{...}\u0027,\u0027\u0027)\n\t\t\t\teachOldValue \u003d system.tag.readBlocking([tagPath])[0]\n\t\t\t\teachHistoryValue \u003d system.tag.queryTagHistory([tagPath], system.date.addDays(system.date.now(), -180), system.date.now())\n\t\t\t\thistoryString \u003d \u0027\u0027\n\t\t\t\tlastHistory \u003d \"\"\n\t\t\t\tfor row in range(eachHistoryValue.getRowCount()):\n\t\t\t\t\tif str(eachHistoryValue.getValueAt(row, 1)) !\u003d lastHistory:\n\t\t\t\t\t\thistoryString +\u003d str(eachHistoryValue.getValueAt(row, 1)) + \u0027, \u0027\n\t\t\t\t\tlastHistory \u003d str(eachHistoryValue.getValueAt(row, 1))\n\t\t\t\t\n\t\t\t\t\n\t\t\t\toList[\u0027label\u0027] \u003d tagPath\n\t\t\t\toList[\u0027oldValue\u0027] \u003d eachOldValue\n\t\t\t\toList[\u0027newValue\u0027] \u003d eachTag[\u0027newValue\u0027]\n\t\t\t\toList[\u0027historyValue\u0027] \u003d eachHistoryValue\n\t\t\t\toList[\u0027historyValueString\u0027] \u003d str(historyString.strip(\u0027, \u0027))\n\t\t\t\t\n#\t\t\t\tresult \u003d system.tag.writeBlocking([tagPath], eachTag[\u0027newValue\u0027])\n#\t\t\t\toList[\u0027result\u0027] \u003d result[0]\n\t\t\t\t\n\t\t\t\tchangesStaged.append(oList)\n\t\t\t\t\n\t\t\t\t#if oList[\u0027result\u0027] \u003d\u003d \"Good\":\n#\t\t\t\tnewList[\u0027oldValue\u0027] \u003d eachTag[\u0027newValue\u0027]\n#\t\t\t\t\n#\t\t\t\tnewList[\u0027label\u0027] \u003d eachTag[\u0027label\u0027]\n#\t\t\t\tnewList[\u0027newValue\u0027] \u003d eachTag[\u0027newValue\u0027]\n#\t\t\t\tnewList[\u0027tagType\u0027] \u003d eachTag[\u0027tagType\u0027]\n#\t\t\t\tnewList[\u0027valueSource\u0027] \u003d eachTag[\u0027valueSource\u0027]\n#\t\t\t\t\n#\t\t\t\tnewStageTags.append(newList)\n\t\n#\tself.view.custom.writeTags \u003d newStageTags\n#\tself.view.custom.writeReset \u003d 0\n\tsystem.perspective.sendMessage(\u0027getUDTTags\u0027)",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "clearStageTags",
+          "pageScope": true,
+          "script": "\tself.view.custom.changesStaged \u003d []",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "exportStagedChanges",
+          "pageScope": true,
+          "script": "\timport datetime\n\t\t\n\tfileName \u003d \u0027Staged_Changes_Report_\u0027+datetime.datetime.now().strftime(\u0027%Y%m%dT%H%M%S\u0027) + \u0027.csv\u0027\n\tallChanges \u003d self.view.custom.changesStaged\n\t\n\tchangeHeaders \u003d [\n\t\t\u0027tagPath\u0027,\n\t\t\u0027historyValues\u0027,\n\t\t\u0027currentValue\u0027,\n\t\t\u0027newValue\u0027]\n\tchangeData \u003d []\n\t\n\tfor eachChange in allChanges:\n\t\tchangeData.append([\n\t\t\tstr(eachChange[\u0027label\u0027]),\n\t\t\tstr(eachChange[\u0027historyValueString\u0027]),\n\t\t\tstr(eachChange[\u0027oldValue\u0027]),\n\t\t\tstr(eachChange[\u0027newValue\u0027])\n\t\t\t])\n\t\n\tchangeDataset \u003d system.dataset.toDataSet(changeHeaders, changeData)\n#\ttheExportData \u003d system.dataset.toCSV(changeDataset, forExport \u003d True)\n\ttheExportData \u003d system.dataset.toCSV(changeDataset)\n\tsystem.perspective.download(fileName, theExportData, contentType \u003d \"text/csv; charset\u003dutf-8\")\n#\tself.custom.changesMade \u003d []",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "updateTagFilter",
+          "pageScope": true,
+          "script": "\tallTagList \u003d self.view.custom.tagList\n\ttagFilter \u003d self.view.custom.tagFilter\n#\tself.view.custom.notificationLabel \u003d theFilter\n\t\n\tfilteredTagList \u003d []\n\tfor result in allTagList:\n\t\tif tagFilter.lower() in str(result[\u0027label\u0027]).lower():\n\t\t\tfilteredTagList.append(result)\n#\t\telse:\n#\t\t\tfilteredUDTList.append(result[\u0027label\u0027])\n\t\n\tself.view.custom.filteredTagList \u003d filteredTagList\n#\tself.view.custom.firstInstance \u003d filteredUDTList[0][\u0027label\u0027]",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

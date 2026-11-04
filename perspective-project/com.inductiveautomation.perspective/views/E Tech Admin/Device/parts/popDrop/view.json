@@ -1,0 +1,87 @@
+{
+  "custom": {},
+  "params": {
+    "column": "",
+    "row": "",
+    "value": ""
+  },
+  "propConfig": {
+    "params.column": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.row": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 28,
+      "width": 187
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tpayload \u003d {\u0027Row\u0027:self.view.params.row, \u0027Column\u0027:self.view.params.column, \u0027Value\u0027:self.view.params.value}\n\tsystem.perspective.sendMessage(\u0027UpdateDeviceAddList\u0027, payload\u003dpayload, scope\u003d\u0027page\u0027)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Dropdown"
+        },
+        "position": {
+          "basis": "36px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "options": [
+            {
+              "label": "ModbusTcp",
+              "value": "ModbusTcp"
+            },
+            {
+              "label": "LogixDriver",
+              "value": "LogixDriver"
+            }
+          ],
+          "style": {
+            "backgroundColor": "#FFFFFF00",
+            "borderStyle": "none"
+          }
+        },
+        "type": "ia.input.dropdown"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

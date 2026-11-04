@@ -1,0 +1,245 @@
+{
+  "custom": {},
+  "params": {
+    "historyValueString": "",
+    "label": "",
+    "newValue": "",
+    "oldValue": "",
+    "valueSource": "New Value"
+  },
+  "propConfig": {
+    "params.historyValueString": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.newValue": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.oldValue": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.valueSource": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 32,
+      "width": 913
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.label"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflowX": "auto"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField"
+        },
+        "position": {
+          "basis": "25%",
+          "display": false
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "newValue"
+        },
+        "position": {
+          "display": false
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.newValue"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "paddingLeft": "0.5em",
+            "paddingRight": "0.5em",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "History"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.historyValueString"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflowX": "auto",
+            "paddingLeft": "0.5em",
+            "paddingRight": "0.5em",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Pipe"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "paddingLeft": "0.5em",
+            "paddingRight": "0.5em",
+            "textAlign": "center"
+          },
+          "text": "|"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "currentValue"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.oldValue"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "paddingLeft": "0.5em",
+            "paddingRight": "0.5em",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Arrow"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "paddingLeft": "0.5em",
+            "paddingRight": "0.5em",
+            "textAlign": "center"
+          },
+          "text": "\u003d\u003d\u003e"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "new"
+        },
+        "position": {
+          "basis": "5em",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.placeholder": {
+            "binding": {
+              "config": {
+                "path": "view.params.valueSource"
+              },
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.newValue"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.text-field"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "justify": "space-between",
+      "style": {
+        "borderBottomColor": "#969696",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "1px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

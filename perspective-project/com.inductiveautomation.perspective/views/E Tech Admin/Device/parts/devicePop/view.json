@@ -1,0 +1,1186 @@
+{
+  "custom": {
+    "data": {}
+  },
+  "params": {
+    "Script_Project": "Scripts",
+    "Server": "",
+    "rowData": {}
+  },
+  "propConfig": {
+    "custom.data": {
+      "binding": {
+        "config": {
+          "path": "view.params.rowData"
+        },
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "params.Script_Project": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Server": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.rowData": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 760,
+      "width": 561
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Markdown"
+                    },
+                    "position": {
+                      "basis": "100%",
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.source": {
+                        "binding": {
+                          "config": {
+                            "expression": "\"Name: \" + {view.custom.data.NAME} + \"\\n\\n\" +\r\n\"Enabled: \" + toBoolean({view.custom.data.ENABLED}) + \"\\n\\n\" + \r\n\"Status: \" + {view.custom.data.STATE} + \"\\n\\n\" + \r\n\"Description: \" + {view.custom.data.DESCRIPTION}"
+                          },
+                          "overlayOptOut": true,
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "borderStyle": "ridge",
+                        "fontWeight": "bold",
+                        "margin": 5,
+                        "padding": 5,
+                        "textAlign": "Left",
+                        "textShadow": "#AAAAAA 5px 5px 5px"
+                      }
+                    },
+                    "type": "ia.display.markdown"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "justify": "center"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "custom": {
+                      "state": true
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\n\tdevice \u003d self.view.custom.data.NAME\n\tcurrentlyEnabled \u003d self.view.custom.data.ENABLED\n\tselectedServer \u003d self.view.params.Server\n\tscriptProject \u003d self.view.params.Script_Project\n\tif selectedServer not in [\u0027\u0027,None]:\n\t\tif selectedServer \u003d\u003d system.tag.readBlocking(\u0027[System]Gateway/SystemName\u0027)[0].value:\n\t\t\tdata \u003d system.util.sendRequest(project\u003dscriptProject, messageHandler\u003d\u0027RCEnableDevices\u0027, payload\u003d{\u0027data\u0027:{device:not currentlyEnabled}})\n\t\telse:\n\t\t\tdata \u003d system.util.sendRequest(project\u003dscriptProject, messageHandler\u003d\u0027RCEnableDevices\u0027, payload\u003d{\u0027data\u0027:{device:not currentlyEnabled}}, remoteServer\u003dselectedServer)\n#\t\treturn data"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Button_0"
+                    },
+                    "position": {
+                      "basis": "34px"
+                    },
+                    "props": {
+                      "primary": false,
+                      "text": "Disable/Enable"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tpayload \u003d {\u0027Hostname\u0027:self.view.custom.data.HOSTNAME,\u0027Port\u0027:502}\n\tselectedServer \u003d self.view.params.Server\n\tscriptProject \u003d self.view.params.Script_Project\n\tif selectedServer not in [\u0027\u0027,None]:\n\t\tif selectedServer \u003d\u003d system.tag.readBlocking(\u0027[System]Gateway/SystemName\u0027)[0].value:\n\t\t\tdata \u003d system.util.sendRequest(project\u003dscriptProject, messageHandler\u003d\u0027RCPingPort\u0027, payload\u003dpayload)\n\t\telse:\n\t\t\tdata \u003d system.util.sendRequest(project\u003dscriptProject, messageHandler\u003d\u0027RCPingPort\u0027, payload\u003dpayload, remoteServer\u003dselectedServer)\n\t\treturn data\n\t"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Button"
+                    },
+                    "props": {
+                      "primary": false,
+                      "text": "Ping Modbus Port From Gateway(502)"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tpayload \u003d {\u0027Hostname\u0027:self.view.custom.data.HOSTNAME,\u0027Port\u0027:44818}#self.view.custom.data.PORT}\n\tselectedServer \u003d self.view.params.Server\n\tscriptProject \u003d self.view.params.Script_Project\n\tif selectedServer not in [\u0027\u0027,None]:\n\t\tif selectedServer \u003d\u003d system.tag.readBlocking(\u0027[System]Gateway/SystemName\u0027)[0].value:\n\t\t\tdata \u003d system.util.sendRequest(project\u003dscriptProject, messageHandler\u003d\u0027RCPingPort\u0027, payload\u003dpayload)\n\t\telse:\n\t\t\tdata \u003d system.util.sendRequest(project\u003dscriptProject, messageHandler\u003d\u0027RCPingPort\u0027, payload\u003dpayload, remoteServer\u003dselectedServer)\n\t\treturn data"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Button_1"
+                    },
+                    "props": {
+                      "primary": false,
+                      "text": "Ping Allen-Bradley From Gateway(44818)"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "meta": {
+                      "name": "Markdown"
+                    },
+                    "props": {
+                      "source": "",
+                      "style": {
+                        "fontWeight": "bold",
+                        "overflow": "hidden",
+                        "padding": 10,
+                        "textAlign": "center",
+                        "textShadow": "#AAAAAA 5px 5px 5px"
+                      }
+                    },
+                    "type": "ia.display.markdown"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer_0"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "alignContent": "space-around",
+                  "direction": "column",
+                  "justify": "space-between",
+                  "style": {
+                    "borderStyle": "ridge",
+                    "padding": 10
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_0"
+            },
+            "position": {
+              "basis": "100%",
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_1"
+        },
+        "position": {
+          "basis": "148px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "margin": 5
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "{view.custom.key[0]}"
+                              },
+                              "transforms": [
+                                {
+                                  "code": "\treturn value[self.parent.meta.name]",
+                                  "type": "script"
+                                }
+                              ],
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "DEVICESETTINGSID"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "display": false,
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "HOSTNAME"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "PORT"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "LOCALADDRESS"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "COMMUNICATIONTIMEOUT"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "CONCURRENTREQUESTS"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "MAXHOLDINGREGISTERSPERREQUEST"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "MAXINPUTREGISTERSPERREQUEST"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "MAXCOILSPERREQUEST"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "MAXDISCRETEINPUTSPERREQUEST"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "REVERSEWORDORDER"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "ZEROBASEDADDRESSING2"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "ZEROBASEDADDRESSING"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "SPANGAPS"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.meta.name"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": 10,
+                            "fontWeight": "bold"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "40%",
+                          "shrink": 2
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "property(\u0027view.custom.data.\u0027+{parent.meta.name})"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "custom": {
+                      "key": "value"
+                    },
+                    "meta": {
+                      "name": "WRITEMULTIPLEREGISTERSREQUESTALLOWED"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "basis": "100%"
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "borderStyle": "inset",
+                "margin": 10
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "346.2px",
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "borderStyle": "inset",
+            "margin": 5
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

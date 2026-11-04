@@ -1,0 +1,229 @@
+{
+  "custom": {
+    "oneShotRefresh": 0,
+    "output": "",
+    "provider": "",
+    "providerSelection": [
+      {
+        "label": "[MQTT Engine]",
+        "value": "[MQTT Engine]"
+      },
+      {
+        "label": "[System]",
+        "value": "[System]"
+      },
+      {
+        "label": "[default]",
+        "value": "[default]"
+      },
+      {
+        "label": "[nvd_io01]",
+        "value": "[nvd_io01]"
+      },
+      {
+        "label": "[nvd_io02]",
+        "value": "[nvd_io02]"
+      }
+    ]
+  },
+  "params": {},
+  "propConfig": {
+    "custom.oneShotRefresh": {
+      "persistent": true
+    },
+    "custom.output": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1075,
+      "width": 1819
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "NPS"
+            },
+            "position": {
+              "tabIndex": 2
+            },
+            "props": {
+              "path": "E Tech Admin/Setpoint_Bulk_Change/Main"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Tags"
+            },
+            "position": {
+              "tabIndex": 1
+            },
+            "props": {
+              "path": "E Tech Admin/Tags/Main"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Backup"
+            },
+            "props": {
+              "path": "E Tech Admin/Export Backup/Main",
+              "style": {
+                "marginBottom": "20%",
+                "marginLeft": "30%",
+                "marginRight": "30%"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "UDTAudit"
+            },
+            "position": {
+              "tabIndex": 3
+            },
+            "props": {
+              "path": "E Tech Admin/UDT_Audit/Main"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "engUnits"
+            },
+            "position": {
+              "tabIndex": 4
+            },
+            "props": {
+              "path": "E Tech Admin/engUnits/Main"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "IPAudit"
+            },
+            "position": {
+              "tabIndex": 6
+            },
+            "props": {
+              "path": "E Tech Admin/IP_Audit/IP_Audit_1v0"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Device"
+            },
+            "position": {
+              "tabIndex": 7
+            },
+            "props": {
+              "path": "E Tech Admin/Device/Main"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "TabContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "currentTabIndex": 2,
+          "menuType": "modern",
+          "style": {
+            "backgroundColor": "#D7D7D7"
+          },
+          "tabStyle": {
+            "disabled": {
+              "display": "none"
+            }
+          },
+          "tabs": [
+            {
+              "disabled": false,
+              "text": "Export"
+            },
+            {
+              "disabled": true,
+              "text": "Tags"
+            },
+            {
+              "disabled": false,
+              "text": "Setpoint"
+            },
+            {
+              "disabled": false,
+              "text": "UDT Audit"
+            },
+            {
+              "disabled": false,
+              "text": "engUnit"
+            },
+            {
+              "disabled": true,
+              "text": "Standby"
+            },
+            {
+              "disabled": true,
+              "text": "IP Audit"
+            },
+            {
+              "disabled": false,
+              "text": "GWY Devices"
+            }
+          ]
+        },
+        "type": "ia.container.tab"
+      }
+    ],
+    "events": {
+      "system": {
+        "onStartup": {
+          "config": {
+            "script": "\tself.view.custom.output \u003d \"\"\n\tself.session.custom.pageTitle \u003d \"Admin Tools\"\n#\tsystem.perspective.sendMessage(\u0027refreshProviders\u0027)\n#\tsystem.perspective.sendMessage(\u0027executeOneShotTagGroup\u0027)"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "refreshProviders",
+          "pageScope": true,
+          "script": "\tsvc \u003d self.view.custom\n\t\n\ttry:\n\t\ttags\u003dsystem.tag.browse(filter\u003d{\"tagType\":\"Provider\"}).results\n\t\t\n\t\tproviderList \u003d []\n\t\tfor result in tags:\n\t\t\toList \u003d {}\n\t\t\t\n\t\t\tprovider \u003d str(result[\u0027fullPath\u0027])\n\t\t\toList[\"value\"] \u003d provider\n\t\t\toList[\"label\"] \u003d provider\n\t\t\t\n\t\t\tproviderList.append(oList)\n\t\t\n\t\tsortedProvider \u003d sorted(providerList,key\u003dlambda k: k.get(\u0027value\u0027))\n\t\tsvc.providerSelection \u003d sortedProvider\n\t\tsvc.provider \u003d \"\"\n\n\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Providers Refreshed!\"\n\texcept:\n\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Error: Cannot find any tag providers\"\n\t\tsystem.util.audit(\u0027exportBackup\u0027,\u0027Provider Refrsh\u0027,\"Error: Cannot find any tag providers\")",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "executeOneShotTagGroup",
+          "pageScope": true,
+          "script": "#\tsystem.perspective.sendMessage(\u0027refreshProviders\u0027)\n\tsystem.tag.requestGroupExecution(self.view.custom.provider.strip(\"[]\"), \"OneShot\")\n\tself.view.custom.oneShotRefresh \u003d 0",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

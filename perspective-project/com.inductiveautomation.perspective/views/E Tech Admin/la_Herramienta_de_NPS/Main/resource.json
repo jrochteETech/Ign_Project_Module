@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "# Jacob D. Rochte\n1v0: 28-May-2024\nFirst working tool.\n\n1v1: 30-May-2024\nUpdated look and feel of the buttons and main screen. Added Split containers for user configuration.\n\n1v2: 19-Jun-2024\nRedesigned to search for UDT Types and write to all instances of that type. Added ability to select which instances to write.\n\n1v3: 20-Jun-2024\nAdded 180 days of history for each tag based on customer feedback.\n\n",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModificationSignature": "9c654487e1825132d528b9ff703f96fdd9152261d0207a287274b48bc23c0f86",
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2026-08-14T22:19:54Z"
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "custom": {},
+  "params": {
+    "Script_Project": "Scripts",
+    "rowData": {
+      "DEVICESETTINGSID": 0,
+      "NAME": "Device",
+      "ProjectName": "Project",
+      "Server": "Server",
+      "State": "Connecting"
+    },
+    "selected_Server": "Server"
+  },
+  "propConfig": {
+    "params.Script_Project": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.rowData": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.selected_Server": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 24,
+      "width": 250
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "draggable": true,
+                "id": "6uPeSLlT",
+                "modal": false,
+                "overlayDismiss": false,
+                "resizable": false,
+                "showCloseIcon": true,
+                "title": "Device: {view.params.value}",
+                "type": "open",
+                "viewParams": {
+                  "Server": "{view.params.selected_Server}",
+                  "rowData": "{view.params.rowData}"
+                },
+                "viewPath": "E Tech Admin/Device/parts/devicePop",
+                "viewportBound": false
+              },
+              "scope": "C",
+              "type": "popup"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.image.icon.color": {
+            "binding": {
+              "config": {
+                "path": "view.params.rowData"
+              },
+              "transforms": [
+                {
+                  "code": "\tif \u0027State\u0027 in value:\n\t\tif value[\u0027State\u0027] in [\u0027Connecting\u0027,\u0027Disconnected\u0027]:\n\t\t\treturn \u0027#bdbdbd\u0027\n\t\telif value[\u0027State\u0027] in [\u0027Connected\u0027,\u0027Running\u0027]:\n\t\t\treturn \u0027#00ff00\u0027\n\t\telif value[\u0027State\u0027] \u003d\u003d \u0027N/A\u0027:\n\t\t\treturn \u0027#bdbdbd\u0027\n\t\telse:\n\t\t\treturn \u0027#ff0000\u0027\n\telse:\t\n\t\treturn \u0027#ff0000\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.image.icon.path": {
+            "binding": {
+              "config": {
+                "path": "view.params.rowData"
+              },
+              "transforms": [
+                {
+                  "code": "\tif \u0027State\u0027 in value:\n\t\tif value[\u0027State\u0027] in [\u0027Connecting\u0027,\u0027Disconnected\u0027]:\n\t\t\treturn \u0027material/wifi_off\u0027\n\t\telif value[\u0027State\u0027] in [\u0027Connected\u0027,\u0027Running\u0027]:\n\t\t\treturn \u0027material/wifi\u0027\n\t\telif value[\u0027State\u0027] \u003d\u003d \u0027N/A\u0027:\n\t\t\treturn \u0027material/toggle_off\u0027\n\t\telse:\n\t\t\treturn \u0027material/search_off\u0027\n\telse:\t\n\t\treturn \u0027material/search_off\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.rowData.NAME"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "image": {
+            "icon": {}
+          },
+          "primary": false
+        },
+        "type": "ia.input.button"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "margin": 4
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

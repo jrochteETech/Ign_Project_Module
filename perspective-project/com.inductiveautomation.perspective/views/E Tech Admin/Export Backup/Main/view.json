@@ -1,0 +1,569 @@
+{
+  "custom": {
+    "installLocation": "/usr/local/bin/ignition/",
+    "output": "\n\rExporting Wrapper Logs as MOD09__Logs_20260429T093012.zip\n\rExporting Instances as default__Instances_20260429T093044.json.zip",
+    "provider": "[default]",
+    "providerSelection": [
+      {
+        "label": "[MOD09]",
+        "value": "[MOD09]"
+      },
+      {
+        "label": "[MQTT Engine]",
+        "value": "[MQTT Engine]"
+      },
+      {
+        "label": "[MQTT Transmission]",
+        "value": "[MQTT Transmission]"
+      },
+      {
+        "label": "[System]",
+        "value": "[System]"
+      },
+      {
+        "label": "[default]",
+        "value": "[default]"
+      }
+    ]
+  },
+  "params": {
+    "isDocker": true
+  },
+  "propConfig": {
+    "custom.installLocation": {
+      "persistent": true
+    },
+    "custom.output": {
+      "persistent": true
+    },
+    "custom.provider": {
+      "persistent": true
+    },
+    "custom.providerSelection": {
+      "persistent": true
+    },
+    "params.isDocker": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 546,
+      "width": 760
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "fontSize": 24,
+            "fontWeight": "bold",
+            "margin": "5px",
+            "textAlign": "center"
+          },
+          "text": "Export Utility"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "SpaceLeft"
+            },
+            "position": {
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027exchange.ExportBackup.clearOutput\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Clear",
+              "tooltip": {
+                "enabled": true,
+                "text": "Clear Output"
+              }
+            },
+            "position": {
+              "basis": "4em",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/delete_sweep"
+                }
+              },
+              "primary": false,
+              "style": {
+                "margin": "5px",
+                "paddingTop": "2px"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "Dropdown"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.providerSelection"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.provider"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "placeholder": {
+                "text": "Select Provider to Export"
+              },
+              "style": {
+                "margin": "5px"
+              },
+              "textAlign": "center"
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027exchange.ExportBackup.refreshProviders\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "RefreshProviders",
+              "tooltip": {
+                "enabled": true,
+                "text": "Refresh Providers"
+              }
+            },
+            "position": {
+              "basis": "4em",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/refresh"
+                }
+              },
+              "primary": false,
+              "style": {
+                "margin": "5px",
+                "padding": "10px"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "SpaceRight"
+            },
+            "position": {
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Provider"
+        },
+        "position": {
+          "basis": "3em",
+          "shrink": 0
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "OutputArea"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.source": {
+            "binding": {
+              "config": {
+                "path": "view.custom.output"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#E5E5E5",
+            "borderBottomLeftRadius": "0.5em",
+            "borderBottomRightRadius": "0.5em",
+            "borderStyle": "inset",
+            "borderTopLeftRadius": "0.5em",
+            "borderTopRightRadius": "0.5em",
+            "borderWidth": "5px",
+            "margin": "5px",
+            "padding": "0.3em"
+          }
+        },
+        "type": "ia.display.markdown"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "draggable": true,
+                    "id": "5BtP4jKW",
+                    "modal": false,
+                    "overlayDismiss": true,
+                    "resizable": true,
+                    "showCloseIcon": true,
+                    "type": "open",
+                    "viewPath": "E Tech Admin/Export Backup/About",
+                    "viewportBound": false
+                  },
+                  "scope": "C",
+                  "type": "popup"
+                }
+              }
+            },
+            "meta": {
+              "name": "About",
+              "tooltip": {
+                "enabled": true,
+                "text": "About"
+              }
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/info"
+                }
+              },
+              "primary": false,
+              "style": {
+                "margin": "5px"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tpayload \u003d {\u0027udt\u0027:False}\n#\tsystem.perspective.sendMessage(\u0027exportTags\u0027, payload)\n\tsystem.perspective.sendMessage(\u0027exchange.ExportBackup.exportTagsZIP\u0027, payload)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ExportInstances"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "primary": false,
+              "style": {
+                "margin": "5px"
+              },
+              "text": "Export Instances"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tpayload \u003d {\u0027udt\u0027:True}\n#\tsystem.perspective.sendMessage(\u0027exportTags\u0027, payload)\n\tsystem.perspective.sendMessage(\u0027exchange.ExportBackup.exportTagsZIP\u0027, payload)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ExportUDT"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "primary": false,
+              "style": {
+                "margin": "5px"
+              },
+              "text": "Export UDTs"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027exchange.ExportBackup.exportProject\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ExportProject"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "primary": false,
+              "style": {
+                "margin": "5px"
+              },
+              "text": "Export Project"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027exchange.ExportBackup.exportGateway\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ExportGWY"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "primary": false,
+              "style": {
+                "margin": "5px"
+              },
+              "text": "Export Gateway"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027exchange.ExportBackup.exportLogs\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ExportLogs"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "!{view.params.isDocker}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "primary": false,
+              "style": {
+                "margin": "5px"
+              },
+              "text": "Export Logs"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027exchange.ExportBackup.exportAll\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ExportAll"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "margin": "5px"
+              },
+              "text": "Export All"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Buttons"
+        },
+        "position": {
+          "basis": "3em",
+          "shrink": 0
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "events": {
+      "system": {
+        "onStartup": {
+          "config": {
+            "script": "\t\"\"\" This script finds the local ignition install path. And refreshed the provider selection dropdown. \"\"\"\n\tfrom com.inductiveautomation.ignition.gateway import IgnitionGateway\n\tcontext \u003d IgnitionGateway.get()\n\tprojectParentFolder \u003d str(context.systemManager.dataDir.absoluteFile).replace(\u0027\\\\\u0027,\u0027/\u0027).replace(\u0027data\u0027,\u0027\u0027)\n\tself.view.custom.installLocation \u003d projectParentFolder\n\tself.view.custom.output +\u003d \u0027\\n\\r Install Location: \u0027 + projectParentFolder\n\t\n\tsystem.perspective.sendMessage(\u0027exchange.ExportBackup.refreshProviders\u0027)"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "exchange.ExportBackup.exportTags",
+          "pageScope": true,
+          "script": "\t\"\"\"\n\tThis handler exports both tag instances (along with the corresponding UDTs) or only the UDT definitions and download directly through the perspective session.\n\tNo file is saved to the local ignition server.\n\tThis handler is not used in the current configuration of the view.\n\t\"\"\"\t\n\timport datetime, time\n\t\n\t\"\"\" Initiate variables \"\"\"\n\ttheUser \u003d system.perspective.getSessionInfo()\n\toutput \u003d self.view.custom.output\n\ttheProviderName \u003d self.view.custom.provider\n\t\n\t\"\"\" Error if no provider selected. \"\"\"\n\tif theProviderName \u003d\u003d \"\":\n\t\toutput \u003d output + \u0027\\n\\r\u0027 + \"Select a Provider to export tags\"\n\t\treturn\n\t\n\t\"\"\" Export json or instances and UDTs or only UDTs \"\"\"\n\tif payload[\u0027udt\u0027]:\n\t\tfileName \u003d theProviderName.strip(\u0027[]\u0027) + \u0027__UDTs_\u0027 + datetime.datetime.now().strftime(\u0027%Y%m%dT%H%M%S\u0027) + \u0027.json\u0027\n\t\toutputMsg \u003d \u0027Exporting UDTs as \u0027 + fileName\n\t\toutput \u003d output + \u0027\\n\\r\u0027 + outputMsg\n\t\tsystem.util.audit(\u0027exportBackup\u0027,\u0027UDT Definitions\u0027,outputMsg)\n\t\t\n\t\tresult \u003d system.tag.exportTags(tagPaths \u003d [theProviderName+\u0027_types_\u0027])\n\t\tsystem.perspective.download(fileName, result)\n\telse:\n\t\tfileName \u003d theProviderName.strip(\u0027[]\u0027) + \u0027__Instances_\u0027 + datetime.datetime.now().strftime(\u0027%Y%m%dT%H%M%S\u0027) + \u0027.json\u0027   \n\t\toutputMsg \u003d \u0027Exporting Instances as \u0027 + fileName\n\t\tsystem.util.audit(\u0027exportBackup\u0027,\u0027Tag Instances\u0027,outputMsg)\n\t\toutput \u003d output + \u0027\\n\\r\u0027 + outputMsg\n\t\t\n\t\tresult \u003d system.tag.exportTags(tagPaths \u003d [theProviderName])\n\t\tsystem.perspective.download(fileName, result)",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "exchange.ExportBackup.refreshProviders",
+          "pageScope": true,
+          "script": "\t\"\"\" This handler queries the gateway and lists the providers available to take tag backups. It will update the dropdown menu at the top of the view. \"\"\"\n\tsvc \u003d self.view.custom\n\t\n\ttry:\n\t\ttags\u003dsystem.tag.browse(filter\u003d{\"tagType\":\"Provider\"}).results\n\t\t\n\t\tproviderList \u003d []\n\t\tfor result in tags:\n\t\t\toList \u003d {}\n\t\t\t\n\t\t\tprovider \u003d str(result[\u0027fullPath\u0027])\n\t\t\toList[\"value\"] \u003d provider\n\t\t\toList[\"label\"] \u003d provider\n\t\t\t\n\t\t\tproviderList.append(oList)\n\t\t\n\t\tsortedProvider \u003d sorted(providerList,key\u003dlambda k: k.get(\u0027value\u0027))\n\t\tsvc.providerSelection \u003d sortedProvider\n\t\tsvc.provider \u003d \"\"\n\n\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Providers Refreshed!\"\n\texcept:\n\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Error: Cannot find any tag providers\"\n\t\tsystem.util.audit(\u0027exportBackup\u0027,\u0027Provider Refrsh\u0027,\"Error: Cannot find any tag providers\")",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "exchange.ExportBackup.exportProject",
+          "pageScope": true,
+          "script": "\t\"\"\"\n\tThis handler creates a zip file of the current project saves it to the local ignition server.\n\tThe zip file is downloaded through the session and temporary files on the ignition server are deleted.\n\t\"\"\"\t\n\timport os, datetime, zipfile, time, platform, sys\n\t\n\t\"\"\" Initiate variables \"\"\"\n\tsvc \u003d self.view.custom\n\tprojectName \u003d system.util.getProjectName()\n\ttheZipFile \u003d projectName + \u0027__archive_\u0027 + datetime.datetime.now().strftime(\u0027%Y%m%dT%H%M%S\u0027) + \u0027.zip\u0027\n\toutputMsg \u003d \u0027Creating file for \\\u0027\u0027 + projectName + \u0027\\\u0027 as \u0027 + theZipFile + \u0027 (timeout in 60 sec)\u0027\n\tsvc.output \u003d svc.output + \u0027\\n\\r\u0027 + outputMsg \n\tsystem.util.audit(\u0027exchange.ExportBackup\u0027,\u0027Project\u0027,outputMsg)\n\tinstallLocation \u003d svc.installLocation\n\t\n\t\"\"\" Determine gateway operating system to get download path \"\"\"\n\tplatformStr \u003d str(platform.platform())\n\tif \u0027Linux\u0027 in platformStr:\n\t\tbaseDir \u003d installLocation\n\t\tdirPath \u003d installLocation + \u0027data/projects/\u0027 + projectName\n\t\t\n\t\twith zipfile.ZipFile(theZipFile, \u0027w\u0027, zipfile.ZIP_DEFLATED) as zipf:\n\t\t    lenDirPath \u003d len(dirPath) + 1\n\t\t    for root, dirs, files in os.walk(dirPath):\n\t\t        for fil in files:\n\t\t            filePath \u003d os.path.join(root, fil)\n\t\t            zipf.write(filePath, filePath[lenDirPath:])\n\telif \u0027Mac_OS\u0027 in platformStr:\n\t\tbaseDir \u003d installLocation\n\t\tdirPath \u003d installLocation + \u0027data/projects/\u0027 + projectName\n\t\t\n\t\twith zipfile.ZipFile(theZipFile, \u0027w\u0027, zipfile.ZIP_DEFLATED) as zipf:\n\t\t    lenDirPath \u003d len(dirPath) + 1\n\t\t    for root, dirs, files in os.walk(dirPath):\n\t\t        for fil in files:\n\t\t            filePath \u003d os.path.join(root, fil)\n\t\t            zipf.write(filePath, filePath[lenDirPath:])\n\telif \u0027Windows\u0027 in platformStr:\n\t\tbaseDir \u003d installLocation.replace(\u0027/\u0027,\u0027\\\\\u0027)\n\t\tdirPath \u003d baseDir + \u0027data\\\\projects\\\\\u0027 + projectName\n\t\t\n\t\twith zipfile.ZipFile(baseDir+theZipFile, \u0027w\u0027, zipfile.ZIP_DEFLATED) as zipf:\n\t\t    lenDirPath \u003d len(dirPath) + 1\n\t\t    for root, dirs, files in os.walk(dirPath):\n\t\t        for fil in files:\n\t\t            filePath \u003d os.path.join(root, fil)\n\t\t            zipf.write(filePath, filePath[lenDirPath:])\n\telse:\n\t\tsystem.util.audit(\u0027exchange.ExportBackup\u0027,\u0027Project\u0027,\u0027OS Error\u0027)\n\t\tsvc.output \u003d svc.output + \u0027\\n\\r\u0027 + \u0027OS Error\u0027\n\t\tsys.exit(1)\n\t\n\t\"\"\" Wait until all files are created to not error the download function, then download the file and remove it from the local server. \"\"\"\n\ttimeoutCatch \u003d 0\n\tcheckDone \u003d False\n\twhile timeoutCatch\u003c60 and not checkDone:\n\t\tif os.path.exists(baseDir+theZipFile):\n\t\t\ttheFile \u003d system.file.readFileAsBytes(baseDir+theZipFile)\n\t\t\tsystem.perspective.download(theZipFile, theFile)\n\t\t\t\n\t\t\tos.remove(baseDir+theZipFile)\n\t\t\tcheckDone \u003d True\n\t\ttimeoutCatch +\u003d 1\n\t\ttime.sleep(1)",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "exchange.ExportBackup.exportGateway",
+          "pageScope": true,
+          "script": "\t\"\"\"\n\tThis handler uses the shell command to create a gateway backup file and saves it to the local ignition server.\n\tThe file is downloaded through the session and temporary files on the ignition server are deleted.\n\t\"\"\"\t\n\timport datetime, time, os, platform, sys\n\t\n\t\"\"\" Initiate variables \"\"\"\n\tsvc \u003d self.view.custom\n\tprojectName \u003d system.util.getProjectName()\n\tfileName \u003d projectName +\u0027__GW_backup_\u0027 + datetime.datetime.now().strftime(\u0027%Y%m%dT%H%M%S\u0027)+\u0027.gwbk\u0027\n\toutputMsg \u003d \u0027Creating file as \u0027 + fileName + \u0027 (timeout in 60 sec)\u0027\n\tsvc.output +\u003d \u0027\\n\\r\u0027 + outputMsg\n\tsystem.util.audit(\u0027exchange.ExportBackup\u0027,\u0027Gateway\u0027,outputMsg)\n\tinstallLocation \u003d svc.installLocation\n\t\n\t\"\"\" Determine gateway operating system to get download path \"\"\"\n\tplatformStr \u003d str(platform.platform())\n\tif \u0027Linux\u0027 in platformStr:\n\t\tdirPath \u003d installLocation+fileName\n\t\tsystem.util.execute([installLocation+\u0027gwcmd.sh\u0027, \u0027-b\u0027, fileName])\n\telif \u0027Mac_OS\u0027 in platformStr:\n\t\tdirPath \u003d installLocation+fileName\n\t\tsystem.util.execute([installLocation+\u0027gwcmd.sh\u0027, \u0027-b\u0027, fileName])\n\telif \u0027Windows\u0027 in platformStr:\n\t\tdirPath \u003d installLocation.replace(\u0027/\u0027,\u0027\\\\\u0027)+fileName\n\t\tsystem.util.execute([installLocation.replace(\u0027/\u0027,\u0027\\\\\u0027)+\u0027gwcmd.bat\u0027, \u0027-b\u0027, dirPath])\n\telse:\n\t\tsystem.util.audit(\u0027exchange.ExportBackup\u0027,\u0027Project\u0027,\u0027OS Error\u0027)\n\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \u0027OS Error\u0027\n\t\tsys.exit(1)\n\t\n\t\"\"\" Wait until all files are created to not error the download function, then download the file and remove it from the local server. \"\"\"\n\ttimeoutCatch \u003d 0\n\tcheckDone \u003d False\n\twhile timeoutCatch\u003c60 and not checkDone:\n\t\tif os.path.exists(dirPath):\n\t\t\ttheFile \u003d system.file.readFileAsBytes(dirPath)\n\t\t\tsystem.perspective.download(fileName, theFile)\n\t\t\t\n\t\t\tos.remove(dirPath)\n\t\t\tcheckDone \u003d True\n\t\ttimeoutCatch +\u003d 1\n\t\ttime.sleep(1)",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "exchange.ExportBackup.originalAuthor",
+          "pageScope": true,
+          "script": "\t\"\"\" This handler is the creator of this resource and is just for fun! \"\"\"\n\treturn \u0027Jacob D. Rochte | jrochte@etechgroup.com | rochteja@gmail.com | :)\u0027",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "exchange.ExportBackup.clearOutput",
+          "pageScope": true,
+          "script": "\t\"\"\" This handler clears the output field for the user. \"\"\"\n\tself.view.custom.output \u003d \u0027\u0027",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "exchange.ExportBackup.exportAll",
+          "pageScope": true,
+          "script": "\t\"\"\"\n\tThis handler exports both tag instances (along with the corresponding UDTs), only the UDT definitions, the current project, and the gateway backup file to the local ignition server.\n\tIt then compresses all four files into a zip folder to save download data and space.\n\tThe zip file is downloaded through the session and temporary files on the ignition server are deleted.\n\t\"\"\"\t\n\timport os, datetime, zipfile, time, platform, sys\n\n\tdef getInstance(svc, thePlatform, baseDir, projectName, timeStamp, theProviderName):\n\t\t\"\"\" This internal function creates an export of all Tag instances (along with the corresponding UDTs) and saves it to the local ignition server to compress. \"\"\"\n\t\tif theProviderName \u003d\u003d \"\":\n\t\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Select a Provider to export tags\"\n\t\t\tsys.exit(1)\n\t\t\n\t\tfileName \u003d theProviderName.strip(\u0027[]\u0027) + \u0027__Instances_\u0027 + timeStamp + \u0027.json\u0027\n\t\toutputMsg \u003d \u0027Exporting Instances as \u0027 + fileName\n\t\tsystem.util.audit(\u0027exchange.ExportBackup\u0027,\u0027UDT Definitions\u0027,outputMsg)\n\t\t\n\t\tresult \u003d system.tag.exportTags(tagPaths \u003d [theProviderName])\n\t\tsystem.file.writeFile(baseDir+fileName, result)\n\t\t\n\t\treturn baseDir+fileName\n\n\tdef getUDT(svc, thePlatform, baseDir, projectName, timeStamp, theProviderName):\n\t\t\"\"\" This internal function creates an export of all UDT definitions and saves it to the local ignition server to compress. \"\"\"\n\t\tif theProviderName \u003d\u003d \"\":\n\t\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Select a Provider to export tags\"\n\t\t\tsys.exit(1)\n\t\t\n\t\tfileName \u003d theProviderName.strip(\u0027[]\u0027) + \u0027__UDTs_\u0027 + timeStamp + \u0027.json\u0027\n\t\toutputMsg \u003d \u0027Exporting UDTs as \u0027 + fileName\n\t\tsystem.util.audit(\u0027exchange.ExportBackup\u0027,\u0027UDT Definitions\u0027,outputMsg)\n\t\t\n\t\tresult \u003d system.tag.exportTags(tagPaths \u003d [theProviderName+\u0027_types_\u0027])\n\t\tsystem.file.writeFile(baseDir+fileName, result)\n\t\t\n\t\treturn baseDir+fileName\n\n\tdef getProject(svc, thePlatform, baseDir, projectName, timeStamp):\n\t\t\"\"\" This internal function creates a zip file of the current project saves it to the local ignition server to compress. \"\"\"\n\t\tfileName \u003d projectName + \u0027__export_\u0027 + timeStamp + \u0027.zip\u0027\n\t\t\n\t\toutputMsg \u003d \u0027Creating file for \\\u0027\u0027 + projectName + \u0027\\\u0027 as \u0027 + fileName + \u0027 (timeout in 60 sec)\u0027\n\t\tsystem.util.audit(\u0027exchange.ExportBackup\u0027,\u0027Project\u0027,outputMsg)\n\t\t\n\t\tif thePlatform \u003d\u003d \u0027Linux\u0027 or thePlatform \u003d\u003d \u0027Mac_OS\u0027:\n\t\t\t# Linux baseDir \u003d \u0027/usr/local/bin/ignition/\u0027\n\t\t\t# Mac_OS baseDir \u003d \u0027/usr/local/ignition/\u0027\n\t\t\tdirPath \u003d baseDir + \u0027data/projects/\u0027 + projectName\n\t\t\twith zipfile.ZipFile(fileName, \u0027w\u0027, zipfile.ZIP_DEFLATED) as zipf:\n\t\t\t    lenDirPath \u003d len(dirPath) + 1\n\t\t\t    for root, dirs, files in os.walk(dirPath):\n\t\t\t        for fil in files:\n\t\t\t            filePath \u003d os.path.join(root, fil)\n\t\t\t            zipf.write(filePath, filePath[lenDirPath:])\n\t\telif thePlatform \u003d\u003d \u0027Windows\u0027:\n\t\t\t# baseDir \u003d \u0027C:\\\\Program Files\\\\Inductive Automation\\\\Ignition\\\\data\\\\projects\\\\\u0027\n\t\t\tdirPath \u003d baseDir + \u0027data\\\\projects\\\\\u0027 + projectName\n\t\t\t\n\t\t\twith zipfile.ZipFile(baseDir+fileName, \u0027w\u0027, zipfile.ZIP_DEFLATED) as zipf:\n\t\t\t    lenDirPath \u003d len(dirPath) + 1\n\t\t\t    for root, dirs, files in os.walk(dirPath):\n\t\t\t        for fil in files:\n\t\t\t            filePath \u003d os.path.join(root, fil)\n\t\t\t            zipf.write(filePath, filePath[lenDirPath:])\n\t\telse:\n\t\t\tsystem.util.audit(\u0027exchange.ExportBackup\u0027,\u0027Project\u0027,\u0027OS Error\u0027)\n\t\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \u0027OS Error\u0027\n\t\t\tsys.exit(1)\n\t\t\n\t\treturn baseDir+fileName\n\n\tdef getGWBackup(svc, thePlatform, baseDir, projectName, timeStamp):\n\t\t\"\"\" This internal function uses the shell command to create a gateway backup and saves it to the local ignition server to compress. \"\"\"\n\t\tfileName \u003d projectName +\u0027__GW_backup_\u0027 + timeStamp+\u0027.gwbk\u0027\n\t\n\t\toutputMsg \u003d \u0027Creating file as \u0027 + fileName + \u0027 (timeout in 60 sec)\u0027\n\t\tsystem.util.audit(\u0027exchange.ExportBackup\u0027,\u0027Gateway\u0027,outputMsg)\n\t\t\n\t\tif thePlatform \u003d\u003d \u0027Linux\u0027:\n\t\t\t# Linux dirPath \u003d \u0027/usr/local/bin/ignition/\u0027\n\t\t\tsystem.util.execute([baseDir+\u0027gwcmd.sh\u0027, \u0027-b\u0027, fileName])\n\t\telif thePlatform \u003d\u003d \u0027Mac_OS\u0027:\n\t\t\t# Mac_OS dirPath \u003d \u0027/usr/local/ignition/\u0027\n\t\t\tsystem.util.execute([baseDir+\u0027gwcmd.sh\u0027, \u0027-b\u0027, fileName])\n\t\telif thePlatform \u003d\u003d \u0027Windows\u0027:\n\t\t\t# dirPath \u003d \u0027C:\\\\\u0027\n\t\t\tsystem.util.execute([baseDir+\u0027gwcmd.bat\u0027, \u0027-b\u0027, baseDir+fileName])\n\t\telse:\n\t\t\tsystem.util.audit(\u0027exchange.ExportBackup\u0027,\u0027Project\u0027,\u0027OS Error\u0027)\n\t\t\tsvc.output +\u003d \u0027OS Error\u0027\n\t\t\tsys.exit(1)\n\t\t\n\t\treturn baseDir+fileName\n\t\n\t\"\"\" Initiate variables \"\"\"\n\tsvc \u003d self.view.custom\n\ttimeStamp \u003d datetime.datetime.now().strftime(\u0027%Y%m%dT%H%M%S\u0027)\n\ttheProviderName \u003d svc.provider\n\tprojectName \u003d system.util.getProjectName()\n\tinstallLocation \u003d svc.installLocation\n\t\n\t\"\"\" Determine gateway operating system to get download path \"\"\"\n\tplatformStr \u003d str(platform.platform())\n\tif \u0027Linux\u0027 in platformStr:\n\t\tthePlatform \u003d \u0027Linux\u0027\n\t\tbaseDir \u003d installLocation\n\t\tplatformSlash \u003d \"/\"\n\telif \u0027Mac_OS\u0027 in platformStr:\n\t\tthePlatform \u003d \u0027Mac_OS\u0027\n\t\tbaseDir \u003d installLocation\n\t\tplatformSlash \u003d \"/\"\n\telif \u0027Windows\u0027 in platformStr:\n\t\tthePlatform \u003d \u0027Windows\u0027\n\t\tbaseDir \u003d installLocation.replace(\u0027/\u0027,\u0027\\\\\u0027)\n\t\tplatformSlash \u003d \"\\\\\"\n\t\n\tsvc.output +\u003d \u0027\\n\\r\u0027 + \u0027OS: \u0027+thePlatform+\u0027 | Exporting All...\u0027\n\t\n\t\"\"\" Run all above defined functions to get backup files \"\"\"\n\ttheFiles \u003d [\n\t\tgetInstance(svc, thePlatform, baseDir, projectName, timeStamp, theProviderName),\n\t\tgetUDT(svc, thePlatform, baseDir, projectName, timeStamp, theProviderName),\n\t\tgetProject(svc, thePlatform, baseDir, projectName, timeStamp),\n\t\tgetGWBackup(svc, thePlatform, baseDir, projectName, timeStamp)\n\t\t]\n\t\n\tif not self.view.params.isDocker:\n\t\t\"\"\" Add Wrapper Logs to file list \"\"\"\n\t\tpotentialFiles \u003d [\n\t\t\tbaseDir + platformSlash + \"logs\" + platformSlash + \"wrapper.log\",\n\t\t\tbaseDir + platformSlash + \"logs\" + platformSlash + \"wrapper.log.1\",\n\t\t\tbaseDir + platformSlash + \"logs\" + platformSlash + \"wrapper.log.2\",\n\t\t\tbaseDir + platformSlash + \"logs\" + platformSlash + \"wrapper.log.3\",\n\t\t\tbaseDir + platformSlash + \"logs\" + platformSlash + \"wrapper.log.4\",\n\t\t\tbaseDir + platformSlash + \"logs\" + platformSlash + \"wrapper.log.5\",\n\t\t\tbaseDir + platformSlash + \"logs\" + platformSlash + \"wrapper.log.6\",\n\t\t\tbaseDir + platformSlash + \"logs\" + platformSlash + \"wrapper.log.7\",\n\t\t\tbaseDir + platformSlash + \"logs\" + platformSlash + \"wrapper.log.8\",\n\t\t\tbaseDir + platformSlash + \"logs\" + platformSlash + \"wrapper.log.9\",\n\t\t]\n\t\tlogFiles \u003d []\n\t\tfor eachFile in potentialFiles:\n\t\t\tif os.path.exists(eachFile):\n\t\t\t\tlogFiles.append(eachFile)\n\t\t\n\t\toutputMsg \u003d \u0027Exporting Wrapper Logs as wrapper.log*\u0027\n\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + outputMsg\n\t\tsystem.util.audit(\u0027exchange.exportBackup\u0027,\u0027Wrapper Logs\u0027,outputMsg)\t\n\t\n\t\"\"\" Wait until all files are created to not error the compression \"\"\"\n\tfor eachFile in theFiles:\n\t\ttimeoutCatch \u003d 0\n\t\tcheckDone \u003d False\n\t\twhile timeoutCatch\u003c60 and not checkDone:\n\t\t\tif os.path.exists(eachFile):\n\t\t\t\tcheckDone \u003d True\n\t\t\ttimeoutCatch +\u003d 1\n\t\t\ttime.sleep(1)\n\t\t\n#\ttime.sleep(6)\n\n\t\"\"\" Combine and compress all backup files created. \"\"\"\n\tzipFileName \u003d \u0027fullBackup__(\u0027+projectName+\u0027)_\u0027+theProviderName+\u0027_\u0027+timeStamp+\u0027.zip\u0027\n\twith zipfile.ZipFile(baseDir+zipFileName, \u0027w\u0027, zipfile.ZIP_DEFLATED) as theZipFile:\n\t\tfor fileName in theFiles:\n\t\t\tarcname \u003d os.path.basename(fileName)  # Get only the file name\n\t\t\ttheZipFile.write(fileName, arcname\u003darcname)\n\t\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + str(fileName)\n\t\t\ttime.sleep(0.25)\n\t\tif not self.view.params.isDocker:\n\t\t\tfor fileName in logFiles:\n\t\t\t\tarcname \u003d os.path.basename(fileName)  # Get only the file name\n\t\t\t\ttheZipFile.write(fileName, arcname\u003darcname)\n\t\t\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + str(fileName)\n\t\t\t\ttime.sleep(0.25)\n\t# fullZipPath \u003d os.path.abspath(zip_file)\n\ttheZipFile.close()\n\n\t\"\"\" Read and download zip file through perspective session \"\"\"\n\tsystem.util.audit(\u0027exchange.ExportBackup\u0027, \u0027All\u0027, \u0027All Exported as: \u0027+zipFileName)\n\ttheFile \u003d system.file.readFileAsBytes(baseDir+zipFileName)\n\tsystem.perspective.download(zipFileName, theFile)\n\n\t\"\"\" Remove all temp files \"\"\"\n\tfor eachFile in theFiles:\n\t\tos.remove(eachFile)\n\tos.remove(baseDir+zipFileName)\n\t\n\tsvc.output +\u003d \u0027\\n\\r\u0027 + \u0027Finished!\u0027",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "exchange.ExportBackup.exportTagsZIP",
+          "pageScope": true,
+          "script": "\t\"\"\"\n\tThis handler exports both tag instances (along with the corresponding UDTs) or only the UDT definitions, the current project, and the gateway backup file to the local ignition server.\n\tIt then compresses all four files into a zip folder to save download data and space.\n\tThe zip file is downloaded through the session and temporary files on the ignition server are deleted.\n\t\"\"\"\n\timport os, datetime, zipfile, time, platform, sys\n\t\n\tdef getInstance(svc, thePlatform, baseDir, projectName, timeStamp, theProviderName):\n\t\t\"\"\" This internal function creates an export of all Tag instances and saves it to the local ignition server to compress. \"\"\"\n\t\tif theProviderName \u003d\u003d \"\":\n\t\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Select a Provider to export tags\"\n\t\t\tsys.exit(1)\n\t\t\n\t\tfileName \u003d theProviderName.strip(\u0027[]\u0027) + \u0027__Instances_\u0027 + timeStamp + \u0027.json\u0027\n\t\toutputMsg \u003d \u0027Exporting Instances as \u0027 + fileName + \u0027.zip\u0027\n\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + outputMsg\n\t\tsystem.util.audit(\u0027exchange.exportBackup\u0027,\u0027UDT Definitions\u0027,outputMsg)\n\t\t\n\t\tresult \u003d system.tag.exportTags(tagPaths \u003d [theProviderName])\n\t\tsystem.file.writeFile(baseDir+fileName, result)\n\t\t\n\t\treturn baseDir+fileName, fileName\n\n\tdef getUDT(svc, thePlatform, baseDir, projectName, timeStamp, theProviderName):\n\t\t\"\"\" This internal function creates an export of all UDT definitions and saves it to the local ignition server to compress. \"\"\"\n\t\tif theProviderName \u003d\u003d \"\":\n\t\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + \"Select a Provider to export tags\"\n\t\t\tsys.exit(1)\n\t\t\n\t\tfileName \u003d theProviderName.strip(\u0027[]\u0027) + \u0027__UDTs_\u0027 + timeStamp + \u0027.json\u0027\n\t\toutputMsg \u003d \u0027Exporting UDTs as \u0027 + fileName + \u0027.zip\u0027\n\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + outputMsg\n\t\tsystem.util.audit(\u0027exchange.exportBackup\u0027,\u0027UDT Definitions\u0027,outputMsg)\n\t\t\n\t\tresult \u003d system.tag.exportTags(tagPaths \u003d [theProviderName+\u0027_types_\u0027])\n\t\tsystem.file.writeFile(baseDir+fileName, result)\n\t\t\n\t\treturn baseDir+fileName, fileName\n\t\n\t\"\"\" Initiate variables \"\"\"\n\tsvc \u003d self.view.custom\n\ttimeStamp \u003d datetime.datetime.now().strftime(\u0027%Y%m%dT%H%M%S\u0027)\n\ttheProviderName \u003d svc.provider\n\tprojectName \u003d system.util.getProjectName()\n\tinstallLocation \u003d svc.installLocation\n\t\n\t\"\"\" Determine gateway operating system to get download path \"\"\"\n\tplatformStr \u003d str(platform.platform())\n\tif \u0027Linux\u0027 in platformStr:\n\t\tthePlatform \u003d \u0027Linux\u0027\n\t\tbaseDir \u003d installLocation\n\telif \u0027Mac_OS\u0027 in platformStr:\n\t\tthePlatform \u003d \u0027Mac_OS\u0027\n\t\tbaseDir \u003d installLocation\n\telif \u0027Windows\u0027 in platformStr:\n\t\tthePlatform \u003d \u0027Windows\u0027\n\t\tbaseDir \u003d installLocation.replace(\u0027/\u0027,\u0027\\\\\u0027)\n\t\n\tif payload[\u0027udt\u0027]:\n\t\ttheFullName, theFileName \u003d getUDT(svc, thePlatform, baseDir, projectName, timeStamp, theProviderName)\n\telse:\n\t\ttheFullName, theFileName \u003d getInstance(svc, thePlatform, baseDir, projectName, timeStamp, theProviderName)\n\t\n\t\"\"\" Wait until all files are created to not error the compression \"\"\"\n\ttimeoutCatch \u003d 0\n\tcheckDone \u003d False\n\twhile timeoutCatch\u003c60 and not checkDone:\n\t\tif os.path.exists(theFullName):\n\t\t\tcheckDone \u003d True\n\t\ttimeoutCatch +\u003d 1\n\t\ttime.sleep(1)\n#\ttime.sleep(6)\n\t\n\t\"\"\" Compress the json export to save data and space \"\"\"\n\tzipFileName \u003d theFileName+\u0027.zip\u0027\n\twith zipfile.ZipFile(baseDir+zipFileName, \u0027w\u0027, zipfile.ZIP_DEFLATED) as theZipFile:\n\t\tarcname \u003d os.path.basename(theFullName)  # Get only the file name\n\t\ttheZipFile.write(theFullName, arcname\u003darcname)\n#\t\ttime.sleep(0.25)\n\t# fullZipPath \u003d os.path.abspath(zip_file)\n\ttheZipFile.close()\n\t\n\t\"\"\" Read and download zip file through perspective session \"\"\"\n\ttheFile \u003d system.file.readFileAsBytes(baseDir+zipFileName)\n\tsystem.perspective.download(zipFileName, theFile)\n\t\n\t\"\"\" Remove all temp files \"\"\"\n\tos.remove(theFullName)\n\tos.remove(baseDir+zipFileName)",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "exchange.ExportBackup.exportLogs",
+          "pageScope": true,
+          "script": "\t\"\"\"\n\tThis handler exports both tag instances (along with the corresponding UDTs) or only the UDT definitions, the current project, and the gateway backup file to the local ignition server.\n\tIt then compresses all four files into a zip folder to save download data and space.\n\tThe zip file is downloaded through the session and temporary files on the ignition server are deleted.\n\t\"\"\"\n\timport os, datetime, zipfile, time, platform, sys\n\t\n\t\"\"\" Initiate variables \"\"\"\n\tsvc \u003d self.view.custom\n\ttimeStamp \u003d datetime.datetime.now().strftime(\u0027%Y%m%dT%H%M%S\u0027)\n\ttheProviderName \u003d svc.provider\n\tprojectName \u003d system.util.getProjectName()\n\tinstallLocation \u003d svc.installLocation\n\t\n\t\"\"\" Determine gateway operating system to get download path \"\"\"\n\tplatformStr \u003d str(platform.platform())\n\tif \u0027Linux\u0027 in platformStr:\n\t\tthePlatform \u003d \u0027Linux\u0027\n\t\tbaseDir \u003d installLocation + \"logs/\"\n\telif \u0027Mac_OS\u0027 in platformStr:\n\t\tthePlatform \u003d \u0027Mac_OS\u0027\n\t\tbaseDir \u003d installLocation + \"logs/\"\n\telif \u0027Windows\u0027 in platformStr:\n\t\tthePlatform \u003d \u0027Windows\u0027\n\t\tbaseDir \u003d installLocation.replace(\u0027/\u0027,\u0027\\\\\u0027) + \"logs\\\\\"\n\t\n\ttheFileName \u003d theProviderName.strip(\u0027[]\u0027) + \u0027__Logs_\u0027 + timeStamp\n\tpotentialFiles \u003d [\n\t\tbaseDir + \"wrapper.log\",\n\t\tbaseDir + \"wrapper.log.1\",\n\t\tbaseDir + \"wrapper.log.2\",\n\t\tbaseDir + \"wrapper.log.3\",\n\t\tbaseDir + \"wrapper.log.4\",\n\t\tbaseDir + \"wrapper.log.5\",\n\t\tbaseDir + \"wrapper.log.6\",\n\t\tbaseDir + \"wrapper.log.7\",\n\t\tbaseDir + \"wrapper.log.8\",\n\t\tbaseDir + \"wrapper.log.9\",\n\t]\n\ttheFiles \u003d []\n\tfor eachFile in potentialFiles:\n\t\tif os.path.exists(eachFile):\n\t\t\ttheFiles.append(eachFile)\n\t\n\toutputMsg \u003d \u0027Exporting Wrapper Logs as \u0027 + theFileName + \u0027.zip\u0027\n\tsvc.output +\u003d \u0027\\n\\r\u0027 + outputMsg\n\tsystem.util.audit(\u0027exportBackup\u0027,\u0027Wrapper Logs\u0027,outputMsg)\t\n\t\n\t\n\t\"\"\" Combine and compress all log files. \"\"\"\n\tzipFileName \u003d theFileName+\u0027.zip\u0027\n\twith zipfile.ZipFile(baseDir+zipFileName, \u0027w\u0027, zipfile.ZIP_DEFLATED) as theZipFile:\n\t\tfor fileName in theFiles:\n\t\t\tarcname \u003d os.path.basename(fileName)  # Get only the file name\n\t\t\ttheZipFile.write(fileName, arcname\u003darcname)\n\t\t\tsvc.output +\u003d \u0027\\n\\r\u0027 + str(fileName)\n\t\t\ttime.sleep(0.25)\n\t# fullZipPath \u003d os.path.abspath(zip_file)\n\ttheZipFile.close()\n\n\t\"\"\" Read and download zip file through perspective session \"\"\"\n\tsystem.util.audit(\u0027exchange.ExportBackup\u0027, \u0027Wrapper Logs\u0027, \u0027Logs Exported as: \u0027+zipFileName)\n\ttheFile \u003d system.file.readFileAsBytes(baseDir+zipFileName)\n\tsystem.perspective.download(zipFileName, theFile)\n\n\t\"\"\" Remove all temp files \"\"\"\n\tos.remove(baseDir+zipFileName)\n\t\n\tsvc.output +\u003d \u0027\\n\\r\u0027 + \u0027Finished!\u0027",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

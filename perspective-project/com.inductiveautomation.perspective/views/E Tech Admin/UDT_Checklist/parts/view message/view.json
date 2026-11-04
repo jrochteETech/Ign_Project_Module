@@ -1,0 +1,117 @@
+{
+  "custom": {},
+  "params": {
+    "label": "runScript(\"alarmScripts.LabelGen\",0,{Area},{AreaID},{PodNum},{RowSeries},{RackNum},{FeedSource},{InstanceName},tag(\"[.]\"+{itemName}+\".Label\"), {name},{PathToTag})"
+  },
+  "propConfig": {
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 200,
+      "width": 700
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "90%"
+            },
+            "props": {
+              "text": "Label",
+              "textStyle": {
+                "fontFamily": "Helvetica",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Button"
+            },
+            "position": {
+              "basis": "50px"
+            },
+            "props": {
+              "image": {
+                "height": 26,
+                "icon": {
+                  "color": "#BF2929",
+                  "path": "material/cancel"
+                },
+                "width": 26
+              },
+              "style": {
+                "backgroundColor": "#FAFAFA00",
+                "borderStyle": "none"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "18%"
+        },
+        "props": {
+          "justify": "space-between",
+          "style": {
+            "backgroundColor": "#c5c5c5"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "80%"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.label"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "paddingLeft": 10
+          },
+          "textStyle": {
+            "fontFamily": "Helvetica",
+            "fontWeight": "bold",
+            "textAlign": "left"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "space-around"
+    },
+    "type": "ia.container.flex"
+  }
+}
