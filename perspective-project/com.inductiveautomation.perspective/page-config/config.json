@@ -1,5 +1,10 @@
 {
-  "pages": {},
+  "pages": {
+    "/": {
+      "title": "",
+      "viewPath": "E Tech Admin/Admin"
+    }
+  },
   "sharedDocks": {
     "cornerPriority": "top-bottom"
   }
